@@ -8,4 +8,4 @@ clean:
 		rm -f $(SRC:.md=.html)
 
 %.html: %.md
-		pandoc -f markdown -t html -H _header.html -s -o $(@) $<
+	pandoc --template=html.template --variable=updated:"$(shell date)" --from=markdown --to=html -H _header.html -s -o $(@) $<

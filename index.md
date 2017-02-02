@@ -9,10 +9,6 @@ I am a homebrewer and board member of the [Tucson Homebrew Club]. I enjoy [runni
 
 This site was inspired by [James Earl Douglas].  
 
-<sup>
-*last updated*  
-Wed Feb  1 13:44:53 MST 2017
-</sup>
 
 [github]: https://www.github.com/FreddieSanchez
 [linkedin]: https://www.linkedin.com/in/freddiesanchez 
