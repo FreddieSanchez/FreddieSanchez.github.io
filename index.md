@@ -1,11 +1,11 @@
 % Freddie Sanchez
 
-I am a well rounded programmer with a professional experience in C. However, I enjoy solving problems in a variety of different programming languages: C, Python, Scala, Java, Haskell, and Javascript.
+I am a well rounded programmer with professional experience in C and Windows application development. However, I enjoy solving problems in a variety of different programming languages: C, Python, Scala, Java, Haskell, and Javascript.
 
 [GitHub][github] [LinkedIn][linkedin] [Résumé][resume]
 
 
-I am a homebrewer and board member of the [Tucson Homebrew Club]. I enjoy [running] but can be found cycling or hiking looking for [geocaches].
+I am a homebrewer and board member of the [Tucson Homebrew Club]. I enjoy [running] but can be found cycling or hiking while looking for [geocaches].
 
 This site was inspired by [James Earl Douglas].  
 
