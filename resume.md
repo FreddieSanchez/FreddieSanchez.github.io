@@ -5,7 +5,7 @@
 
 Proficient with Delphi, C, C\#, Java, Shell script, SQL.
 
-Limited experience with Python, Powershell, Scala, Haskell, Node.js, 
+Limited experience with Python, Powershell, Scala, Haskell, Node.js. 
 
 ###Objective 
 

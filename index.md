@@ -7,7 +7,7 @@ I am a well rounded programmer with a professional experience in C. However, I e
 
 I am a homebrewer and board member of the [Tucson Homebrew Club]. I enjoy [running] but can be found cycling or hiking looking for [geocaches].
 
-This site was inspried by [James Earl Douglas].  
+This site was inspired by [James Earl Douglas].  
 
 <sup>
 *last updated*  
