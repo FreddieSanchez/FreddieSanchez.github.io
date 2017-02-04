@@ -1,9 +1,9 @@
 % Freddie Sanchez
 [freddie.sanchez@gmail.com](mailto:freddie.sanchez+resume@gmail.com)
 
-A software engineer with professional experience in custom AIX kernel module development and FDA regulated Windows application development, automation, system architecture, technical leadership, and innovation.
+A passionate software engineer with professional experience in custom AIX kernel module development and FDA regulated Windows application development, automation, system architecture, technical leadership, and innovation.
 
-Accomplished with Delphi, C, C\#, Java, Shell script, SQL.
+Accomplished in Delphi, C, C\#, Java, Shell script, SQL.
 
 Expierence with with Python, Powershell, Scala, Haskell, Node.js. 
 
