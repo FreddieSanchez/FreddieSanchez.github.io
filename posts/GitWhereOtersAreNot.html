@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style type="text/css">
+    body {
+      max-width: 100ex;
+      margin: auto;
+      padding: 0 1ex;
+      color: #333;
+      line-height: 1.3em;
+      font-size: .9em;
+      font-family: Arial, sans-serif;
+    }
+    img {
+      padding: 0 1ex;
+    }
+  </style>
+</head>
+<body>
+<h2 id="scenario">Scenario</h2>
+<p>Code is typically developed and compiled on remote servers. Compilation can take anywhere between 30 min-1hr depending on the files changed.</p>
+<h3 id="releases">Releases</h3>
+<p>Separate major releases are maintained where new functionality and fixes can be added. Sometimes the same fix has to be added to multiple releases.</p>
+<h3 id="builds">Builds</h3>
+<p>For each release, builds are done to pick up new functions and bug fixes for that specific release. Directories are created for these builds. A one off change can be compiled and tested by creating another directory, referred to as a delta, with symbolic links to the base directory.</p>
+<h2 id="motivation">Motivation</h2>
+<p>I want to be able to edit code on my own machine instead of relying on a network connection to these servers.</p>
+<ul>
+<li>Edit code offline</li>
+<li>Check syntax errors locally without having to compile</li>
+<li>Take advantage of the rich feature set of Vim 7.X and other tools not available on the remote systems.</li>
+<li>Use a Git rather than versioned directories that have full copies of the differences.</li>
+</ul>
+<h2 id="git-branching-model">Git Branching Model</h2>
+<p>Each release will have it's own branch. Fixes will be based off of these branches and can be rebased.</p>
+<h2 id="releveling-release">Releveling Release</h2>
+<p>The releases will be changing over time. Therefore, the release branch will have to 'relevled' to incorporate these new changes. Manually copying all these files over from the remote systems to my local system is a waste of time and resources. Git comes to the rescue again.</p>
+<h3 id="setting-up-remote-system">Setting up remote system</h3>
+<ol style="list-style-type: decimal">
+<li>Create a Repository on a remote system that has access to the builds. <code>git init --git-dir=./.git</code></li>
+<li><p>Add files from one of the build directories <code>git --git-dir=./.git --work-tree=&lt;base-build-dir&gt; add '*.[ch]'</code></p></li>
+<li><p>Commit the updates <code>git commit -am &quot;Initial build&quot;</code></p></li>
+</ol>
+<p>This will take quite a while since there are so many files. However, after the first commit, releveling and pulling/merging is quite fast.</p>
+<h3 id="new-build-increment">New build increment</h3>
+<p>When deciding to relevel, the first thing you need to do is update your remote repo. Only including files that were originally added. New files will have to be added manually.</p>
+<pre><code>git --git-dir=./.git --work-tree=&lt;new-build-dir&gt; add -u &#39;*.[ch]&#39;
+git commit -am &quot;Upleveled to $1&quot;</code></pre>
+<h3 id="fetchpull-on-local-system.">Fetch/Pull on local system.</h3>
+<ol style="list-style-type: decimal">
+<li>Checkout the release. <code>git checkout releaseX</code></li>
+<li>Pull the changes from the remote - using theirs files to avoid having to manually merge the changes. <code>git pull --strategy-option=theirs remote-host:remote-repo</code></li>
+</ol>
+<div>
+  <sup>
+    <i>last updated</i><br>
+    Sun Feb  5 23:40:55 MST 2017
+  </sup>
+</div>
+</body>
+</html>
