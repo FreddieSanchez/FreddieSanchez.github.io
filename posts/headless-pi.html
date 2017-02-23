@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title></title>
+  <title>Headless Pi</title>
   <style type="text/css">code{white-space: pre;}</style>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style type="text/css">
@@ -23,9 +23,20 @@
   </style>
 </head>
 <body>
+<div id="header">
+  <h1 class="title">Headless Pi</h1>
+</div>
+<p>Grab the latest raspbian https://downloads.raspberrypi.org/raspbian_latest.torrent</p>
+<p>note this is the device, not the partition <code>sudo dd bs=4M if=2017-01-11-raspbian-jessie.img of=/dev/mmcblk0</code></p>
+<p>mount the second partition, edit it with your wireless config https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md</p>
+<p>Touch /boot/ssh to enable SSH for a headless setup. The default password is <code>raspberry</code> https://www.raspberrypi.org/documentation/remote-access/ssh/</p>
+<p>Setup the rasp-config</p>
 <ul>
-<li><a href="posts/headless-pi.html">Headless Pi</a></li>
+<li>Turn off GUI</li>
+<li>expand the main partition.</li>
+<li>reboot</li>
 </ul>
+<p>Edit the date <code>date --set=&quot;20091015 04:30&quot;</code></p>
 <div>
   <sup>
     <i>last updated</i><br>
