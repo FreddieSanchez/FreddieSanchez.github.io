@@ -1,15 +1,17 @@
 % Freddie Sanchez
 [freddie.sanchez@gmail.com](mailto:freddie.sanchez+resume@gmail.com)
 
-A passionate software engineer with professional experience in custom AIX kernel module development and FDA regulated Windows application development, automation, system architecture, technical leadership, and innovation.
+A passionate software engineer with professional experience in custom AIX kernel module and FDA regulated Windows application development, as well as automation, system architecture, technical leadership, and innovation.
 
-Accomplished in Delphi, C, C\#, Java, Shell script, SQL.
+Expert with Delphi, C, C\#, Java, Shell script, SQL.
 
-Expierence with with Python, Powershell, Scala, Haskell, Node.js. 
+Proficient with Android, Python, Powershell, Node.js.
+
+Familiar with Scala, Haskell.
 
 ###Objective 
 
-Work in an evolving fast-paced environment, solving problems and delivering high-quality software while continuing my lifelong pursuit of learning.
+Work in an evolving fast-paced environment, solving problems and delivering high-quality software while continuing my lifelong pursuit of learning, development, and growth.
 
 ###Experience 
 
@@ -29,10 +31,9 @@ engineers. Scrum master for the staining procedure development team.
 Identify, track and remove impediments keeping the team on target to
 meet sprint goals.
 
-**_International Business Machines_**  
+**_IBM_**  
 _Tucson, Arizona (May 2005 - February 2015)_  
-_Staff Software Engineer (October 2010 - February 2015)_  
-_Software Engineer (May 2005 - October 2010)_
+_Staff Software Engineer_  
 
 *Product Development:* Developed embedded software in C for the enterprise
 high-performance IBM System Storage DS8000 product line.  Primary focus
@@ -65,7 +66,7 @@ improved code coverage especially in error case scenarios. Developed
 tools in perl, shell scripts, and C to automate simple tasks, improve
 debugging and real time data analysis.
 
-**_International Business Machines_**  
+**_IBM_**  
 _Tucson, Arizona (January 2003 - May 2005)_  
 _Co-op Pre-professional Programmer_
 
