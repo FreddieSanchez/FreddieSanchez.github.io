@@ -3,11 +3,7 @@
 
 A passionate software engineer with professional experience in custom AIX kernel module and FDA regulated Windows application development, as well as automation, system architecture, technical leadership, and innovation.
 
-Expert with Delphi, C, C\#, Java, Shell script, SQL.
-
-Proficient with Android, Python, Powershell, Node.js.
-
-Familiar with Scala, Haskell.
+Expert in Delphi, C, C\#, Java, Shell script, SQL.  Proficient in Android, Python, Powershell, Node.js.  Familiar in Scala, Haskell, Ansible, MySQL.
 
 ###Objective 
 
@@ -44,12 +40,12 @@ established documentation procedures, implementation using prescribed
 coding standards and methodologies, documenting and executing unit test
 plans, and successful hardware integration.
 
-Led the design and development of new Copy Services, Cache, and Non
+Worked with cross-functional technical worldwide teams leading 
+the design and development of new Copy Services, Cache, and Non
 Volatile Storage functions that provided enhanced customer data
-protection, reliability, and performance while working with
-cross-functional technical worldwide teams.
+protection, reliability, and performance.
 
-*Defect Analysis:* Performed root cause analysis and provide fixes on
+*Defect Analysis:* Performed root cause analysis and provided fixes on
 hundreds of field and test defects.
 
 *Customer Engagement:* Served as an IBM Systems Technical Advocate for two
