@@ -1,4 +1,4 @@
-%Using Git Where Other are Not
+%2017-Feb-05 Using Git Where Other are Not
 
 ## Scenario
 Code is typically developed and compiled on remote servers. Compilation can take anywhere between 30 min-1hr depending on the files changed.

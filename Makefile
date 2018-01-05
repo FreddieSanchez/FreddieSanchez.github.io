@@ -1,5 +1,5 @@
 SRC = $(shell find . -type f -name '*.md')
-POSTS = $(shell find posts -type f -name '*.md')
+POSTS = $(shell find posts -type f -name '*.md' | xargs -I {} sh -c 'echo -n "`head -n 1 {}`_"; echo  \{}' | sort --field-separator=- -k1 -k2M -k3 -r | cut -d_ -f2-)
 MAKE_POSTS = ./scripts/makePost.sh
 
 .PHONEY: all clean
