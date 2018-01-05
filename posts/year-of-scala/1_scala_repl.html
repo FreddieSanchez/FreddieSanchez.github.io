@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>2018-Jan-04 Year of Scala - REPL</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style type="text/css">
+    body {
+      max-width: 100ex;
+      margin: auto;
+      padding: 0 1ex;
+      color: #333;
+      line-height: 1.3em;
+      font-size: .9em;
+      font-family: Arial, sans-serif;
+    }
+    code {
+      display: block;
+      white-space: pre;
+      font-family: monospace;
+      border: 1px solid black;
+      padding: 17px;
+      overflow-x:auto;
+      background-color: #f5f5f5;
+      margin: 0 0 18px;
+      line-height: 18px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+  
+    }
+    img {
+      padding: 0 1ex;
+    }
+  </style>
+</head>
+<body>
+<div id="header">
+  <h1 class="title">2018-Jan-04 Year of Scala - REPL</h1>
+</div>
+<h1 id="repl---read-eval-print-loop">REPL - Read-Eval-Print-Loop</h1>
+<p>A REPL give the user an interactive programming environment that 1) Reads the user input, 2) evaluates the express, 3) prints the result, 4) Loops back to read the next expression.</p>
+<p>sbt/Scala provides a Repl, and this is where we'll be beginning.</p>
+<pre><code>$ sbt console
+OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=384m; support was removed in 8.0
+[info] Set current project to... 
+[info] Starting scala interpreter...
+[info] 
+Welcome to Scala version 2.10.3 (OpenJDK 64-Bit Server VM, Java 1.8.0_151).
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala&gt; 1 + 2
+res0: Int = 3</code></pre>
+<p>The result of the expression is automatically saved in a value named &quot;res&quot; with an auto incrementing suffix.</p>
+<pre><code>scala&gt; res0
+res1: Int = 3
+</code></pre>
+<h1 id="values-variables">Values &amp; Variables</h1>
+<p>Values and Variables bind the evaluated result of the expression to a name. The difference between them being, that values are not mutable.</p>
+<pre><code>scala&gt; val i:Int = 0
+i: Int = 0
+
+scala&gt; i = 1
+&lt;console&gt;:8: error: reassignment to val
+       i = 1
+         ^
+
+scala&gt; var j:Int = 0
+j: Int = 0
+
+scala&gt; j = 1
+j: Int = 1
+</code></pre>
+<p>In Scala, the compiler is your friend. Since the expressions are evaluated at compile time, the compiler infers the result type based on the result type of the expression. This is known as <a href="https://en.wikipedia.org/wiki/Type_inference">Type Inference</a> and is a feature..</p>
+<pre><code>scala&gt; val i = 0
+i: Int = 0
+
+scala&gt; val i = 0.0
+i: Double = 0.0
+</code></pre>
+<p>The expression &quot;0&quot; is evaluated and the compiler infers it's of type &quot;Int&quot; therefore, the value &quot;i&quot; will be set to that type. There is no need to explicitly declare the type. However, in some cases it may improve the readability of your code.</p>
+<h1 id="definitions">Definitions</h1>
+<p>A function can be declared as a definition. Definitions differ from values, in that values are evaluated when defined, where as definitions are only evaluated on every call. The only exception being &quot;lazy values&quot; which are evaluated the first time they are used.</p>
+<pre><code>scala&gt; def plusOne(x: Int) = x + 1
+plusOne: (x: Int)Int
+
+scala&gt; val three = plusOne(2)
+three: Int = 3</code></pre>
+<p>Functions that have multiple expressions can be wrapped in a { }. The final expression in the block is the resultant type of the code block. There is no &quot;return&quot;, just a result of the expression.</p>
+<pre><code>scala&gt; def plusTwo(x:Int) = { 
+     | val first = plusOne(x)
+     | val second = plusOne(first)
+     | second
+     | }
+plusTwo: (x: Int)Int
+
+scala&gt; val three = plusTwo(1)
+three: Int = 3</code></pre>
+<h2 id="nested-functions">Nested Functions</h2>
+<p>You can indeed have functions defined inside of functions. This can be beneficial when encapsulating the implementation.</p>
+<pre><code>scala&gt; def plusTwo(x:Int) = {
+     |   def plusOne(y:Int) = y + 1
+     |   plusOne(plusOne(x))
+     | }
+plusTwo: (x: Int)Int
+
+scala&gt; plusTwo(1)
+res9: Int = 3
+</code></pre>
+<div>
+  <sup>
+    <i>last updated</i><br>
+    Thu Jan  4 23:00:44 MST 2018
+  </sup>
+</div>
+</body>
+</html>
