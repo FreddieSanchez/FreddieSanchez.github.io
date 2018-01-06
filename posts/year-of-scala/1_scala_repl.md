@@ -63,8 +63,8 @@ i: Double = 0.0
 
 The expression "0" is evaluated and the compiler infers it's of type "Int" therefore, the value "i" will be set to that type. There is no need to explicitly declare the type. However, in some cases it may improve the readability of your code.
 
-#Definitions 
-A function can be declared as a definition. Definitions differ from values, in that values are evaluated when defined, where as definitions are only evaluated on every call. The only exception being "lazy values" which are evaluated the first time they are used.
+#Functions
+A function can be declared as a definition. Definitions differ from values in that values are evaluated when defined, where as definitions are only evaluated on every call. The only exception being "lazy values" which are evaluated the first time they are used.
 
 ```
 scala> def plusOne(x: Int) = x + 1
@@ -91,7 +91,7 @@ three: Int = 3
 
 ## Nested Functions
 
-You can indeed have functions defined inside of functions. This can be beneficial when encapsulating the implementation.
+You can indeed have functions defined inside of functions. This can be beneficial when encapsulating the implementation. For example, if you want to write a tail recursive version of the parent function.
 
 ```
 scala> def plusTwo(x:Int) = {
@@ -104,4 +104,68 @@ scala> plusTwo(1)
 res9: Int = 3
 
 ```
+
+## Higher-Order Functions
+
+In Scala functions are a first-class values. You can define a value that is a function, define a function that takes a function, or returns a function as the result of the expression.
+
+For example:
+
+```
+scala> val plusOne = (x:Int) => x + 1
+plusOne: Int => Int = <function1>
+```
+
+plusOne has the type <code>Int => Int</code>. This means, that plusOne is a function that takes an Int and returns an Int. This function can be passed to another function as a parameter since functions are types.
+
+```
+scala> def addOne(x:Int, y: Int => Int) = y(x)
+addOne: (x: Int, y: Int => Int)Int
+
+scala> addOne(1, plusOne)
+res0: Int = 2
+
+```
+
+The function plusOne is being passed to the function addOne, which simply executes function. This is very powerful since this allows us to apply different behavior to an existing function. 
+
+Let's see how we can use this to our advantage. Let's say we have a function that looks through a list of ints and returns all the ones. 
+```
+scala> def findOnes(ls:List[Int]):List[Int] = {
+     |   ls match {
+     |     case Nil => Nil
+     |     case x::xs => if (x == 1) x::findOnes(xs) else findOnes(xs)
+     |   }
+     | }
+findOnes: (ls: List[Int])List[Int]
+
+scala> findOnes(List(1,2,3,1))
+res5: List[Int] = List(1, 1)
+
+scala> findOnes(List())
+res6: List[Int] = List()
+
+```
+
+Great, now how about if we have to find all the numbers greater than 4? or all the numbers equal to 2? We can genearlize this by taking predicate as a function that takes two Ints and returns a boolean. 
+
+```
+scala> def find( ls:List[Int], fn: (Int) => Boolean):List[Int]= {
+     |   ls match {
+     |     case Nil => Nil
+     |     case x::xs => if (fn(x)) x::find(xs,fn) else find(xs, fn)
+     |   }
+     | }
+find: (ls: List[Int], fn: Int => Boolean)List[Int]
+
+scala> find(List(1,2,3,1), { x => x == 1 })
+res3: List[Int] = List(1, 1)
+
+scala> find(List(1,2,3,1), { x => x > 2 })
+res4: List[Int] = List(3)
+```
+
+Higher order functions allows us to pass behavior into an already existing function. This will greatly increase code reuse.
+
+
 
