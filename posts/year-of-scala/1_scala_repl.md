@@ -167,5 +167,80 @@ res4: List[Int] = List(3)
 
 Higher order functions allows us to pass behavior into an already existing function. This will greatly increase code reuse.
 
+##Recursive Functions
 
+In the previous example, I wrote a function that calls itself. Why are they useful? They provide a great benefit by preventing mutation. It does this by utilizing the function stack to store local values and parameters.
 
+Let's look at a recusrive function:
+
+```
+scala> def power(x:Int, n:Int): Int = {
+     |   if (n == 0) 1 // anything to the 0th power is 1
+     |   else x * power(x, n-1)
+     | }
+power: (x: Int, n: Int)Int
+
+scala> power(2,3)
+res0: Int = 8
+
+scala> power(4,0)
+res1: Int = 1
+```
+
+In all recursive funcitons, you need a base case, in this case, we use when n is equal to 0. The recursive case calls itself with but with a subset of the problem. In the power function, we use n as the number of times x should be multipled by.
+
+```
+power(2, 3)
+x = 2, n = 3
+2 * power (2, 2)
+2 * 2 * power(2, 1)
+2 * 2 * 2 * power(2,0)
+2 * 2 * 2 * 1
+8
+
+Each time, we're not modifying n, but essentially creating a copy of it when calling the function. But what about the case where n is absurdly large? We'll essentially run out stack frames and overflow the stack. To solve this scenario, Scala has a feature called Tail Recursion.
+
+### Tail Recursion 
+Tail recursion relies on storing the intermediate values as a function parameters. In the power example, we only knew the result when ALL the calls to power were complete requiring all the previous results and the accompanying function stack frame. Let's rewrite the power function to support tail recursion.
+
+scala> def power(x:Int, n:Int): Int = {
+     |   @annotation.tailrec
+     |   def _power(x:Int, n:Int, accum:Int): Int = {
+     |     if (n == 0) accum
+     |     else _power(x, n-1, x * accum)
+     |   }
+     |  _power(x,n,1)
+     | }
+power: (x: Int, n: Int)Int
+
+This utilizes a Scala feature called annotations, that tells the compiler that the intermediate results are not handled already and the intermediate stack frames can be reclaimed (or not even allocated in the first place).
+
+Let's see how this example plays out. Notice, that I created a nested function to hide the fact that we're using tail recursion here. 
+
+```
+_power(2, 3, 1)
+x = 2, n = 3, accum = 1
+x = 2, n = 2, accum = 2
+x = 2, n = 1, accum = 4
+x = 2, n = 0, accum = 8
+recusion ends, and accum is the final result
+```
+
+You can see, we didn't need to wait for all the other function calls to complete, we already had the result!
+
+This function can be modified by using another Scala feature: parameters with default values.
+
+```
+scala> @annotation.tailrec
+     | def power(x:Int, n:Int, accum:Int = 1): Int = {
+     |   if (n == 0) accum
+     |   else power(x, n-1, x * accum)
+     | }
+  
+power: (x: Int, n: Int, accum: Int)Int
+
+scala> power(2,3)
+res6: Int = 8
+```
+
+Notice that when we called the function, we left out the last parameter, in this case the default value is used. The downside of this, is now we are exposing that implementation detail. 
