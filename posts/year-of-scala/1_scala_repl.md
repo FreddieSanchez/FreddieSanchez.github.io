@@ -25,7 +25,6 @@ The result of the expression is automatically saved in a value named "res" with 
 ```
 scala> res0
 res1: Int = 3
-
 ```
 
 #Values & Variables
@@ -197,12 +196,14 @@ x = 2, n = 3
 2 * 2 * 2 * power(2,0)
 2 * 2 * 2 * 1
 8
+```
 
 Each time, we're not modifying n, but essentially creating a copy of it when calling the function. But what about the case where n is absurdly large? We'll essentially run out stack frames and overflow the stack. To solve this scenario, Scala has a feature called Tail Recursion.
 
 ### Tail Recursion 
 Tail recursion relies on storing the intermediate values as a function parameters. In the power example, we only knew the result when ALL the calls to power were complete requiring all the previous results and the accompanying function stack frame. Let's rewrite the power function to support tail recursion.
 
+```
 scala> def power(x:Int, n:Int): Int = {
      |   @annotation.tailrec
      |   def _power(x:Int, n:Int, accum:Int): Int = {
@@ -212,6 +213,7 @@ scala> def power(x:Int, n:Int): Int = {
      |  _power(x,n,1)
      | }
 power: (x: Int, n: Int)Int
+```
 
 This utilizes a Scala feature called annotations, that tells the compiler that the intermediate results are not handled already and the intermediate stack frames can be reclaimed (or not even allocated in the first place).
 

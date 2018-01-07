@@ -174,14 +174,11 @@ x = 2, n = 3
 2 * 2 * power(2, 1)
 2 * 2 * 2 * power(2,0)
 2 * 2 * 2 * 1
-8
-
-Each time, we&#39;re not modifying n, but essentially creating a copy of it when calling the function. But what about the case where n is absurdly large? We&#39;ll essentially run out stack frames and overflow the stack. To solve this scenario, Scala has a feature called Tail Recursion.
-
-### Tail Recursion 
-Tail recursion relies on storing the intermediate values as a function parameters. In the power example, we only knew the result when ALL the calls to power were complete requiring all the previous results and the accompanying function stack frame. Let&#39;s rewrite the power function to support tail recursion.
-
-scala&gt; def power(x:Int, n:Int): Int = {
+8</code></pre>
+<p>Each time, we're not modifying n, but essentially creating a copy of it when calling the function. But what about the case where n is absurdly large? We'll essentially run out stack frames and overflow the stack. To solve this scenario, Scala has a feature called Tail Recursion.</p>
+<h3 id="tail-recursion">Tail Recursion</h3>
+<p>Tail recursion relies on storing the intermediate values as a function parameters. In the power example, we only knew the result when ALL the calls to power were complete requiring all the previous results and the accompanying function stack frame. Let's rewrite the power function to support tail recursion.</p>
+<pre><code>scala&gt; def power(x:Int, n:Int): Int = {
      |   @annotation.tailrec
      |   def _power(x:Int, n:Int, accum:Int): Int = {
      |     if (n == 0) accum
@@ -189,26 +186,32 @@ scala&gt; def power(x:Int, n:Int): Int = {
      |   }
      |  _power(x,n,1)
      | }
-power: (x: Int, n: Int)Int
+power: (x: Int, n: Int)Int</code></pre>
+<p>This utilizes a Scala feature called annotations, that tells the compiler that the intermediate results are not handled already and the intermediate stack frames can be reclaimed (or not even allocated in the first place).</p>
+<p>Let's see how this example plays out. Notice, that I created a nested function to hide the fact that we're using tail recursion here.</p>
+<pre><code>_power(2, 3, 1)
+x = 2, n = 3, accum = 1
+x = 2, n = 2, accum = 2
+x = 2, n = 1, accum = 4
+x = 2, n = 0, accum = 8
+recusion ends, and accum is the final result</code></pre>
+<p>You can see, we didn't need to wait for all the other function calls to complete, we already had the result!</p>
+<p>This function can be modified by using another Scala feature: parameters with default values.</p>
+<pre><code>scala&gt; @annotation.tailrec
+     | def power(x:Int, n:Int, accum:Int = 1): Int = {
+     |   if (n == 0) accum
+     |   else power(x, n-1, x * accum)
+     | }
+  
+power: (x: Int, n: Int, accum: Int)Int
 
-This utilizes a Scala feature called annotations, that tells the compiler that the intermediate results are not handled already and the intermediate stack frames can be reclaimed (or not even allocated in the first place).
-
-Let&#39;s see how this example plays out. Notice, that I created a nested function to hide the fact that we&#39;re using tail recursion here. 
-</code></pre>
-<p>_power(2, 3, 1) x = 2, n = 3, accum = 1 x = 2, n = 2, accum = 2 x = 2, n = 1, accum = 4 x = 2, n = 0, accum = 8 recusion ends, and accum is the final result</p>
-<pre><code>
-You can see, we didn&#39;t need to wait for all the other function calls to complete, we already had the result!
-
-This function can be modified by using another Scala feature: parameters with default values.
-</code></pre>
-<p>scala&gt; <span class="citation">@annotation.tailrec</span> | def power(x:Int, n:Int, accum:Int = 1): Int = { | if (n == 0) accum | else power(x, n-1, x * accum) | }</p>
-<p>power: (x: Int, n: Int, accum: Int)Int</p>
-<p>scala&gt; power(2,3) res6: Int = 8 ```</p>
+scala&gt; power(2,3)
+res6: Int = 8</code></pre>
 <p>Notice that when we called the function, we left out the last parameter, in this case the default value is used. The downside of this, is now we are exposing that implementation detail.</p>
 <div>
   <sup>
     <i>last updated</i><br>
-    Sat Jan  6 13:53:22 MST 2018
+    Sat Jan  6 13:58:30 MST 2018
   </sup>
 </div>
 </body>
