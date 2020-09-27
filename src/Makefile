@@ -2,7 +2,8 @@ SRC := $(shell find . -type f -name '*.md')
 SOURCES := $(SRC:.md=.html)
 TARGET := target
 IMAGES := $(shell find ./images -type f)
-TARGETS := $(patsubst ./%, ./$(TARGET)/%, $(SOURCES)) $(patsubst ./%, ./$(TARGET)/%, $(IMAGES))
+STATIC := ./site.webmanifest
+TARGETS := $(patsubst ./%, ./$(TARGET)/%, $(SOURCES)) $(patsubst ./%, ./$(TARGET)/%, $(IMAGES)) $(patsubst ./%, ./$(TARGET)/%, $(STATIC))
 PUBLISH_DIR := ../
 
 .PHONEY: all clean
@@ -29,4 +30,7 @@ $(TARGET)/%.html: %.md
 
 $(TARGET)/images/%: images/%
 	mkdir -p $(@D)
+	cp $< $(@D)
+
+$(TARGET)/%: $(STATIC)
 	cp $< $(@D)
