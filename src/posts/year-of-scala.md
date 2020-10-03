@@ -1,4 +1,4 @@
-%2018-Jan-01 Year of Scala
+% Year of Scala
 
 In college, the default language that the computer science department used was Java. OOP was king and still is in lots of places. However, recently there has been a new trend emerging; functional programming. Java introduced aspects of functional programming in Java 8. 
 
@@ -6,4 +6,4 @@ My introduction to functional programming was in the language ML and Racket from
 
 I would like to continue to grow my knowledge of functional programming, category theory, functional program design and will be doing so with Scala. 
 
-
+_2018-Jan-01_

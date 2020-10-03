@@ -1,4 +1,4 @@
-%2017-Feb-05 Using Git Where Other are Not
+% Using Git Where Other are Not
 
 ## Scenario
 Code is typically developed and compiled on remote servers. Compilation can take anywhere between 30 min-1hr depending on the files changed.
@@ -50,3 +50,4 @@ git commit -am "Upleveled to $1"
 2. Pull the changes from the remote - using theirs files to avoid having to manually merge the changes. 
 ```git pull --strategy-option=theirs remote-host:remote-repo```
 
+_2017-Feb-05_

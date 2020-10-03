@@ -1,4 +1,4 @@
-%2018-Jan-03 Year of Scala - SBT Installation
+%Year of Scala - SBT Installation
 
 I prefer to work in the console using Ubuntu 16.04 - xmonad as my window manager. This will all be focused around my own workflow and preferences. I am going to start my Year of Scala by installing SBT - sbt is a build tool for Scala and Java. It provides a great way to manage your project, build and test straight from the console. 
 
@@ -65,3 +65,5 @@ To exit the REPL supply the EOF character (CTRL+D) or type 'exit';
 If you are in a project directory, you can specify the Scala version in ```build.sbt``` under the variable ```scalaVersion```
 
 This is where I'll start my Scala adventure.
+
+_2018-Jan-03_

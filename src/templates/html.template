@@ -55,11 +55,5 @@ $body$
 $for(include-after)$
 $include-after$
 $endfor$
-<div>
-  <sup>
-    <i>last updated</i><br>
-    $updated$
-  </sup>
-</div>
 </body>
 </html>

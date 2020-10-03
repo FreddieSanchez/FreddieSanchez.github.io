@@ -1,4 +1,4 @@
-%2017-Feb-09 Headless Pi
+% Headless Pi
 
 Grab the latest raspbian 
 https://downloads.raspberrypi.org/raspbian_latest.torrent
@@ -41,4 +41,4 @@ Setup the rasp-config
 * reboot
 * edit timezone info
 
-
+_2017-Feb-09_

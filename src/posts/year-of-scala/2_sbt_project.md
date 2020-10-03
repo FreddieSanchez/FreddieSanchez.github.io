@@ -1,4 +1,4 @@
-%2018-Jan-05 Year of Scala - Project structure
+% Year of Scala - Project structure
 
 sbt uses the same directory structure as Maven for source files by default (all paths are relative to the base directory):
 
@@ -34,3 +34,5 @@ sbt.version=0.13.1
 ```
 
 ## sbt 
+
+_2018-Jan-05_

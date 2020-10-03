@@ -1,4 +1,4 @@
-%2018-Jan-04 Year of Scala - REPL
+% Year of Scala - REPL
 
 #REPL - Read-Eval-Print-Loop 
 
@@ -246,3 +246,5 @@ res6: Int = 8
 ```
 
 Notice that when we called the function, we left out the last parameter, in this case the default value is used. The downside of this, is now we are exposing that implementation detail. 
+
+_2018-Jan-04_
