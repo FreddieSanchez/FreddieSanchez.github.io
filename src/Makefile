@@ -23,7 +23,7 @@ info:
 clean:
 	rm $(TARGETS)
 
-publish:
+publish: main-build |
 	cp -r $(TARGET)/* $(PUBLISH_DIR)
 
 $(TARGET)/%.html: $(TEMPLATES)
