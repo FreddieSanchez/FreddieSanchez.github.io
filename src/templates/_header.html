@@ -1,5 +1,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style type="text/css">
+@media screen {
   body {
     max-width: 100ex;
     margin: auto;
@@ -13,6 +14,11 @@
     text-align: center;
     margin-top: 2ex;
   }
+  p, h3 {
+    margin-block-start: .5em;
+    margin-block-end: .5em;
+  }
+  
   code {
     display: block;
     white-space: pre;
@@ -62,4 +68,18 @@
     font-weight: bold;
     font-size: .9em;
   }
+}
+@media print {
+  nav { display: none;}
+  footer { display: none;}
+  /* body { line-height: .9em } */
+  h1 {
+    font-size: 1.5em;
+    line-height: .9em;
+  }
+  p, h3 {
+    margin-block-start: .5em;
+    margin-block-end: .5em;
+  }
+}
 </style>
