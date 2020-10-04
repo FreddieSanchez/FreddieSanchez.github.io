@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Dot File Management with GNU Stow</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style type="text/css">
+  @media screen {
+    body {
+      max-width: 100ex;
+      margin: auto;
+      padding: 1ex;
+      color: #333;
+      line-height: 1.3em;
+      font-size: .9em;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 2ex;
+    }
+    p, h3 {
+      margin-block-start: .5em;
+      margin-block-end: .5em;
+    }
+    
+    code {
+      display: block;
+      white-space: pre;
+      font-family: monospace;
+      border: 1px solid black;
+      padding: 17px;
+      overflow-x:auto;
+      background-color: #f5f5f5;
+      margin: 0 0 18px;
+      line-height: 18px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+  
+    }
+    img {
+      padding: 0 1ex;
+    }
+    footer {
+      display: flex;
+      font-size: 14px;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid #ccc;
+      margin-top: 5ex;
+    }
+    nav {
+      display: flex;
+      font-size: 14px;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #ccc;
+      margin-top: 2ex;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none; 
+    }
+    nav li {
+      display: flex;
+      margin-left: 1ex;
+      margin-right: 1ex;
+      margin-bottom: 1ex;
+      align-items: center;
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: .9em;
+    }
+  }
+  @media print {
+    nav { display: none;}
+    footer { display: none;}
+    /* body { line-height: .9em } */
+    h1 {
+      font-size: 1.5em;
+      line-height: .9em;
+    }
+    p, h3 {
+      margin-block-start: .5em;
+      margin-block-end: .5em;
+    }
+  }
+  </style>
+  <link rel ="apple-touch-icon" sizes ="180x180" href ="images/apple-touch-icon.png" />
+  <link rel ="icon" type ="image/png" sizes ="32x32" href ="images/favicon-32x32.png" />
+  <link rel ="icon" type ="image/png" sizes ="16x16" href ="images/favicon-16x16.png" />
+  <link rel ="manifest" href ="/site.webmanifest" />
+</head>
+<body>
+<div id="header">
+  <h1 class="title">Dot File Management with GNU Stow</h1>
+</div>
+<nav>
+<ul>
+  <li><a href="/posts.html">Posts</a></li>
+  <li> <a href="/resume.html">Résumé</a><li>
+</ul>
+</nav>
+<p>My dotfile managment and versioniong was mediocre at best. I had a dotfiles git repository where each branch represents a different machine. However, making sure that I captured all my changes in git was challeging since there wasn't a link to from the dot file to my dotfile repo. [GNU Stow] to the rescue!</p>
+<h3 id="what-is-gnu-stow">What is GNU Stow?</h3>
+<p>[GNU Stow] manages sym links. That's all it does. It consolidates all the original files in a singe location, but separated by packages. Each package, or directory, contains the same directory structure as the location the original file is located.</p>
+<p>e.g.</p>
+<p>The following file: <code>xmonad/.xmonad/lib/Xmonad/Util/Brightness.hs</code> will be stowed in the target directory at <code>.xmonad/lib/Xmonad/Util/Brightness.hs</code>.</p>
+<p>Typically the target directory is the parent of the package directory, but his can be changed via the <code>-t</code> option.</p>
+<p>You can &quot;stow&quot; the config to the target directory by executing <code>stow xmonad</code>, and delete it by <code>stow -D xmonad</code>. However, I like being explicit in my commands. There are some default options that I explicitly use.</p>
+<p>e.g. <code>stow xmonad</code> would be the same as <code>stow -St ~ xmonad</code>.</p>
+<h3 id="migrating-to-stow">Migrating to Stow</h3>
+<p>I had my dotfiles directory in my home directory that is versioned using git.</p>
+<pre><code>~/dotfiles</code></pre>
+<p>I originally had a flat directory structure where all dotfiles resided in this main directory. To start using stow, I had to create sub directories for each stow <code>package</code>. The result is the following:</p>
+<pre><code>~/dotfiles$ tree -d 
+.
+├── bash
+├── git
+├── local
+├── sbt
+├── vim
+└── xmonad</code></pre>
+<p>Migrating to this setup was pretty easy. I created the package directory, mimicing the directory structure of the target file(s) I want to stow, along with empty files with the same name as the target.</p>
+<p>e.g.</p>
+<pre><code>cd ~/dotfiles
+mkdir -p xmonad/.xmonad/lib/Xmonad/Util/
+touch Brightness.hs</code></pre>
+<p>Then, I used the <code>--adopt</code> flag to move the files from my home directory to the package directory, then create the symbolic link using <code>stow</code>. Before doing any real modifications, I always used the <code>--no</code> flag to just do a trial run of executing the command along with the <code>-v</code> flag for a more verbose output.</p>
+<p>e.g.</p>
+<p>To test the command: <code>stow --adopt --no -vSt ~ xmonad</code></p>
+<p>To finally execute the command. <code>stow --adopt -vSt ~ xmonad</code></p>
+<p>I repeated the process for all my dotfiles using different packages them into different packages.</p>
+<p>Here's the final result for the <code>xmonad</code> package.</p>
+<pre><code>~/dotfiles$ find xmonad -type f
+xmonad/.xmonad/lib/XMonad/Util/Brightness.hs
+xmonad/.xmonad/xmobar.hs
+xmonad/.xmonad/xmonad-session-rc
+xmonad/.xmonad/xmonad.hs
+~/dotfiles$ cd
+~$ find .xmonad -type l -ls
+ 26345986      4 lrwxrwxrwx   1 freddie  freddie        65 Sep  6 14:06 .xmonad/lib/XMonad/Util/Brightness.hs -&gt; ../../../../dotfiles/xmonad/.xmonad/lib/XMonad/Util/Brightness.hs
+ 24117849      0 lrwxrwxrwx   1 freddie  freddie        36 Sep  6 14:06 .xmonad/xmobar.hs -&gt; ../dotfiles/xmonad/.xmonad/xmobar.hs
+ 24117857      0 lrwxrwxrwx   1 freddie  freddie        44 Sep  6 14:06 .xmonad/xmonad-session-rc -&gt; ../dotfiles/xmonad/.xmonad/xmonad-session-rc
+ 24117860      0 lrwxrwxrwx   1 freddie  freddie        36 Sep  6 14:06 .xmonad/xmonad.hs -&gt; ../dotfiles/xmonad/.xmonad/xmonad.hs</code></pre>
+<p><em>2020-Oct-04</em></p>
+<footer>
+<p><a href="https://www.github.com/FreddieSanchez"><img src="/images/GitHub-Mark-32px.png" alt="GitHub-logo" /></a> <a href="https://www.linkedin.com/in/freddiesanchez"><img src="/images/In-2C-28px-TM.png" alt="LinkedIn-logo" /></a></p>
+</footer>
+</body>
+</html>
