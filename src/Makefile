@@ -28,11 +28,11 @@ publish: main-build |
 
 $(TARGET)/%.html: $(TEMPLATES)
 	mkdir -p $(@D)
-	pandoc --template=templates/html.template --from=markdown --to=html -H templates/_header.html -A templates/_footer.html -s -o $(@) $(*D)/$(addsuffix .md, $(*F))
+	pandoc --template=templates/html.template --from=markdown --to=html -H templates/_header.html -A templates/_footer.html -B templates/_navigation.html -s -o $(@) $(*D)/$(addsuffix .md, $(*F))
 
 $(TARGET)/%.html: %.md 
 	mkdir -p $(@D)
-	pandoc --template=templates/html.template  --from=markdown --to=html -H templates/_header.html -A templates/_footer.html -s -o $(@) $<
+	pandoc --template=templates/html.template  --from=markdown --to=html -H templates/_header.html -A templates/_footer.html -B templates/_navigation.html -s -o $(@) $<
 
 $(TARGET)/images/%: images/%
 	mkdir -p $(@D)

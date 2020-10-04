@@ -38,13 +38,13 @@ $endfor$
   <link rel ="manifest" href ="/site.webmanifest" />
 </head>
 <body>
+<div id="$idprefix$header">
+  <h1 class="title">$title$</h1>
+</div>
 $for(include-before)$
 $include-before$
 $endfor$
 $if(title)$
-<div id="$idprefix$header">
-  <h1 class="title">$title$</h1>
-</div>
 $endif$
 $if(toc)$
 <div id="$idprefix$TOC">

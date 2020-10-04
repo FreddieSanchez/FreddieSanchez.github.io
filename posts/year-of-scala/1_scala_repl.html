@@ -9,13 +9,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style type="text/css">
     body {
-      max-width: 100ex;
+      width: 100ex;
       margin: auto;
       padding: 0 1ex;
       color: #333;
       line-height: 1.3em;
       font-size: .9em;
       font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+      margin: 2ex 0ex 0ex 0ex;
     }
     code {
       display: block;
@@ -34,6 +38,32 @@
     img {
       padding: 0 1ex;
     }
+    footer {
+      display: flex;
+      font-size: 14px;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid #ccc;
+      margin: 0ex 5ex 0ex 0ex;
+    }
+    nav {
+      display: flex;
+      font-size: 14px;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #ccc;
+      margin: 2ex 0ex 0ex 0ex;
+    }
+    nav ul {
+      margin: 0;
+      list-style-type: none; 
+    }
+    nav li {
+      display: flex;
+      margin: 1ex;
+      align-items: center;
+      float: left;
+    }
   </style>
   <link rel ="apple-touch-icon" sizes ="180x180" href ="images/apple-touch-icon.png" />
   <link rel ="icon" type ="image/png" sizes ="32x32" href ="images/favicon-32x32.png" />
@@ -44,6 +74,12 @@
 <div id="header">
   <h1 class="title">Year of Scala - REPL</h1>
 </div>
+<nav>
+<ul>
+  <li><a href="/posts.html">Posts</a></li>
+  <li> <a href="/resume.html">Résumé</a><li>
+</ul>
+</nav>
 <h1 id="repl---read-eval-print-loop">REPL - Read-Eval-Print-Loop</h1>
 <p>A REPL give the user an interactive programming environment that 1) Reads the user input, 2) evaluates the express, 3) prints the result, 4) Loops back to read the next expression.</p>
 <p>sbt/Scala provides a Repl, and this is where we'll be beginning.</p>
@@ -212,7 +248,8 @@ scala&gt; power(2,3)
 res6: Int = 8</code></pre>
 <p>Notice that when we called the function, we left out the last parameter, in this case the default value is used. The downside of this, is now we are exposing that implementation detail.</p>
 <p><em>2018-Jan-04</em></p>
-<hr />
+<footer>
 <p><a href="https://www.github.com/FreddieSanchez"><img src="/images/GitHub-Mark-32px.png" alt="GitHub-logo" /></a> <a href="https://www.linkedin.com/in/freddiesanchez"><img src="/images/In-2C-28px-TM.png" alt="LinkedIn-logo" /></a></p>
+</footer>
 </body>
 </html>
