@@ -33,6 +33,6 @@ $ cat project/build.properties
 sbt.version=0.13.1
 ```
 
-## sbt 
+### sbt 
 
 _2018-Jan-05_

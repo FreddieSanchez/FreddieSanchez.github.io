@@ -1,6 +1,6 @@
 % Using Git Where Other are Not
 
-## Scenario
+### Scenario
 Code is typically developed and compiled on remote servers. Compilation can take anywhere between 30 min-1hr depending on the files changed.
 
 ### Releases
@@ -9,7 +9,7 @@ Separate major releases are maintained where new functionality and fixes can be 
 ### Builds
 For each release, builds are done to pick up new functions and bug fixes for that specific release. Directories are created for these builds. A one off change can be compiled and tested by creating another directory, referred to as a delta, with symbolic links to the base directory. 
 
-## Motivation
+### Motivation
 
 I want to be able to edit code on my own machine instead of relying on a network connection to these servers.
 
@@ -18,11 +18,11 @@ I want to be able to edit code on my own machine instead of relying on a network
 * Take advantage of the rich feature set of Vim 7.X and other tools not available on the remote systems.
 * Use a Git rather than versioned directories that have full copies of the differences. 
 
-## Git Branching Model
+### Git Branching Model
 
 Each release will have it's own branch. Fixes will be based off of these branches and can be rebased.
 
-## Releveling Release
+### Releveling Release
 
 The releases will be changing over time. Therefore, the release branch will have to 'relevled' to incorporate these new changes. Manually copying all these files over from the remote systems to my local system is a waste of time and resources. Git comes to the rescue again. 
 

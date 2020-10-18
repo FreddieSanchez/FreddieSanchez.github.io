@@ -34,6 +34,10 @@ $(TARGET)/%.html: %.md
 	mkdir -p $(@D)
 	pandoc --template=templates/html.template  --from=markdown --to=html -H templates/_header.html -A templates/_footer.html -B templates/_navigation.html -s -o $(@) $<
 
+$(TARGET)/posts/%.html: %.md 
+	mkdir -p $(@D)
+	pandoc --template=templates/html.template  --from=markdown --to=html -H templates/_header.html -A templates/_footer.html -B templates/_navigation.html -s -o $(@) $<
+
 $(TARGET)/images/%: images/%
 	mkdir -p $(@D)
 	cp $< $(@D)

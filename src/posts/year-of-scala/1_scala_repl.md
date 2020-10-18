@@ -1,6 +1,6 @@
 % Year of Scala - REPL
 
-#REPL - Read-Eval-Print-Loop 
+###REPL - Read-Eval-Print-Loop 
 
 A REPL give the user an interactive programming environment that 1) Reads the user input, 2) evaluates the express, 3) prints the result, 4) Loops back to read the next expression.
 
@@ -27,7 +27,7 @@ scala> res0
 res1: Int = 3
 ```
 
-#Values & Variables
+###Values & Variables
 
 Values and Variables bind the evaluated result of the expression to a name. The difference between them being, that values are not mutable.
 
@@ -62,7 +62,7 @@ i: Double = 0.0
 
 The expression "0" is evaluated and the compiler infers it's of type "Int" therefore, the value "i" will be set to that type. There is no need to explicitly declare the type. However, in some cases it may improve the readability of your code.
 
-#Functions
+###Functions
 A function can be declared as a definition. Definitions differ from values in that values are evaluated when defined, where as definitions are only evaluated on every call. The only exception being "lazy values" which are evaluated the first time they are used.
 
 ```
@@ -88,7 +88,7 @@ three: Int = 3
 ```
 
 
-## Nested Functions
+### Nested Functions
 
 You can indeed have functions defined inside of functions. This can be beneficial when encapsulating the implementation. For example, if you want to write a tail recursive version of the parent function.
 
@@ -104,7 +104,7 @@ res9: Int = 3
 
 ```
 
-## Higher-Order Functions
+### Higher-Order Functions
 
 In Scala functions are a first-class values. You can define a value that is a function, define a function that takes a function, or returns a function as the result of the expression.
 
@@ -166,7 +166,7 @@ res4: List[Int] = List(3)
 
 Higher order functions allows us to pass behavior into an already existing function. This will greatly increase code reuse.
 
-##Recursive Functions
+### Recursive Functions
 
 In the previous example, I wrote a function that calls itself. Why are they useful? They provide a great benefit by preventing mutation. It does this by utilizing the function stack to store local values and parameters.
 
