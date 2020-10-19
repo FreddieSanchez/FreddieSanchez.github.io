@@ -32,10 +32,10 @@ $endif$
 $for(header-includes)$
   $header-includes$
 $endfor$
-  <link rel ="apple-touch-icon" sizes ="180x180" href ="images/apple-touch-icon.png" />
-  <link rel ="icon" type ="image/png" sizes ="32x32" href ="images/favicon-32x32.png" />
-  <link rel ="icon" type ="image/png" sizes ="16x16" href ="images/favicon-16x16.png" />
-  <link rel ="manifest" href ="/site.webmanifest" />
+  <link rel ="apple-touch-icon" sizes ="180x180" href ="https://www.freddiesanchez.dev/images/apple-touch-icon.png" />
+  <link rel ="icon" type ="image/png" sizes ="32x32" href ="https://www.freddiesanchez.dev/images/favicon-32x32.png" />
+  <link rel ="icon" type ="image/png" sizes ="16x16" href ="https://www.freddiesanchez.dev/images/favicon-16x16.png" />
+  <link rel ="manifest" href ="https://www.freddiesanchez.dev/site.webmanifest" />
 </head>
 <body>
 <div id="$idprefix$header">
