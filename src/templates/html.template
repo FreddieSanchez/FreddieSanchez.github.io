@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"$if(lang)$ lang="$lang$" xml:lang="$lang$"$endif$$if(dir)$ dir="$dir$"$endif$>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -14,6 +15,9 @@ $if(keywords)$
   <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
 $endif$
   <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+$for(css)$
+  <link rel="stylesheet" href="$css$" type="text/css" />
+$endfor$
   <style type="text/css">code{white-space: pre;}</style>
 $if(quotes)$
   <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
@@ -23,19 +27,15 @@ $if(highlighting-css)$
 $highlighting-css$
   </style>
 $endif$
-$for(css)$
-  <link rel="stylesheet" href="$css$" type="text/css" />
-$endfor$
 $if(math)$
   $math$
 $endif$
 $for(header-includes)$
   $header-includes$
 $endfor$
-  <link rel ="apple-touch-icon" sizes ="180x180" href ="https://www.freddiesanchez.dev/images/apple-touch-icon.png" />
-  <link rel ="icon" type ="image/png" sizes ="32x32" href ="https://www.freddiesanchez.dev/images/favicon-32x32.png" />
-  <link rel ="icon" type ="image/png" sizes ="16x16" href ="https://www.freddiesanchez.dev/images/favicon-16x16.png" />
-  <link rel ="manifest" href ="https://www.freddiesanchez.dev/site.webmanifest" />
+  <link rel ="icon" type ="image/png" sizes ="32x32" href ="/assets/images/favicon-32x32.png" />
+  <link rel ="icon" type ="image/png" sizes ="16x16" href ="/assets/images/favicon-16x16.png" />
+  <link rel ="manifest" href ="/site.webmanifest" />
 </head>
 <body>
 <div id="$idprefix$header">

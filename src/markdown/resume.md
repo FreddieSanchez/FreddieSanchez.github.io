@@ -3,7 +3,7 @@
 
 A passionate software engineer with professional experience in custom AIX kernel module and FDA regulated Windows application development, as well as automation, system architecture, technical leadership, and innovation.
 
-Expert in Delphi, C, C\#, Java, Shell script, SQL.  Proficient in Android, Python, Powershell, Node.js.  Familiar in Scala, Haskell, Ansible, MySQL.
+Scala, MySQL.
 
 ###Objective 
 
@@ -11,8 +11,25 @@ Work in an evolving fast-paced environment, solving problems and delivering high
 
 ###Experience 
 
+**_boodleAI **  
+_ Remote (October 2018 - Present)_  
+_Staff Software Engineer_
+
+*Product Development:* 
+- Redesigned the data pipline to use AWS SQS
+- Designed a 
+
+
+*Innovation:* 
+
+*Leadership*
+- 
+
+*Tech Stack:* Scala, typelevel libraries (cats, cats-effect, http4s, circe, fs2, doobie), 
+sbt, metals, RabbitMQ, Sqs, RDS, EC2, k8s.
+
 **_Ventana Medical Systems_**  
-_Tucson, Arizona (February  2015 - Present)_  
+_Tucson, Arizona (February  2015 - October 2018)_  
 _Software Engineer_
 
 *Product Development:* Quickly understand, debug, design, document, and
