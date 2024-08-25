@@ -35,6 +35,7 @@ PANDOC := pandoc --from=markdown --to=html \
 # Default target
 all: $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES) 
 
+# Deploy the changes from the `/target` directory
 deploy: 
 	@# Remove 
 	@rm -fr $(DEPLOY_DIR)
