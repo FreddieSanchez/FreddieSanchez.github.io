@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Year of Scala - Project structure</title>
+  <link rel="stylesheet" href="/assets/style/style.css" type="text/css" />
+  <style type="text/css">code{white-space: pre;}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel ="icon" type ="image/png" sizes ="32x32" href ="/assets/images/favicon-32x32.png" />
+  <link rel ="icon" type ="image/png" sizes ="16x16" href ="/assets/images/favicon-16x16.png" />
+  <link rel ="manifest" href ="/site.webmanifest" />
+</head>
+<body>
+<div id="header">
+  <h1 class="title">Year of Scala - Project structure</h1>
+</div>
+<nav>
+<ul>
+  <li><a href="posts.html">Posts</a></li>
+  <li> <a href="resume.html">Résumé</a><li>
+</ul>
+</nav>
+<p>sbt uses the same directory structure as Maven for source files by default (all paths are relative to the base directory):</p>
+<pre><code>src/
+  main/
+    resources/
+       &lt;files to include in main jar here&gt;
+    scala/
+       &lt;main Scala sources&gt;
+    java/
+       &lt;main Java sources&gt;
+  test/
+    resources
+       &lt;files to include in test jar here&gt;
+    scala/
+       &lt;test Scala sources&gt;
+    java/
+       &lt;test Java sources&gt;
+project/
+    build.properties</code></pre>
+<p>Source files can be in main/scala or in the base project directory.</p>
+<p>The <code>project/build.properties</code> file can be used to specify the sbt version of your project. If the required version is not available locally, the sbt launcher will download it for you.</p>
+<p>I've been using 0.13.1.</p>
+<pre><code>$ cat project/build.properties
+sbt.version=0.13.1</code></pre>
+<h3 id="sbt">sbt</h3>
+<p><em>2018-Jan-05</em></p>
+<footer>
+<p><a href="https://www.github.com/FreddieSanchez"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub-logo" /></a> <a href="https://www.linkedin.com/in/freddiesanchez"><img src="/assets/images/In-2C-28px-TM.png" alt="LinkedIn-logo" /></a></p>
+</footer>
+</body>
+</html>

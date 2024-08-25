@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Directory Versioning in Bash</title>
+  <link rel="stylesheet" href="/assets/style/style.css" type="text/css" />
+  <style type="text/css">code{white-space: pre;}</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel ="icon" type ="image/png" sizes ="32x32" href ="/assets/images/favicon-32x32.png" />
+  <link rel ="icon" type ="image/png" sizes ="16x16" href ="/assets/images/favicon-16x16.png" />
+  <link rel ="manifest" href ="/site.webmanifest" />
+</head>
+<body>
+<div id="header">
+  <h1 class="title">Directory Versioning in Bash</h1>
+</div>
+<nav>
+<ul>
+  <li><a href="posts.html">Posts</a></li>
+  <li> <a href="resume.html">Résumé</a><li>
+</ul>
+</nav>
+<p>One problem that I face often is I have to create a directory with new version of files based on a previous directory. The convesion is to use the current date 20141125 followed by an letter 'a'. I wanted to script this out instead of doing it manually.</p>
+<p>Obtaining the current date is easy:</p>
+<p><code>date &quot;+%Y%m%d&quot;</code></p>
+<p>This should yield the date of the form YYYYMMDD.</p>
+<p>The next part is obtaining incrementing a letter. Here are two ways of doing it. The first uses the 'tr' command. The second uses bash's <a href="http://www.gnu.org/software/bash/manual/bashref.html#Brace-Expansion">Brace Expansion</a>.</p>
+<pre><code>version=a
+dir=SomeDir
+while [[ -d $dir/$version ]]; do 
+  version=`echo $version` | tr &#39;a-z&#39; &#39;b-za&#39;
+done
+mkdir $dir/$version</code></pre>
+<p>or</p>
+<pre><code>dir=SomeDir
+ for x in $dir{a..zA..Z}; do 
+    if [[ ! -d $x ]]; then 
+      mkdir $x; 
+      break; 
+    fi;
+  done</code></pre>
+<p><em>2017-Feb-22</em></p>
+<footer>
+<p><a href="https://www.github.com/FreddieSanchez"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub-logo" /></a> <a href="https://www.linkedin.com/in/freddiesanchez"><img src="/assets/images/In-2C-28px-TM.png" alt="LinkedIn-logo" /></a></p>
+</footer>
+</body>
+</html>
