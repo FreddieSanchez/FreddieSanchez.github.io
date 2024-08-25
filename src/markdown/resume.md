@@ -1,32 +1,20 @@
 % Freddie Sanchez
 [freddie.sanchez@gmail.com](mailto:freddie.sanchez+resume@gmail.com)
 
-A passionate software engineer with professional experience in custom AIX kernel module and FDA regulated Windows application development, as well as automation, system architecture, technical leadership, and innovation.
+## Objective 
 
-Scala, MySQL.
+Highly skilled Scala developer with 20 years of experience continuing to leverage my expertise software engineering, functional programming, distributed systems, and data processing. Committed to furthering my contributions in current by leveraging my skills to build scalable, high-performance applications that meet evolving industry demands.
 
-###Objective 
+---
 
-Work in an evolving fast-paced environment, solving problems and delivering high-quality software while continuing my lifelong pursuit of learning, development, and growth.
+## Professional Experience 
 
-###Experience 
-
-**_boodleAI **  
-_ Remote (October 2018 - Present)_  
+**_boodleAI_**  
+_Remote (October 2018 - Present)_  
 _Staff Software Engineer_
 
-*Product Development:* 
-- Redesigned the data pipline to use AWS SQS
-- Designed a 
-
-
-*Innovation:* 
-
-*Leadership*
-- 
-
 *Tech Stack:* Scala, typelevel libraries (cats, cats-effect, http4s, circe, fs2, doobie), 
-sbt, metals, RabbitMQ, Sqs, RDS, EC2, k8s.
+sbt, metals, RabbitMQ, Sqs, RDS, EC2, k8s, mysql
 
 **_Ventana Medical Systems_**  
 _Tucson, Arizona (February  2015 - October 2018)_  
@@ -92,9 +80,12 @@ Global Mirror function. Headed regular design, documentation, and code
 review meetings that helped achieve early delivery with zero test or
 field defects.
 
-###Education 
+---
 
-**The University of Arizona May 2005**  
+## Education 
+
+**The University of Arizona**  
+_Tucson, Arizona (2001 - May 2005)
 _Bachelor of Science, Computer Engineering 2001-2005_  
 _Magna Cum Laude with Honors_  
 _Minors in Computer Science, Mathematics, and Electrical Engineering_  
