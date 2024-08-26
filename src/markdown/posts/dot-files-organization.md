@@ -1,7 +1,7 @@
 % Dot File Management with GNU Stow
 
-My dotfile managment and versioniong was mediocre at best. I had a dotfiles git repository where each branch represents a
-different machine. However, making sure that I captured all my changes in git was challeging since there wasn't a link to from
+My dotfile management and versioning was mediocre at best. I had a dotfiles git repository where each branch represents a
+different machine. However, making sure that I captured all my changes in git was challenging since there wasn't a link to from
 the dot file to my dotfile repo. [GNU Stow] to the rescue! 
 
 ### What is GNU Stow?
@@ -44,7 +44,7 @@ directory.  To start using stow, I had to create sub directories for each stow `
 └── xmonad
 ```
 
-Migrating to this setup was pretty easy. I created the package directory, mimicing the directory structure of the target
+Migrating to this setup was pretty easy. I created the package directory, mimicking the directory structure of the target
 file(s) I want to stow, along with empty files with the same name as the target. 
 
 
@@ -87,6 +87,6 @@ xmonad/.xmonad/xmonad.hs
  24117860      0 lrwxrwxrwx   1 freddie  freddie        36 Sep  6 14:06 .xmonad/xmonad.hs -> ../dotfiles/xmonad/.xmonad/xmonad.hs
 ```
 
-[gnu-stow]: https://www.gnu.org/software/stow/
+[GNU Stow]: https://www.gnu.org/software/stow/
 
 _2020-Oct-04_

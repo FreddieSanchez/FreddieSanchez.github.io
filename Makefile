@@ -29,11 +29,9 @@ PANDOC := pandoc --from=markdown --to=html \
 	--include-before-body=$(TEMPLATES_DIR)/_navigation.html \
 	--standalone
 
-# Phony targets
-.PHONY: all clean help info deploy run
-
 # Default target
 all: $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES) 
+.PHONY: all
 
 # Deploy the changes from the `/target` directory
 deploy: 
@@ -41,11 +39,13 @@ deploy:
 	@rm -fr $(DEPLOY_DIR)
 	@mkdir -p $(DEPLOY_DIR)
 	@cp -r $(TARGET_DIR)/* $(DEPLOY_DIR)
+.PHONY: deploy
 	
 
 # Deploy the changes from the `/target` directory
 run: all
 	@xdg-open $(TARGET_DIR)/index.html
+.PHONY: run
 
 
 # Help command
@@ -56,6 +56,8 @@ help:
 	@echo "  make run    - Opens the site from the staging directory in a browser"
 	@echo "  make deploy - Deploy the files from the staging directory (/target) to the deployment directory (/docs)"
 	@echo "  make help   - Display this help message"
+.PHONY: help
+
 info: 
 	@echo $(SOURCE_DIR)
 	@echo MARKDOWN_FILES=$(MARKDOWN_FILES)
@@ -63,10 +65,12 @@ info:
 	@echo TEMPLATE_FILES=$(TEMPLATE_FILES)
 	@echo ASSETS_FILES=$(ASSETS_FILES)
 	@echo TARGET_ASSETS_FILES=$(TARGET_ASSETS_FILES)
+.PHONY: info
 
-# Clean command
 clean:
-	rm -rf $(TARGET_DIR)
+	@echo "cleaning project"
+	@rm -rf $(TARGET_DIR)
+.PHONY: clean
 
 # Rule to create HTML files, make sure the target directory is created first.
 $(TARGET_DIR)/%.html: $(MARKDOWN_DIR)/%.md $(TEMPLATE_FILES) $(ASSETS_FILES) | $(TARGET_DIR)
