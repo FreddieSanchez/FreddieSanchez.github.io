@@ -18,7 +18,7 @@ ASSETS_FILES:= $(shell find $(ASSETS_DIR) -type f)
 TARGET_ASSETS_FILES := $(patsubst $(SOURCE_DIR)/%,$(TARGET_DIR)/%,$(ASSETS_FILES))
 # Find all template files
 TEMPLATE_FILES := $(shell find $(TEMPLATES_DIR) -type f)
-
+CNAME := CNAME
 
 # Pandoc command
 PANDOC := pandoc --from=markdown --to=html \
@@ -38,6 +38,7 @@ deploy:
 	@# Remove 
 	@rm -fr $(DEPLOY_DIR)
 	@mkdir -p $(DEPLOY_DIR)
+	@cp $(CNAME) $(DEPLOY_DIR)
 	@cp -r $(TARGET_DIR)/* $(DEPLOY_DIR)
 .PHONY: deploy
 	
