@@ -23,9 +23,9 @@
   <li> <a href="/resume.html">Résumé</a><li>
 </ul>
 </nav>
-<p>My dotfile managment and versioniong was mediocre at best. I had a dotfiles git repository where each branch represents a different machine. However, making sure that I captured all my changes in git was challeging since there wasn't a link to from the dot file to my dotfile repo. [GNU Stow] to the rescue!</p>
+<p>My dotfile management and versioning was mediocre at best. I had a dotfiles git repository where each branch represents a different machine. However, making sure that I captured all my changes in git was challenging since there wasn't a link to from the dot file to my dotfile repo. <a href="https://www.gnu.org/software/stow/">GNU Stow</a> to the rescue!</p>
 <h3 id="what-is-gnu-stow">What is GNU Stow?</h3>
-<p>[GNU Stow] manages sym links. That's all it does. It consolidates all the original files in a singe location, but separated by packages. Each package, or directory, contains the same directory structure as the location the original file is located.</p>
+<p><a href="https://www.gnu.org/software/stow/">GNU Stow</a> manages sym links. That's all it does. It consolidates all the original files in a singe location, but separated by packages. Each package, or directory, contains the same directory structure as the location the original file is located.</p>
 <p>e.g.</p>
 <p>The following file: <code>xmonad/.xmonad/lib/Xmonad/Util/Brightness.hs</code> will be stowed in the target directory at <code>.xmonad/lib/Xmonad/Util/Brightness.hs</code>.</p>
 <p>Typically the target directory is the parent of the package directory, but his can be changed via the <code>-t</code> option.</p>
@@ -43,7 +43,7 @@
 ├── sbt
 ├── vim
 └── xmonad</code></pre>
-<p>Migrating to this setup was pretty easy. I created the package directory, mimicing the directory structure of the target file(s) I want to stow, along with empty files with the same name as the target.</p>
+<p>Migrating to this setup was pretty easy. I created the package directory, mimicking the directory structure of the target file(s) I want to stow, along with empty files with the same name as the target.</p>
 <p>e.g.</p>
 <pre><code>cd ~/dotfiles
 mkdir -p xmonad/.xmonad/lib/Xmonad/Util/
