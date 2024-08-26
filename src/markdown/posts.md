@@ -1,5 +1,6 @@
 %Posts
 
+* [Static Site using Markdown and Makefile](posts/static-site-using-makefile.html) - _2024-08-25_
 * [Dot File Management with GNU Stow](posts/dot-files-organization.html)  - _2020-Oct-05_
 * [Year of Scala - Project structure](posts/year-of-scala/2_sbt_project.html)  - _2018-Jan-05_ 
 * [Year of Scala - REPL](posts/year-of-scala/1_scala_repl.html) - _2018-Jan-04_ 
