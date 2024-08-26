@@ -33,6 +33,7 @@ PANDOC := pandoc --from=markdown --to=html \
 all: $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES) 
 .PHONY: all
 
+# Deploy the changes from the `/target` directory
 deploy: 
 	@# Remove 
 	@rm -fr $(DEPLOY_DIR)
@@ -41,12 +42,19 @@ deploy:
 .PHONY: deploy
 	
 
+# Deploy the changes from the `/target` directory
+run: all
+	@xdg-open $(TARGET_DIR)/index.html
+.PHONY: run
+
 
 # Help command
 help:
 	@echo "Available commands:"
 	@echo "  make all    - Build the entire project (default)"
 	@echo "  make clean  - Remove the target directory"
+	@echo "  make run    - Opens the site from the staging directory in a browser"
+	@echo "  make deploy - Deploy the files from the staging directory (/target) to the deployment directory (/docs)"
 	@echo "  make help   - Display this help message"
 .PHONY: help
 
