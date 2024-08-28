@@ -45,7 +45,8 @@ deploy:
 
 # Deploy the changes from the `/target` directory
 run: all
-	@xdg-open $(TARGET_DIR)/index.html
+	@xdg-open http://127.0.0.1:8000/index.html
+	cd $(TARGET_DIR); python3 -m http.server;
 .PHONY: run
 
 

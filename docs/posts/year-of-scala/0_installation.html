@@ -14,65 +14,70 @@
   <link rel ="manifest" href ="/site.webmanifest" />
 </head>
 <body>
-<div id="header">
-  <h1 class="title">Year of Scala - SBT Installation</h1>
-</div>
+	<div id="header"> 
+		<h1>Year of Scala - SBT Installation</h1>
+	</div>
 <nav>
 <ul>
   <li><a href="/posts.html">Posts</a></li>
   <li> <a href="/resume.html">Résumé</a><li>
 </ul>
 </nav>
-<p>I prefer to work in the console using Ubuntu 16.04 - xmonad as my window manager. This will all be focused around my own workflow and preferences. I am going to start my Year of Scala by installing SBT - sbt is a build tool for Scala and Java. It provides a great way to manage your project, build and test straight from the console.</p>
-<p>sbt requires Java 1.8 or later. Check to make sure you have Java 1.8 installed:</p>
-<pre><code>java -version
-</code></pre>
-<p>If you don't, grab it from the repos. If you have Ubuntu 14.04 see the relavent <a href="https://askubuntu.com/a/666481">stackoverflow answer</a>.</p>
-<pre><code>sudo apt-get update
-sudo apt-get install openjdk-8-jdk
-sudo update-alternatives --config java
-sudo update-alternatives --config javac</code></pre>
-<p>To install sbt, I ran the following:</p>
-<pre><code>echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.list
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
-sudo apt-get update
-sudo apt-get install sbt</code></pre>
-<p>Taken from <a href="http://www.scala-sbt.org/download.html" class="uri">http://www.scala-sbt.org/download.html</a>.</p>
-<p>sbt provides a command line interface, and menu driven interface to interact with Scala and the project.</p>
-<pre><code>$ sbt
-[info] Loading project definition from &lt;project directory&gt;/project
-[info] Set current project to &lt;project name&gt; (in build file:&lt;project diretory&gt;)
-&gt;help 
-
-  help                                    Displays this help message or prints detailed help on requested commands (run &#39;help &lt;command&gt;&#39;).
-  about                                   Displays basic information about sbt and the build.
-  tasks                                   Lists the tasks defined for the current project.
-  settings                                Lists the settings defined for the current project.
-  reload                                  (Re)loads the project in the current directory
-  projects                                Lists the names of available projects or temporarily adds/removes extra builds to the session.
-  project                                 Displays the current project or changes to the provided `project`.
-  set [every] &lt;setting&gt;                   Evaluates a Setting and applies it to the current project.
-  session                                 Manipulates session settings.  For details, run &#39;help session&#39;.
-  inspect [uses|tree|definitions] &lt;key&gt;   Prints the value for &#39;key&#39;, the defining scope, delegates, related definitions, and dependencies.
-  &lt;log-level&gt;                             Sets the logging level to &#39;log-level&#39;.  Valid levels: debug, info, warn, error
-  ; &lt;command&gt; (; &lt;command&gt;)*              Runs the provided semicolon-separated commands.
-  ~ &lt;command&gt;                             Executes the specified command whenever source files change.
-  last                                    Displays output from a previous command or the output from a specific task.
-  last-grep                               Shows lines from the last output for &#39;key&#39; that match &#39;pattern&#39;.
-  export &lt;tasks&gt;+                         Executes tasks and displays the equivalent command lines.
-  exit                                    Terminates the build.
-  --&lt;command&gt;                             Schedules a command to run before other commands on startup.
-  show &lt;key&gt;                              Displays the result of evaluating the setting or task associated with &#39;key&#39;.
-
-More command help available using &#39;help &lt;command&gt;&#39; for:
-  !, +, ++, &lt;, alias, append, apply, eval, iflast, onFailure, reboot, shell</code></pre>
-<p>For example, to get a scala REPL it's the command <code>$ sbt console</code></p>
-<p>To exit the REPL supply the EOF character (CTRL+D) or type 'exit';</p>
-<p>If you are in a project directory, you can specify the Scala version in <code>build.sbt</code> under the variable <code>scalaVersion</code></p>
-<p>This is where I'll start my Scala adventure.</p>
-<p><em>2018-Jan-03</em></p>
+<main>
+  <p>I prefer to work in the console using Ubuntu 16.04 - xmonad as my window manager. This will all be focused around my own workflow and preferences. I am going to start my Year of Scala by installing SBT - sbt is a build tool for Scala and Java. It provides a great way to manage your project, build and test straight from the console.</p>
+  <p>sbt requires Java 1.8 or later. Check to make sure you have Java 1.8 installed:</p>
+  <pre><code>java -version
+  </code></pre>
+  <p>If you don't, grab it from the repos. If you have Ubuntu 14.04 see the relavent <a href="https://askubuntu.com/a/666481">stackoverflow answer</a>.</p>
+  <pre><code>sudo apt-get update
+  sudo apt-get install openjdk-8-jdk
+  sudo update-alternatives --config java
+  sudo update-alternatives --config javac</code></pre>
+  <p>To install sbt, I ran the following:</p>
+  <pre><code>echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.list
+  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+  sudo apt-get update
+  sudo apt-get install sbt</code></pre>
+  <p>Taken from <a href="http://www.scala-sbt.org/download.html" class="uri">http://www.scala-sbt.org/download.html</a>.</p>
+  <p>sbt provides a command line interface, and menu driven interface to interact with Scala and the project.</p>
+  <pre><code>$ sbt
+  [info] Loading project definition from &lt;project directory&gt;/project
+  [info] Set current project to &lt;project name&gt; (in build file:&lt;project diretory&gt;)
+  &gt;help 
+  
+    help                                    Displays this help message or prints detailed help on requested commands (run &#39;help &lt;command&gt;&#39;).
+    about                                   Displays basic information about sbt and the build.
+    tasks                                   Lists the tasks defined for the current project.
+    settings                                Lists the settings defined for the current project.
+    reload                                  (Re)loads the project in the current directory
+    projects                                Lists the names of available projects or temporarily adds/removes extra builds to the session.
+    project                                 Displays the current project or changes to the provided `project`.
+    set [every] &lt;setting&gt;                   Evaluates a Setting and applies it to the current project.
+    session                                 Manipulates session settings.  For details, run &#39;help session&#39;.
+    inspect [uses|tree|definitions] &lt;key&gt;   Prints the value for &#39;key&#39;, the defining scope, delegates, related definitions, and dependencies.
+    &lt;log-level&gt;                             Sets the logging level to &#39;log-level&#39;.  Valid levels: debug, info, warn, error
+    ; &lt;command&gt; (; &lt;command&gt;)*              Runs the provided semicolon-separated commands.
+    ~ &lt;command&gt;                             Executes the specified command whenever source files change.
+    last                                    Displays output from a previous command or the output from a specific task.
+    last-grep                               Shows lines from the last output for &#39;key&#39; that match &#39;pattern&#39;.
+    export &lt;tasks&gt;+                         Executes tasks and displays the equivalent command lines.
+    exit                                    Terminates the build.
+    --&lt;command&gt;                             Schedules a command to run before other commands on startup.
+    show &lt;key&gt;                              Displays the result of evaluating the setting or task associated with &#39;key&#39;.
+  
+  More command help available using &#39;help &lt;command&gt;&#39; for:
+    !, +, ++, &lt;, alias, append, apply, eval, iflast, onFailure, reboot, shell</code></pre>
+  <p>For example, to get a scala REPL it's the command <code>$ sbt console</code></p>
+  <p>To exit the REPL supply the EOF character (CTRL+D) or type 'exit';</p>
+  <p>If you are in a project directory, you can specify the Scala version in <code>build.sbt</code> under the variable <code>scalaVersion</code></p>
+  <p>This is where I'll start my Scala adventure.</p>
+  <p><em>2018-Jan-03</em></p>
+</main>
 <footer>
-<p><a href="https://www.github.com/FreddieSanchez"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub-logo" /></a> <a href="https://www.linkedin.com/in/freddiesanchez"><img src="/assets/images/In-2C-28px-TM.png" alt="LinkedIn-logo" /></a></p>
+<ul>
+	<li><a href="https://www.github.com/FreddieSanchez"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub-logo" /></a></li>
+	<li><a href="https://www.linkedin.com/in/freddiesanchez"><img src="/assets/images/In-2C-28px-TM.png" alt="LinkedIn-logo" /></a></li>
+</ul>
 </footer>
 </body>
 </html>
