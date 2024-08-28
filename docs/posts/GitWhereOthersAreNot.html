@@ -14,52 +14,57 @@
   <link rel ="manifest" href ="/site.webmanifest" />
 </head>
 <body>
-<div id="header">
-  <h1 class="title">Using Git Where Other are Not</h1>
-</div>
+	<div id="header"> 
+		<h1>Using Git Where Other are Not</h1>
+	</div>
 <nav>
 <ul>
   <li><a href="/posts.html">Posts</a></li>
   <li> <a href="/resume.html">Résumé</a><li>
 </ul>
 </nav>
-<h3 id="scenario">Scenario</h3>
-<p>Code is typically developed and compiled on remote servers. Compilation can take anywhere between 30 min-1hr depending on the files changed.</p>
-<h3 id="releases">Releases</h3>
-<p>Separate major releases are maintained where new functionality and fixes can be added. Sometimes the same fix has to be added to multiple releases.</p>
-<h3 id="builds">Builds</h3>
-<p>For each release, builds are done to pick up new functions and bug fixes for that specific release. Directories are created for these builds. A one off change can be compiled and tested by creating another directory, referred to as a delta, with symbolic links to the base directory.</p>
-<h3 id="motivation">Motivation</h3>
-<p>I want to be able to edit code on my own machine instead of relying on a network connection to these servers.</p>
-<ul>
-<li>Edit code offline</li>
-<li>Check syntax errors locally without having to compile</li>
-<li>Take advantage of the rich feature set of Vim 7.X and other tools not available on the remote systems.</li>
-<li>Use a Git rather than versioned directories that have full copies of the differences.</li>
-</ul>
-<h3 id="git-branching-model">Git Branching Model</h3>
-<p>Each release will have it's own branch. Fixes will be based off of these branches and can be rebased.</p>
-<h3 id="releveling-release">Releveling Release</h3>
-<p>The releases will be changing over time. Therefore, the release branch will have to 'relevled' to incorporate these new changes. Manually copying all these files over from the remote systems to my local system is a waste of time and resources. Git comes to the rescue again.</p>
-<h3 id="setting-up-remote-system">Setting up remote system</h3>
-<ol style="list-style-type: decimal">
-<li>Create a Repository on a remote system that has access to the builds. <code>git init --git-dir=./.git</code></li>
-<li><p>Add files from one of the build directories <code>git --git-dir=./.git --work-tree=&lt;base-build-dir&gt; add '*.[ch]'</code></p></li>
-<li><p>Commit the updates <code>git commit -am &quot;Initial build&quot;</code></p></li>
-</ol>
-<p>This will take quite a while since there are so many files. However, after the first commit, releveling and pulling/merging is quite fast.</p>
-<h3 id="new-build-increment">New build increment</h3>
-<p>When deciding to relevel, the first thing you need to do is update your remote repo. Only including files that were originally added. New files will have to be added manually.</p>
-<pre><code>git --git-dir=./.git --work-tree=&lt;new-build-dir&gt; add -u &#39;*.[ch]&#39;
-git commit -am &quot;Upleveled to $1&quot;</code></pre>
-<h3 id="fetchpull-on-local-system.">Fetch/Pull on local system.</h3>
-<ol style="list-style-type: decimal">
-<li>Checkout the release. <code>git checkout releaseX</code></li>
-<li>Pull the changes from the remote - using theirs files to avoid having to manually merge the changes. <code>git pull --strategy-option=theirs remote-host:remote-repo</code></li>
-</ol>
-<p><em>2017-Feb-05</em></p>
+<main>
+  <h3 id="scenario">Scenario</h3>
+  <p>Code is typically developed and compiled on remote servers. Compilation can take anywhere between 30 min-1hr depending on the files changed.</p>
+  <h3 id="releases">Releases</h3>
+  <p>Separate major releases are maintained where new functionality and fixes can be added. Sometimes the same fix has to be added to multiple releases.</p>
+  <h3 id="builds">Builds</h3>
+  <p>For each release, builds are done to pick up new functions and bug fixes for that specific release. Directories are created for these builds. A one off change can be compiled and tested by creating another directory, referred to as a delta, with symbolic links to the base directory.</p>
+  <h3 id="motivation">Motivation</h3>
+  <p>I want to be able to edit code on my own machine instead of relying on a network connection to these servers.</p>
+  <ul>
+  <li>Edit code offline</li>
+  <li>Check syntax errors locally without having to compile</li>
+  <li>Take advantage of the rich feature set of Vim 7.X and other tools not available on the remote systems.</li>
+  <li>Use a Git rather than versioned directories that have full copies of the differences.</li>
+  </ul>
+  <h3 id="git-branching-model">Git Branching Model</h3>
+  <p>Each release will have it's own branch. Fixes will be based off of these branches and can be rebased.</p>
+  <h3 id="releveling-release">Releveling Release</h3>
+  <p>The releases will be changing over time. Therefore, the release branch will have to 'relevled' to incorporate these new changes. Manually copying all these files over from the remote systems to my local system is a waste of time and resources. Git comes to the rescue again.</p>
+  <h3 id="setting-up-remote-system">Setting up remote system</h3>
+  <ol style="list-style-type: decimal">
+  <li>Create a Repository on a remote system that has access to the builds. <code>git init --git-dir=./.git</code></li>
+  <li><p>Add files from one of the build directories <code>git --git-dir=./.git --work-tree=&lt;base-build-dir&gt; add '*.[ch]'</code></p></li>
+  <li><p>Commit the updates <code>git commit -am &quot;Initial build&quot;</code></p></li>
+  </ol>
+  <p>This will take quite a while since there are so many files. However, after the first commit, releveling and pulling/merging is quite fast.</p>
+  <h3 id="new-build-increment">New build increment</h3>
+  <p>When deciding to relevel, the first thing you need to do is update your remote repo. Only including files that were originally added. New files will have to be added manually.</p>
+  <pre><code>git --git-dir=./.git --work-tree=&lt;new-build-dir&gt; add -u &#39;*.[ch]&#39;
+  git commit -am &quot;Upleveled to $1&quot;</code></pre>
+  <h3 id="fetchpull-on-local-system.">Fetch/Pull on local system.</h3>
+  <ol style="list-style-type: decimal">
+  <li>Checkout the release. <code>git checkout releaseX</code></li>
+  <li>Pull the changes from the remote - using theirs files to avoid having to manually merge the changes. <code>git pull --strategy-option=theirs remote-host:remote-repo</code></li>
+  </ol>
+  <p><em>2017-Feb-05</em></p>
+</main>
 <footer>
-<p><a href="https://www.github.com/FreddieSanchez"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub-logo" /></a> <a href="https://www.linkedin.com/in/freddiesanchez"><img src="/assets/images/In-2C-28px-TM.png" alt="LinkedIn-logo" /></a></p>
+<ul>
+	<li><a href="https://www.github.com/FreddieSanchez"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub-logo" /></a></li>
+	<li><a href="https://www.linkedin.com/in/freddiesanchez"><img src="/assets/images/In-2C-28px-TM.png" alt="LinkedIn-logo" /></a></li>
+</ul>
 </footer>
 </body>
 </html>

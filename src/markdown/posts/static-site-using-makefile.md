@@ -23,7 +23,7 @@ Coming from a background in C programming this felt like a trip back in time.  M
 
 ### Project Layout
 
-I setup my proect similar to how I setup my scala projects. I created a `src` folder for all my "source files" (markdown, assets, templates, etc). 
+I setup my project similar to how I setup my scala projects. I created a `src` folder for all my "source files" (markdown, assets, templates, etc). 
 
 ```
 src

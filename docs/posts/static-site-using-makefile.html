@@ -14,156 +14,161 @@
   <link rel ="manifest" href ="/site.webmanifest" />
 </head>
 <body>
-<div id="header">
-  <h1 class="title">GitHub Pages Static Site using Markdown, Pandoc, and Makefile</h1>
-</div>
+	<div id="header"> 
+		<h1>GitHub Pages Static Site using Markdown, Pandoc, and Makefile</h1>
+	</div>
 <nav>
 <ul>
   <li><a href="/posts.html">Posts</a></li>
   <li> <a href="/resume.html">Résumé</a><li>
 </ul>
 </nav>
-<p>I wanted to create a lean, flexible, and efficient workflow using mostly text based tools to generating a static website hosted on GitHub Pages. When I began looking how other people handled their static websites, I saw many frameworks/programs out there that did basically exactly what I wanted to do -- <a href="https://gohugo.io/">Hugo</a>, <a href="https://jekyllrb.com/">Jekyll</a>. Honestly, these just seemed too complex, and what is the fun in not building something yourself.</p>
-<p><strong><em>Markdown</em></strong></p>
-<p>It's widely used and <a href="https://www.markdownguide.org/basic-syntax/">simple to learn</a>. I wanted each file to only be concerned with it's own specific content -- <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a>. The presentation and the formatting on the page should be handled separately, so that the content or the presentation can change independently of each other. Markdown makes it easy to write content, more importantly easy to read. It also allows me to use a simple text editor <a href="https://neovim.io/">neovim</a> to write the content. And best of all, it's easily converted to HTML (or PDF, etc).</p>
-<p><strong><em>Pandoc</em></strong></p>
-<p>Pandoc is awesome. The universal markup converter.</p>
-<blockquote>
-<p>Pandoc is a Haskell library for converting from one markup format to another, and a command-line tool that uses this library.</p>
-</blockquote>
-<p>It supports templating, and a wide range of formats. It's the bridge from the Markdown files to final HTML.</p>
-<p><strong><em>Makefile</em></strong></p>
-<p>Coming from a background in C programming this felt like a trip back in time. Makefiles are efficient, language agnostic, and highly configurable for the exact needs of the project. You don't have to make it complicated if you don't want to.</p>
-<hr />
-<h3 id="project-layout">Project Layout</h3>
-<p>I setup my proect similar to how I setup my scala projects. I created a <code>src</code> folder for all my &quot;source files&quot; (markdown, assets, templates, etc).</p>
-<pre><code>src
-├── assets
-│   ├── images
-│   │   ├── logo.jpg
-│   │   ├── favicon.ico
-│   └── style
-│       └── style.css
-├── markdown
-│   ├── index.md
-│   ├── posts
-│   │   ├── post-topic-1.md
-│   │   ├── post-topic-2.md
-│   │   ├── post-topic-3.md
-│   │   ├── post-topic-4.md
-│   │   ├── post-folder
-│   │   │   ├── post-folder-topic-1.md
-│   │   │   ├── post-folder-topic-2.md
-│   │   │   ├── post-folder-topic-3.md
-│   ├── posts.md
-├── site.webmanifest
-└── templates
-    ├── _footer.html
-    ├── _header.html
-    ├── html.template
-    └── _navigation.html
-</code></pre>
-<p>I then have a <code>target</code> directory in the root folder of my project where the <code>.md</code> files are converted to <code>.html</code> and served.</p>
-<h3 id="makefile">Makefile</h3>
-<p>The beauty of using a Makefile is that files that aren't changed aren't rebuilt. Additionally, you can force file to be rebuilt if it a dependency is has changed, but the file itself hasn't.</p>
-<p>For example:</p>
-<ol style="list-style-type: decimal">
-<li>Run <code>make clean all</code> ## removes the target and rebuilds all files.</li>
-<li>Update <code>index.md</code></li>
-<li>Run <code>make</code> ## only <code>index.html</code> is created.</li>
-</ol>
-<p>If I make updating a template a dependency to the markdown files, then when those are updated, any files that depend on them will be rebuilt.</p>
-<ol style="list-style-type: decimal">
-<li>Run <code>make clean all</code> ## removes the target and rebuilds all files.</li>
-<li>Update <code>templates/_header.html</code></li>
-<li>Run <code>make</code> ## all markdown files are rebuilt that depend on that header file.</li>
-</ol>
-<p>Let's first start off by setting up some variables:</p>
-<pre><code># Variables
-SHELL := /bin/bash
-SOURCE_DIR := src
-MARKDOWN_DIR := $(SOURCE_DIR)/markdown
-ASSETS_DIR := $(SOURCE_DIR)/assets
-TEMPLATES_DIR := $(SOURCE_DIR)/templates
-TARGET_DIR := target
-DEPLOY_DIR := docs</code></pre>
-<p>These variables mimic my <a href="#Project%20Layout">project layout</a>.</p>
-<p>Next let's define more variables that represent our source files.</p>
-<pre><code># Find all markdown files
-MARKDOWN_FILES := $(shell find $(MARKDOWN_DIR) -type f -name &#39;*.md&#39;)
-# Generate target HTML files paths
-TARGET_HTML_FILES := $(patsubst $(MARKDOWN_DIR)/%.md,$(TARGET_DIR)/%.html,$(MARKDOWN_FILES))
-# Find all assets
-ASSETS_FILES:= $(shell find $(ASSETS_DIR) -type f)
-# Generate target image files paths
-TARGET_ASSETS_FILES := $(patsubst $(SOURCE_DIR)/%,$(TARGET_DIR)/%,$(ASSETS_FILES))
-# Find all template files
-TEMPLATE_FILES := $(shell find $(TEMPLATES_DIR) -type f)</code></pre>
-<p>The <code>TARGET_HTML_FILES</code> and the <code>TARGET_ASSETS_FILES</code> will represent our dependencies for our main project.</p>
-<p>Next, is the pandoc command to use a stylesheet, HTML template, a header, a footer, and a naviation to convert our Markdown files to HTML.</p>
-<pre><code># Pandoc command
-PANDOC := pandoc --from=markdown --to=html \
-    --template=$(TEMPLATES_DIR)/html.template \
-    --css=/assets/style/style.css  \
-    --include-in-header=$(TEMPLATES_DIR)/_header.html \
-    --include-after-body=$(TEMPLATES_DIR)/_footer.html \
-    --include-before-body=$(TEMPLATES_DIR)/_navigation.html \
-    --standalone</code></pre>
-<p>Next comes the main build with the target assets and HTML files.</p>
-<pre><code># Default target
-all: $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES) 
-.PHONY: all</code></pre>
-<p>This Makefile rule looks for any dependencies in the target directly that end in <code>.html</code>. These have 3 dependencies, the original markdown files, the template files, and the asset files. The <code>| $(TARGET_DIR)</code> is a pre-requisite for the dependencies. The directory in the target is created, and the pandoc command above is run.</p>
-<pre><code># Rule to create HTML files, make sure the target directory is created first.
-$(TARGET_DIR)/%.html: $(MARKDOWN_DIR)/%.md $(TEMPLATE_FILES) $(ASSETS_FILES) | $(TARGET_DIR)
-    @# Create the subdirectory if needed
-    @echo $&lt;
-    @mkdir -p $(@D)
-    @$(PANDOC) -o $@ $&lt;</code></pre>
-<p>This Makefile rule looks for any dependencies in the target assets directory. There's a single dependency that matches any file in the source assests directory. Again, the <code>TARGET_DIR</code> is a pre-requisite. The directory is created, and the file is copied.</p>
-<pre><code># Rule to copy assets files, make sure the target directory is created first.
-$(TARGET_DIR)/assets/%: $(ASSETS_DIR)/% | $(TARGET_DIR)
-    @# Create the subdirectory if needed
-    @mkdir -p $(@D)
-    @cp $&lt; $@</code></pre>
-<p>Finally the <code>TARGET_DIR</code> rule. This ensures the directory is created</p>
-<pre><code># Create target directory
-$(TARGET_DIR):
-    mkdir -p $@</code></pre>
-<p>Additionally, I added some helpful rules to <code>run</code>, <code>deploy</code>, <code>info</code>, and <code>clean</code>.</p>
-<pre><code>deploy: 
-    @# Remove 
-    @rm -fr $(DEPLOY_DIR)
-    @mkdir -p $(DEPLOY_DIR)
-    @cp -r $(TARGET_DIR)/* $(DEPLOY_DIR)
-.PHONY: deploy
-    
-
-
-# Help command
-help:
-    @echo &quot;Available commands:&quot;
-    @echo &quot;  make all    - Build the entire project (default)&quot;
-    @echo &quot;  make clean  - Remove the target directory&quot;
-    @echo &quot;  make help   - Display this help message&quot;
-.PHONY: help
-
-info: 
-    @echo $(SOURCE_DIR)
-    @echo MARKDOWN_FILES=$(MARKDOWN_FILES)
-    @echo TARGET_HTML_FILES=$(TARGET_HTML_FILES)
-    @echo TEMPLATE_FILES=$(TEMPLATE_FILES)
-    @echo ASSETS_FILES=$(ASSETS_FILES)
-    @echo TARGET_ASSETS_FILES=$(TARGET_ASSETS_FILES)
-.PHONY: info
-
-clean:
-    @echo &quot;cleaning project&quot;
-    @rm -rf $(TARGET_DIR)
-.PHONY: clean</code></pre>
-<p><em>2024-Aug-25</em></p>
+<main>
+  <p>I wanted to create a lean, flexible, and efficient workflow using mostly text based tools to generating a static website hosted on GitHub Pages. When I began looking how other people handled their static websites, I saw many frameworks/programs out there that did basically exactly what I wanted to do -- <a href="https://gohugo.io/">Hugo</a>, <a href="https://jekyllrb.com/">Jekyll</a>. Honestly, these just seemed too complex, and what is the fun in not building something yourself.</p>
+  <p><strong><em>Markdown</em></strong></p>
+  <p>It's widely used and <a href="https://www.markdownguide.org/basic-syntax/">simple to learn</a>. I wanted each file to only be concerned with it's own specific content -- <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation of concerns</a>. The presentation and the formatting on the page should be handled separately, so that the content or the presentation can change independently of each other. Markdown makes it easy to write content, more importantly easy to read. It also allows me to use a simple text editor <a href="https://neovim.io/">neovim</a> to write the content. And best of all, it's easily converted to HTML (or PDF, etc).</p>
+  <p><strong><em>Pandoc</em></strong></p>
+  <p>Pandoc is awesome. The universal markup converter.</p>
+  <blockquote>
+  <p>Pandoc is a Haskell library for converting from one markup format to another, and a command-line tool that uses this library.</p>
+  </blockquote>
+  <p>It supports templating, and a wide range of formats. It's the bridge from the Markdown files to final HTML.</p>
+  <p><strong><em>Makefile</em></strong></p>
+  <p>Coming from a background in C programming this felt like a trip back in time. Makefiles are efficient, language agnostic, and highly configurable for the exact needs of the project. You don't have to make it complicated if you don't want to.</p>
+  <hr />
+  <h3 id="project-layout">Project Layout</h3>
+  <p>I setup my project similar to how I setup my scala projects. I created a <code>src</code> folder for all my &quot;source files&quot; (markdown, assets, templates, etc).</p>
+  <pre><code>src
+  ├── assets
+  │   ├── images
+  │   │   ├── logo.jpg
+  │   │   ├── favicon.ico
+  │   └── style
+  │       └── style.css
+  ├── markdown
+  │   ├── index.md
+  │   ├── posts
+  │   │   ├── post-topic-1.md
+  │   │   ├── post-topic-2.md
+  │   │   ├── post-topic-3.md
+  │   │   ├── post-topic-4.md
+  │   │   ├── post-folder
+  │   │   │   ├── post-folder-topic-1.md
+  │   │   │   ├── post-folder-topic-2.md
+  │   │   │   ├── post-folder-topic-3.md
+  │   ├── posts.md
+  ├── site.webmanifest
+  └── templates
+      ├── _footer.html
+      ├── _header.html
+      ├── html.template
+      └── _navigation.html
+  </code></pre>
+  <p>I then have a <code>target</code> directory in the root folder of my project where the <code>.md</code> files are converted to <code>.html</code> and served.</p>
+  <h3 id="makefile">Makefile</h3>
+  <p>The beauty of using a Makefile is that files that aren't changed aren't rebuilt. Additionally, you can force file to be rebuilt if it a dependency is has changed, but the file itself hasn't.</p>
+  <p>For example:</p>
+  <ol style="list-style-type: decimal">
+  <li>Run <code>make clean all</code> ## removes the target and rebuilds all files.</li>
+  <li>Update <code>index.md</code></li>
+  <li>Run <code>make</code> ## only <code>index.html</code> is created.</li>
+  </ol>
+  <p>If I make updating a template a dependency to the markdown files, then when those are updated, any files that depend on them will be rebuilt.</p>
+  <ol style="list-style-type: decimal">
+  <li>Run <code>make clean all</code> ## removes the target and rebuilds all files.</li>
+  <li>Update <code>templates/_header.html</code></li>
+  <li>Run <code>make</code> ## all markdown files are rebuilt that depend on that header file.</li>
+  </ol>
+  <p>Let's first start off by setting up some variables:</p>
+  <pre><code># Variables
+  SHELL := /bin/bash
+  SOURCE_DIR := src
+  MARKDOWN_DIR := $(SOURCE_DIR)/markdown
+  ASSETS_DIR := $(SOURCE_DIR)/assets
+  TEMPLATES_DIR := $(SOURCE_DIR)/templates
+  TARGET_DIR := target
+  DEPLOY_DIR := docs</code></pre>
+  <p>These variables mimic my <a href="#Project%20Layout">project layout</a>.</p>
+  <p>Next let's define more variables that represent our source files.</p>
+  <pre><code># Find all markdown files
+  MARKDOWN_FILES := $(shell find $(MARKDOWN_DIR) -type f -name &#39;*.md&#39;)
+  # Generate target HTML files paths
+  TARGET_HTML_FILES := $(patsubst $(MARKDOWN_DIR)/%.md,$(TARGET_DIR)/%.html,$(MARKDOWN_FILES))
+  # Find all assets
+  ASSETS_FILES:= $(shell find $(ASSETS_DIR) -type f)
+  # Generate target image files paths
+  TARGET_ASSETS_FILES := $(patsubst $(SOURCE_DIR)/%,$(TARGET_DIR)/%,$(ASSETS_FILES))
+  # Find all template files
+  TEMPLATE_FILES := $(shell find $(TEMPLATES_DIR) -type f)</code></pre>
+  <p>The <code>TARGET_HTML_FILES</code> and the <code>TARGET_ASSETS_FILES</code> will represent our dependencies for our main project.</p>
+  <p>Next, is the pandoc command to use a stylesheet, HTML template, a header, a footer, and a naviation to convert our Markdown files to HTML.</p>
+  <pre><code># Pandoc command
+  PANDOC := pandoc --from=markdown --to=html \
+      --template=$(TEMPLATES_DIR)/html.template \
+      --css=/assets/style/style.css  \
+      --include-in-header=$(TEMPLATES_DIR)/_header.html \
+      --include-after-body=$(TEMPLATES_DIR)/_footer.html \
+      --include-before-body=$(TEMPLATES_DIR)/_navigation.html \
+      --standalone</code></pre>
+  <p>Next comes the main build with the target assets and HTML files.</p>
+  <pre><code># Default target
+  all: $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES) 
+  .PHONY: all</code></pre>
+  <p>This Makefile rule looks for any dependencies in the target directly that end in <code>.html</code>. These have 3 dependencies, the original markdown files, the template files, and the asset files. The <code>| $(TARGET_DIR)</code> is a pre-requisite for the dependencies. The directory in the target is created, and the pandoc command above is run.</p>
+  <pre><code># Rule to create HTML files, make sure the target directory is created first.
+  $(TARGET_DIR)/%.html: $(MARKDOWN_DIR)/%.md $(TEMPLATE_FILES) $(ASSETS_FILES) | $(TARGET_DIR)
+      @# Create the subdirectory if needed
+      @echo $&lt;
+      @mkdir -p $(@D)
+      @$(PANDOC) -o $@ $&lt;</code></pre>
+  <p>This Makefile rule looks for any dependencies in the target assets directory. There's a single dependency that matches any file in the source assests directory. Again, the <code>TARGET_DIR</code> is a pre-requisite. The directory is created, and the file is copied.</p>
+  <pre><code># Rule to copy assets files, make sure the target directory is created first.
+  $(TARGET_DIR)/assets/%: $(ASSETS_DIR)/% | $(TARGET_DIR)
+      @# Create the subdirectory if needed
+      @mkdir -p $(@D)
+      @cp $&lt; $@</code></pre>
+  <p>Finally the <code>TARGET_DIR</code> rule. This ensures the directory is created</p>
+  <pre><code># Create target directory
+  $(TARGET_DIR):
+      mkdir -p $@</code></pre>
+  <p>Additionally, I added some helpful rules to <code>run</code>, <code>deploy</code>, <code>info</code>, and <code>clean</code>.</p>
+  <pre><code>deploy: 
+      @# Remove 
+      @rm -fr $(DEPLOY_DIR)
+      @mkdir -p $(DEPLOY_DIR)
+      @cp -r $(TARGET_DIR)/* $(DEPLOY_DIR)
+  .PHONY: deploy
+      
+  
+  
+  # Help command
+  help:
+      @echo &quot;Available commands:&quot;
+      @echo &quot;  make all    - Build the entire project (default)&quot;
+      @echo &quot;  make clean  - Remove the target directory&quot;
+      @echo &quot;  make help   - Display this help message&quot;
+  .PHONY: help
+  
+  info: 
+      @echo $(SOURCE_DIR)
+      @echo MARKDOWN_FILES=$(MARKDOWN_FILES)
+      @echo TARGET_HTML_FILES=$(TARGET_HTML_FILES)
+      @echo TEMPLATE_FILES=$(TEMPLATE_FILES)
+      @echo ASSETS_FILES=$(ASSETS_FILES)
+      @echo TARGET_ASSETS_FILES=$(TARGET_ASSETS_FILES)
+  .PHONY: info
+  
+  clean:
+      @echo &quot;cleaning project&quot;
+      @rm -rf $(TARGET_DIR)
+  .PHONY: clean</code></pre>
+  <p><em>2024-Aug-25</em></p>
+</main>
 <footer>
-<p><a href="https://www.github.com/FreddieSanchez"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub-logo" /></a> <a href="https://www.linkedin.com/in/freddiesanchez"><img src="/assets/images/In-2C-28px-TM.png" alt="LinkedIn-logo" /></a></p>
+<ul>
+	<li><a href="https://www.github.com/FreddieSanchez"><img src="/assets/images/GitHub-Mark-32px.png" alt="GitHub-logo" /></a></li>
+	<li><a href="https://www.linkedin.com/in/freddiesanchez"><img src="/assets/images/In-2C-28px-TM.png" alt="LinkedIn-logo" /></a></li>
+</ul>
 </footer>
 </body>
 </html>
