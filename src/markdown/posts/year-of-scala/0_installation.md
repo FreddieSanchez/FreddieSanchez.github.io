@@ -4,13 +4,13 @@ I prefer to work in the console using Ubuntu 16.04 - xmonad as my window manager
 
 sbt requires Java 1.8 or later.  Check to make sure you have Java 1.8 installed:
 
-```
+```bash
 java -version
 
 ```
 If you don't, grab it from the repos. If you have Ubuntu 14.04 see the relavent [stackoverflow answer](https://askubuntu.com/a/666481).
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install openjdk-8-jdk
 sudo update-alternatives --config java
@@ -18,7 +18,8 @@ sudo update-alternatives --config javac
 ```
 
 To install sbt, I ran the following:
-```
+
+```bash
 echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
 sudo apt-get update
@@ -28,7 +29,7 @@ Taken from [http://www.scala-sbt.org/download.html](http://www.scala-sbt.org/dow
 
 sbt provides a command line interface, and menu driven interface to interact with Scala and the project.
 
-```
+```bash
 $ sbt
 [info] Loading project definition from <project directory>/project
 [info] Set current project to <project name> (in build file:<project diretory>)
@@ -55,7 +56,7 @@ $ sbt
   show <key>                              Displays the result of evaluating the setting or task associated with 'key'.
 
 More command help available using 'help <command>' for:
-  !, +, ++, <, alias, append, apply, eval, iflast, onFailure, reboot, shell
+  !, +, ++, <, alias, append, apply, eval, iflast, onFailure, reboot, bash
 ```
 
 For example, to get a scala REPL it's the command ``` $ sbt console ```

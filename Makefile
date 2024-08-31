@@ -3,6 +3,7 @@ SHELL := /bin/bash
 SOURCE_DIR := src
 MARKDOWN_DIR := $(SOURCE_DIR)/markdown
 ASSETS_DIR := $(SOURCE_DIR)/assets
+STATIC_DIR := $(SOURCE_DIR)/static
 TEMPLATES_DIR := $(SOURCE_DIR)/templates
 TARGET_DIR := target
 DEPLOY_DIR := docs
@@ -18,19 +19,24 @@ ASSETS_FILES:= $(shell find $(ASSETS_DIR) -type f)
 TARGET_ASSETS_FILES := $(patsubst $(SOURCE_DIR)/%,$(TARGET_DIR)/%,$(ASSETS_FILES))
 # Find all template files
 TEMPLATE_FILES := $(shell find $(TEMPLATES_DIR) -type f)
-CNAME := CNAME
+
+STATIC_FILES:= $(shell find $(STATIC_DIR) -type f)
+
+TARGET_STATIC_FILES := $(patsubst $(STATIC_DIR)/%,$(TARGET_DIR)/%,$(STATIC_FILES))
+
 
 # Pandoc command
 PANDOC := pandoc --from=markdown --to=html \
 	--template=$(TEMPLATES_DIR)/html.template \
 	--css=/assets/style/style.css  \
+	--css=/assets/style/syntax.css  \
 	--include-in-header=$(TEMPLATES_DIR)/_header.html \
 	--include-after-body=$(TEMPLATES_DIR)/_footer.html \
 	--include-before-body=$(TEMPLATES_DIR)/_navigation.html \
 	--standalone
 
 # Default target
-all: $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES) 
+all: $(TARGET_STATIC_FILES) $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES) 
 .PHONY: all
 
 # Deploy the changes from the `/target` directory
@@ -38,7 +44,6 @@ deploy:
 	@# Remove 
 	@rm -fr $(DEPLOY_DIR)
 	@mkdir -p $(DEPLOY_DIR)
-	@cp $(CNAME) $(DEPLOY_DIR)
 	@cp -r $(TARGET_DIR)/* $(DEPLOY_DIR)
 .PHONY: deploy
 	
@@ -67,6 +72,8 @@ info:
 	@echo TEMPLATE_FILES=$(TEMPLATE_FILES)
 	@echo ASSETS_FILES=$(ASSETS_FILES)
 	@echo TARGET_ASSETS_FILES=$(TARGET_ASSETS_FILES)
+	@echo TARGET_STATIC_FILES=$(TARGET_STATIC_FILES)
+	@echo STATIC_FILES=$(STATIC_FILES)
 .PHONY: info
 
 clean:
@@ -75,7 +82,7 @@ clean:
 .PHONY: clean
 
 # Rule to create HTML files, make sure the target directory is created first.
-$(TARGET_DIR)/%.html: $(MARKDOWN_DIR)/%.md $(TEMPLATE_FILES) $(ASSETS_FILES) | $(TARGET_DIR)
+$(TARGET_DIR)/%.html: $(MARKDOWN_DIR)/%.md $(TEMPLATE_FILES) | $(TARGET_DIR)
 	@# Create the subdirectory if needed
 	@echo $<
 	@mkdir -p $(@D)
@@ -84,6 +91,14 @@ $(TARGET_DIR)/%.html: $(MARKDOWN_DIR)/%.md $(TEMPLATE_FILES) $(ASSETS_FILES) | $
 # Rule to copy assets files, make sure the target directory is created first.
 $(TARGET_DIR)/assets/%: $(ASSETS_DIR)/% | $(TARGET_DIR)
 	@# Create the subdirectory if needed
+	@echo $<
+	@mkdir -p $(@D)
+	@cp $< $@
+
+# Rule to copy static files, make sure the target directory is created first.
+$(TARGET_DIR)/%: $(STATIC_DIR)/% | $(TARGET_DIR)
+	@# Create the subdirectory if needed
+	@echo $<
 	@mkdir -p $(@D)
 	@cp $< $@
 

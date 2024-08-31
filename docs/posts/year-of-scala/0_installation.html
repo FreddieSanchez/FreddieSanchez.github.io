@@ -7,7 +7,80 @@
   <meta name="generator" content="pandoc" />
   <title>Year of Scala - SBT Installation</title>
   <link rel="stylesheet" href="/assets/style/style.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/style/syntax.css" type="text/css" />
+  <link rel="stylesheet" href="div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */" type="text/css" />
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel ="icon" type ="image/png" sizes ="32x32" href ="/assets/images/favicon-32x32.png" />
   <link rel ="icon" type ="image/png" sizes ="16x16" href ="/assets/images/favicon-16x16.png" />
@@ -26,47 +99,46 @@
 <main>
   <p>I prefer to work in the console using Ubuntu 16.04 - xmonad as my window manager. This will all be focused around my own workflow and preferences. I am going to start my Year of Scala by installing SBT - sbt is a build tool for Scala and Java. It provides a great way to manage your project, build and test straight from the console.</p>
   <p>sbt requires Java 1.8 or later. Check to make sure you have Java 1.8 installed:</p>
-  <pre><code>java -version
-  </code></pre>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">java</span> -version</code></pre></div>
   <p>If you don't, grab it from the repos. If you have Ubuntu 14.04 see the relavent <a href="https://askubuntu.com/a/666481">stackoverflow answer</a>.</p>
-  <pre><code>sudo apt-get update
-  sudo apt-get install openjdk-8-jdk
-  sudo update-alternatives --config java
-  sudo update-alternatives --config javac</code></pre>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">sudo</span> apt-get update
+  <span class="fu">sudo</span> apt-get install openjdk-8-jdk
+  <span class="fu">sudo</span> update-alternatives --config java
+  <span class="fu">sudo</span> update-alternatives --config javac</code></pre></div>
   <p>To install sbt, I ran the following:</p>
-  <pre><code>echo &quot;deb https://dl.bintray.com/sbt/debian /&quot; | sudo tee -a /etc/apt/sources.list.d/sbt.list
-  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
-  sudo apt-get update
-  sudo apt-get install sbt</code></pre>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">echo</span> <span class="st">&quot;deb https://dl.bintray.com/sbt/debian /&quot;</span> <span class="kw">|</span> <span class="fu">sudo</span> tee -a /etc/apt/sources.list.d/sbt.list
+  <span class="fu">sudo</span> apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+  <span class="fu">sudo</span> apt-get update
+  <span class="fu">sudo</span> apt-get install sbt</code></pre></div>
   <p>Taken from <a href="http://www.scala-sbt.org/download.html" class="uri">http://www.scala-sbt.org/download.html</a>.</p>
   <p>sbt provides a command line interface, and menu driven interface to interact with Scala and the project.</p>
-  <pre><code>$ sbt
-  [info] Loading project definition from &lt;project directory&gt;/project
-  [info] Set current project to &lt;project name&gt; (in build file:&lt;project diretory&gt;)
-  &gt;help 
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="ex">sbt</span>
+  [<span class="ex">info</span>] Loading project definition from <span class="op">&lt;</span>project directory<span class="op">&gt;</span>/project
+  [<span class="ex">info</span>] Set current project to <span class="op">&lt;</span>project name<span class="op">&gt;</span> (in build file:<span class="op">&lt;</span>project diretory<span class="op">&gt;</span>)
+  <span class="op">&gt;</span><span class="bu">help</span> 
   
-    help                                    Displays this help message or prints detailed help on requested commands (run &#39;help &lt;command&gt;&#39;).
-    about                                   Displays basic information about sbt and the build.
-    tasks                                   Lists the tasks defined for the current project.
-    settings                                Lists the settings defined for the current project.
-    reload                                  (Re)loads the project in the current directory
-    projects                                Lists the names of available projects or temporarily adds/removes extra builds to the session.
-    project                                 Displays the current project or changes to the provided `project`.
-    set [every] &lt;setting&gt;                   Evaluates a Setting and applies it to the current project.
-    session                                 Manipulates session settings.  For details, run &#39;help session&#39;.
-    inspect [uses|tree|definitions] &lt;key&gt;   Prints the value for &#39;key&#39;, the defining scope, delegates, related definitions, and dependencies.
-    &lt;log-level&gt;                             Sets the logging level to &#39;log-level&#39;.  Valid levels: debug, info, warn, error
-    ; &lt;command&gt; (; &lt;command&gt;)*              Runs the provided semicolon-separated commands.
-    ~ &lt;command&gt;                             Executes the specified command whenever source files change.
-    last                                    Displays output from a previous command or the output from a specific task.
-    last-grep                               Shows lines from the last output for &#39;key&#39; that match &#39;pattern&#39;.
-    export &lt;tasks&gt;+                         Executes tasks and displays the equivalent command lines.
-    exit                                    Terminates the build.
-    --&lt;command&gt;                             Schedules a command to run before other commands on startup.
-    show &lt;key&gt;                              Displays the result of evaluating the setting or task associated with &#39;key&#39;.
+    <span class="bu">help</span>                                    Displays this help message or prints detailed help on requested commands (run <span class="st">&#39;help &lt;command&gt;&#39;</span>)<span class="ex">.</span>
+    <span class="ex">about</span>                                   Displays basic information about sbt and the build.
+    <span class="ex">tasks</span>                                   Lists the tasks defined for the current project.
+    <span class="ex">settings</span>                                Lists the settings defined for the current project.
+    <span class="ex">reload</span>                                  (Re)<span class="ex">loads</span> the project in the current directory
+    <span class="ex">projects</span>                                Lists the names of available projects or temporarily adds/removes extra builds to the session.
+    <span class="ex">project</span>                                 Displays the current project or changes to the provided <span class="kw">`</span><span class="ex">project</span><span class="kw">`</span>.
+    <span class="kw">set</span> [<span class="ex">every</span>] <span class="op">&lt;</span>setting<span class="op">&gt;</span>                   Evaluates a Setting and applies it to the current project.
+    <span class="ex">session</span>                                 Manipulates session settings.  For details, run <span class="st">&#39;help session&#39;</span>.
+    <span class="ex">inspect</span> [uses<span class="kw">|</span><span class="ex">tree</span><span class="kw">|</span><span class="ex">definitions</span>] <span class="op">&lt;</span>key<span class="op">&gt;</span>   Prints the value for <span class="st">&#39;key&#39;</span>, the defining scope, delegates, related definitions, and dependencies.
+    <span class="op">&lt;</span><span class="ex">log-level</span><span class="op">&gt;</span>                             Sets the logging level to <span class="st">&#39;log-level&#39;</span>.  Valid levels: debug, info, warn, error
+    ; <span class="op">&lt;</span><span class="bu">command</span><span class="op">&gt;</span> (<span class="kw">;</span> <span class="op">&lt;</span><span class="bu">command</span><span class="op">&gt;</span>)<span class="ex">*</span>              Runs the provided semicolon-separated commands.
+    <span class="ex">~</span> <span class="op">&lt;</span><span class="bu">command</span><span class="op">&gt;</span>                             Executes the specified command whenever source files change.
+    <span class="fu">last</span>                                    Displays output from a previous command or the output from a specific task.
+    <span class="ex">last-grep</span>                               Shows lines from the last output for <span class="st">&#39;key&#39;</span> that match <span class="st">&#39;pattern&#39;</span>.
+    <span class="bu">export</span> <span class="op">&lt;</span><span class="ex">tasks</span><span class="op">&gt;</span>+                         Executes tasks and displays the equivalent command lines.
+    <span class="bu">exit</span>                                    Terminates the build.
+    <span class="ex">--</span><span class="op">&lt;</span>command<span class="op">&gt;</span>                             Schedules a command to run before other commands on startup.
+    <span class="ex">show</span> <span class="op">&lt;</span>key<span class="op">&gt;</span>                              Displays the result of evaluating the setting or task associated with <span class="st">&#39;key&#39;</span>.
   
-  More command help available using &#39;help &lt;command&gt;&#39; for:
-    !, +, ++, &lt;, alias, append, apply, eval, iflast, onFailure, reboot, shell</code></pre>
+  <span class="ex">More</span> command help available using <span class="st">&#39;help &lt;command&gt;&#39;</span> for:
+    !, <span class="ex">+</span>, ++, <span class="op">&lt;</span>, alias, append, apply, eval, iflast, onFailure, reboot, bash</code></pre></div>
   <p>For example, to get a scala REPL it's the command <code>$ sbt console</code></p>
   <p>To exit the REPL supply the EOF character (CTRL+D) or type 'exit';</p>
   <p>If you are in a project directory, you can specify the Scala version in <code>build.sbt</code> under the variable <code>scalaVersion</code></p>

@@ -7,7 +7,80 @@
   <meta name="generator" content="pandoc" />
   <title>Using Git Where Other are Not</title>
   <link rel="stylesheet" href="/assets/style/style.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/style/syntax.css" type="text/css" />
+  <link rel="stylesheet" href="div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */" type="text/css" />
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel ="icon" type ="image/png" sizes ="32x32" href ="/assets/images/favicon-32x32.png" />
   <link rel ="icon" type ="image/png" sizes ="16x16" href ="/assets/images/favicon-16x16.png" />
@@ -45,19 +118,25 @@
   <h3 id="setting-up-remote-system">Setting up remote system</h3>
   <ol style="list-style-type: decimal">
   <li>Create a Repository on a remote system that has access to the builds. <code>git init --git-dir=./.git</code></li>
-  <li><p>Add files from one of the build directories <code>git --git-dir=./.git --work-tree=&lt;base-build-dir&gt; add '*.[ch]'</code></p></li>
-  <li><p>Commit the updates <code>git commit -am &quot;Initial build&quot;</code></p></li>
+  <li><p>Add files from one of the build directories</p>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> --git-dir=./.git --work-tree=<span class="op">&lt;</span>base-build-dir<span class="op">&gt;</span> add <span class="st">&#39;*.[ch]&#39;</span></code></pre></div></li>
+  <li><p>Commit the updates</p>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> commit -am <span class="st">&quot;Initial build&quot;</span></code></pre></div></li>
   </ol>
   <p>This will take quite a while since there are so many files. However, after the first commit, releveling and pulling/merging is quite fast.</p>
   <h3 id="new-build-increment">New build increment</h3>
   <p>When deciding to relevel, the first thing you need to do is update your remote repo. Only including files that were originally added. New files will have to be added manually.</p>
-  <pre><code>git --git-dir=./.git --work-tree=&lt;new-build-dir&gt; add -u &#39;*.[ch]&#39;
-  git commit -am &quot;Upleveled to $1&quot;</code></pre>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> --git-dir=./.git --work-tree=<span class="op">&lt;</span>new-build-dir<span class="op">&gt;</span> add -u <span class="st">&#39;*.[ch]&#39;</span>
+  <span class="fu">git</span> commit -am <span class="st">&quot;Upleveled to </span><span class="va">$1</span><span class="st">&quot;</span></code></pre></div>
   <h3 id="fetchpull-on-local-system.">Fetch/Pull on local system.</h3>
   <ol style="list-style-type: decimal">
-  <li>Checkout the release. <code>git checkout releaseX</code></li>
-  <li>Pull the changes from the remote - using theirs files to avoid having to manually merge the changes. <code>git pull --strategy-option=theirs remote-host:remote-repo</code></li>
+  <li>Checkout the release.</li>
   </ol>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> checkout releaseX </code></pre></div>
+  <ol start="2" style="list-style-type: decimal">
+  <li>Pull the changes from the remote - using theirs files to avoid having to manually merge the changes.</li>
+  </ol>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> pull --strategy-option=theirs remote-host:remote-repo</code></pre></div>
   <p><em>2017-Feb-05</em></p>
 </main>
 <footer>

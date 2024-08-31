@@ -50,7 +50,7 @@ file(s) I want to stow, along with empty files with the same name as the target.
 
 e.g.
 
-```
+```bash
 cd ~/dotfiles
 mkdir -p xmonad/.xmonad/lib/Xmonad/Util/
 touch Brightness.hs
@@ -73,7 +73,7 @@ I repeated the process for all my dotfiles using different packages them into di
 
 Here's the final result for the `xmonad` package.
 
-```
+```bash
 ~/dotfiles$ find xmonad -type f
 xmonad/.xmonad/lib/XMonad/Util/Brightness.hs
 xmonad/.xmonad/xmobar.hs

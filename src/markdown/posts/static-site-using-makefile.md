@@ -25,7 +25,7 @@ Coming from a background in C programming this felt like a trip back in time.  M
 
 I setup my project similar to how I setup my scala projects. I created a `src` folder for all my "source files" (markdown, assets, templates, etc). 
 
-```
+```bash
 src
 ├── assets
 │   ├── images
@@ -74,7 +74,7 @@ If I make updating a template a dependency to the markdown files, then when thos
 
 
 Let's first start off by setting up some variables:
-```
+```makefile
 # Variables
 SHELL := /bin/bash
 SOURCE_DIR := src
@@ -89,7 +89,7 @@ These variables mimic my [project layout].
 
 Next let's define more variables that represent our source files.
 
-```
+```makefile
 # Find all markdown files
 MARKDOWN_FILES := $(shell find $(MARKDOWN_DIR) -type f -name '*.md')
 # Generate target HTML files paths
@@ -106,7 +106,7 @@ The `TARGET_HTML_FILES` and the `TARGET_ASSETS_FILES` will represent our depende
 
 Next, is the pandoc command to use a stylesheet, HTML template, a header, a footer, and a naviation to convert our Markdown files to HTML.
 
-```
+```makefile
 # Pandoc command
 PANDOC := pandoc --from=markdown --to=html \
 	--template=$(TEMPLATES_DIR)/html.template \
@@ -119,7 +119,7 @@ PANDOC := pandoc --from=markdown --to=html \
 
 Next comes the main build with the target assets and HTML files.
 
-```
+```makefile
 # Default target
 all: $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES) 
 .PHONY: all
@@ -127,7 +127,7 @@ all: $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES)
 
 This Makefile rule looks for any dependencies in the target directly that end in `.html`. These have 3 dependencies, the original markdown files, the template files, and the asset files. The `| $(TARGET_DIR)` is a pre-requisite for the dependencies. The directory in the target is created, and the pandoc command above is run.
 
-```
+```makefile
 # Rule to create HTML files, make sure the target directory is created first.
 $(TARGET_DIR)/%.html: $(MARKDOWN_DIR)/%.md $(TEMPLATE_FILES) $(ASSETS_FILES) | $(TARGET_DIR)
 	@# Create the subdirectory if needed
@@ -139,7 +139,7 @@ $(TARGET_DIR)/%.html: $(MARKDOWN_DIR)/%.md $(TEMPLATE_FILES) $(ASSETS_FILES) | $
 This Makefile rule looks for any dependencies in the target assets directory. There's a single dependency that matches any file in the source assests directory. Again, the `TARGET_DIR` is a pre-requisite. The directory is created, and the file is copied.
 
 
-```
+```makefile
 # Rule to copy assets files, make sure the target directory is created first.
 $(TARGET_DIR)/assets/%: $(ASSETS_DIR)/% | $(TARGET_DIR)
 	@# Create the subdirectory if needed
@@ -148,7 +148,7 @@ $(TARGET_DIR)/assets/%: $(ASSETS_DIR)/% | $(TARGET_DIR)
 ```
 
 Finally the `TARGET_DIR` rule. This ensures the directory is created
-```
+```makefile
 # Create target directory
 $(TARGET_DIR):
 	mkdir -p $@
@@ -156,7 +156,7 @@ $(TARGET_DIR):
 
 Additionally, I added some helpful rules to `run`, `deploy`, `info`, and `clean`.
 
-```
+```makefile
 deploy: 
 	@# Remove 
 	@rm -fr $(DEPLOY_DIR)

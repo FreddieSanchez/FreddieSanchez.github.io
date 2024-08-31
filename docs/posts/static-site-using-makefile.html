@@ -7,7 +7,80 @@
   <meta name="generator" content="pandoc" />
   <title>GitHub Pages Static Site using Markdown, Pandoc, and Makefile</title>
   <link rel="stylesheet" href="/assets/style/style.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/style/syntax.css" type="text/css" />
+  <link rel="stylesheet" href="div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */" type="text/css" />
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel ="icon" type ="image/png" sizes ="32x32" href ="/assets/images/favicon-32x32.png" />
   <link rel ="icon" type ="image/png" sizes ="16x16" href ="/assets/images/favicon-16x16.png" />
@@ -38,32 +111,31 @@
   <hr />
   <h3 id="project-layout">Project Layout</h3>
   <p>I setup my project similar to how I setup my scala projects. I created a <code>src</code> folder for all my &quot;source files&quot; (markdown, assets, templates, etc).</p>
-  <pre><code>src
-  ├── assets
-  │   ├── images
-  │   │   ├── logo.jpg
-  │   │   ├── favicon.ico
-  │   └── style
-  │       └── style.css
-  ├── markdown
-  │   ├── index.md
-  │   ├── posts
-  │   │   ├── post-topic-1.md
-  │   │   ├── post-topic-2.md
-  │   │   ├── post-topic-3.md
-  │   │   ├── post-topic-4.md
-  │   │   ├── post-folder
-  │   │   │   ├── post-folder-topic-1.md
-  │   │   │   ├── post-folder-topic-2.md
-  │   │   │   ├── post-folder-topic-3.md
-  │   ├── posts.md
-  ├── site.webmanifest
-  └── templates
-      ├── _footer.html
-      ├── _header.html
-      ├── html.template
-      └── _navigation.html
-  </code></pre>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">src</span>
+  ├── <span class="ex">assets</span>
+  │   ├── <span class="ex">images</span>
+  │   │   ├── <span class="ex">logo.jpg</span>
+  │   │   ├── <span class="ex">favicon.ico</span>
+  │   └── <span class="ex">style</span>
+  │       └── <span class="ex">style.css</span>
+  ├── <span class="ex">markdown</span>
+  │   ├── <span class="ex">index.md</span>
+  │   ├── <span class="ex">posts</span>
+  │   │   ├── <span class="ex">post-topic-1.md</span>
+  │   │   ├── <span class="ex">post-topic-2.md</span>
+  │   │   ├── <span class="ex">post-topic-3.md</span>
+  │   │   ├── <span class="ex">post-topic-4.md</span>
+  │   │   ├── <span class="ex">post-folder</span>
+  │   │   │   ├── <span class="ex">post-folder-topic-1.md</span>
+  │   │   │   ├── <span class="ex">post-folder-topic-2.md</span>
+  │   │   │   ├── <span class="ex">post-folder-topic-3.md</span>
+  │   ├── <span class="ex">posts.md</span>
+  ├── <span class="ex">site.webmanifest</span>
+  └── <span class="ex">templates</span>
+      ├── <span class="ex">_footer.html</span>
+      ├── <span class="ex">_header.html</span>
+      ├── <span class="ex">html.template</span>
+      └── <span class="ex">_navigation.html</span></code></pre></div>
   <p>I then have a <code>target</code> directory in the root folder of my project where the <code>.md</code> files are converted to <code>.html</code> and served.</p>
   <h3 id="makefile">Makefile</h3>
   <p>The beauty of using a Makefile is that files that aren't changed aren't rebuilt. Additionally, you can force file to be rebuilt if it a dependency is has changed, but the file itself hasn't.</p>
@@ -80,88 +152,88 @@
   <li>Run <code>make</code> ## all markdown files are rebuilt that depend on that header file.</li>
   </ol>
   <p>Let's first start off by setting up some variables:</p>
-  <pre><code># Variables
-  SHELL := /bin/bash
-  SOURCE_DIR := src
-  MARKDOWN_DIR := $(SOURCE_DIR)/markdown
-  ASSETS_DIR := $(SOURCE_DIR)/assets
-  TEMPLATES_DIR := $(SOURCE_DIR)/templates
-  TARGET_DIR := target
-  DEPLOY_DIR := docs</code></pre>
+  <div class="sourceCode"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span class="co"># Variables</span>
+  <span class="dt">SHELL </span><span class="ch">:=</span><span class="st"> /bin/bash</span>
+  <span class="dt">SOURCE_DIR </span><span class="ch">:=</span><span class="st"> src</span>
+  <span class="dt">MARKDOWN_DIR </span><span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">SOURCE_DIR</span><span class="ch">)</span><span class="st">/markdown</span>
+  <span class="dt">ASSETS_DIR </span><span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">SOURCE_DIR</span><span class="ch">)</span><span class="st">/assets</span>
+  <span class="dt">TEMPLATES_DIR </span><span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="dt">SOURCE_DIR</span><span class="ch">)</span><span class="st">/templates</span>
+  <span class="dt">TARGET_DIR </span><span class="ch">:=</span><span class="st"> target</span>
+  <span class="dt">DEPLOY_DIR </span><span class="ch">:=</span><span class="st"> docs</span></code></pre></div>
   <p>These variables mimic my <a href="#Project%20Layout">project layout</a>.</p>
   <p>Next let's define more variables that represent our source files.</p>
-  <pre><code># Find all markdown files
-  MARKDOWN_FILES := $(shell find $(MARKDOWN_DIR) -type f -name &#39;*.md&#39;)
-  # Generate target HTML files paths
-  TARGET_HTML_FILES := $(patsubst $(MARKDOWN_DIR)/%.md,$(TARGET_DIR)/%.html,$(MARKDOWN_FILES))
-  # Find all assets
-  ASSETS_FILES:= $(shell find $(ASSETS_DIR) -type f)
-  # Generate target image files paths
-  TARGET_ASSETS_FILES := $(patsubst $(SOURCE_DIR)/%,$(TARGET_DIR)/%,$(ASSETS_FILES))
-  # Find all template files
-  TEMPLATE_FILES := $(shell find $(TEMPLATES_DIR) -type f)</code></pre>
+  <div class="sourceCode"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span class="co"># Find all markdown files</span>
+  <span class="dt">MARKDOWN_FILES </span><span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">shell</span><span class="st"> find </span><span class="ch">$(</span><span class="dt">MARKDOWN_DIR</span><span class="ch">)</span><span class="st"> -type f -name &#39;*.md&#39;</span><span class="ch">)</span>
+  <span class="co"># Generate target HTML files paths</span>
+  <span class="dt">TARGET_HTML_FILES </span><span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">patsubst</span><span class="st"> </span><span class="ch">$(</span><span class="dt">MARKDOWN_DIR</span><span class="ch">)</span><span class="st">/%.md</span><span class="kw">,</span><span class="ch">$(</span><span class="dt">TARGET_DIR</span><span class="ch">)</span><span class="st">/%.html</span><span class="kw">,</span><span class="ch">$(</span><span class="dt">MARKDOWN_FILES</span><span class="ch">))</span>
+  <span class="co"># Find all assets</span>
+  <span class="dt">ASSETS_FILES</span><span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">shell</span><span class="st"> find </span><span class="ch">$(</span><span class="dt">ASSETS_DIR</span><span class="ch">)</span><span class="st"> -type f</span><span class="ch">)</span>
+  <span class="co"># Generate target image files paths</span>
+  <span class="dt">TARGET_ASSETS_FILES </span><span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">patsubst</span><span class="st"> </span><span class="ch">$(</span><span class="dt">SOURCE_DIR</span><span class="ch">)</span><span class="st">/%</span><span class="kw">,</span><span class="ch">$(</span><span class="dt">TARGET_DIR</span><span class="ch">)</span><span class="st">/%</span><span class="kw">,</span><span class="ch">$(</span><span class="dt">ASSETS_FILES</span><span class="ch">))</span>
+  <span class="co"># Find all template files</span>
+  <span class="dt">TEMPLATE_FILES </span><span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">shell</span><span class="st"> find </span><span class="ch">$(</span><span class="dt">TEMPLATES_DIR</span><span class="ch">)</span><span class="st"> -type f</span><span class="ch">)</span></code></pre></div>
   <p>The <code>TARGET_HTML_FILES</code> and the <code>TARGET_ASSETS_FILES</code> will represent our dependencies for our main project.</p>
   <p>Next, is the pandoc command to use a stylesheet, HTML template, a header, a footer, and a naviation to convert our Markdown files to HTML.</p>
-  <pre><code># Pandoc command
-  PANDOC := pandoc --from=markdown --to=html \
-      --template=$(TEMPLATES_DIR)/html.template \
-      --css=/assets/style/style.css  \
-      --include-in-header=$(TEMPLATES_DIR)/_header.html \
-      --include-after-body=$(TEMPLATES_DIR)/_footer.html \
-      --include-before-body=$(TEMPLATES_DIR)/_navigation.html \
-      --standalone</code></pre>
+  <div class="sourceCode"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span class="co"># Pandoc command</span>
+  <span class="dt">PANDOC </span><span class="ch">:=</span><span class="st"> pandoc --from=markdown --to=html </span><span class="ch">\</span>
+  <span class="st">    --template=</span><span class="ch">$(</span><span class="dt">TEMPLATES_DIR</span><span class="ch">)</span><span class="st">/html.template </span><span class="ch">\</span>
+  <span class="st">    --css=/assets/style/style.css  </span><span class="ch">\</span>
+  <span class="st">    --include-in-header=</span><span class="ch">$(</span><span class="dt">TEMPLATES_DIR</span><span class="ch">)</span><span class="st">/_header.html </span><span class="ch">\</span>
+  <span class="st">    --include-after-body=</span><span class="ch">$(</span><span class="dt">TEMPLATES_DIR</span><span class="ch">)</span><span class="st">/_footer.html </span><span class="ch">\</span>
+  <span class="st">    --include-before-body=</span><span class="ch">$(</span><span class="dt">TEMPLATES_DIR</span><span class="ch">)</span><span class="st">/_navigation.html </span><span class="ch">\</span>
+  <span class="st">    --standalone</span></code></pre></div>
   <p>Next comes the main build with the target assets and HTML files.</p>
-  <pre><code># Default target
-  all: $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES) 
-  .PHONY: all</code></pre>
+  <div class="sourceCode"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span class="co"># Default target</span>
+  <span class="dv">all:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">TARGET_ASSETS_FILES</span><span class="ch">)</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">TARGET_HTML_FILES</span><span class="ch">)</span><span class="dt"> </span>
+  <span class="ot">.PHONY:</span><span class="dt"> all</span></code></pre></div>
   <p>This Makefile rule looks for any dependencies in the target directly that end in <code>.html</code>. These have 3 dependencies, the original markdown files, the template files, and the asset files. The <code>| $(TARGET_DIR)</code> is a pre-requisite for the dependencies. The directory in the target is created, and the pandoc command above is run.</p>
-  <pre><code># Rule to create HTML files, make sure the target directory is created first.
-  $(TARGET_DIR)/%.html: $(MARKDOWN_DIR)/%.md $(TEMPLATE_FILES) $(ASSETS_FILES) | $(TARGET_DIR)
-      @# Create the subdirectory if needed
-      @echo $&lt;
-      @mkdir -p $(@D)
-      @$(PANDOC) -o $@ $&lt;</code></pre>
+  <div class="sourceCode"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span class="co"># Rule to create HTML files, make sure the target directory is created first.</span>
+  <span class="dv">$(TARGET_DIR)/%.html:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">MARKDOWN_DIR</span><span class="ch">)</span><span class="dt">/%.md </span><span class="ch">$(</span><span class="dt">TEMPLATE_FILES</span><span class="ch">)</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">ASSETS_FILES</span><span class="ch">)</span><span class="dt"> | </span><span class="ch">$(</span><span class="dt">TARGET_DIR</span><span class="ch">)</span>
+      <span class="ch">@</span><span class="co"># Create the subdirectory if needed</span>
+      <span class="ch">@</span><span class="fu">echo </span><span class="ch">$&lt;</span>
+      <span class="ch">@</span><span class="fu">mkdir -p </span><span class="ch">$(</span><span class="dt">@D</span><span class="ch">)</span>
+      <span class="ch">@$(</span><span class="dt">PANDOC</span><span class="ch">)</span><span class="fu"> -o </span><span class="ch">$@</span><span class="fu"> </span><span class="ch">$&lt;</span></code></pre></div>
   <p>This Makefile rule looks for any dependencies in the target assets directory. There's a single dependency that matches any file in the source assests directory. Again, the <code>TARGET_DIR</code> is a pre-requisite. The directory is created, and the file is copied.</p>
-  <pre><code># Rule to copy assets files, make sure the target directory is created first.
-  $(TARGET_DIR)/assets/%: $(ASSETS_DIR)/% | $(TARGET_DIR)
-      @# Create the subdirectory if needed
-      @mkdir -p $(@D)
-      @cp $&lt; $@</code></pre>
+  <div class="sourceCode"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span class="co"># Rule to copy assets files, make sure the target directory is created first.</span>
+  <span class="dv">$(TARGET_DIR)/assets/%:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">ASSETS_DIR</span><span class="ch">)</span><span class="dt">/% | </span><span class="ch">$(</span><span class="dt">TARGET_DIR</span><span class="ch">)</span>
+      <span class="ch">@</span><span class="co"># Create the subdirectory if needed</span>
+      <span class="ch">@</span><span class="fu">mkdir -p </span><span class="ch">$(</span><span class="dt">@D</span><span class="ch">)</span>
+      <span class="ch">@</span><span class="fu">cp </span><span class="ch">$&lt;</span><span class="fu"> </span><span class="ch">$@</span></code></pre></div>
   <p>Finally the <code>TARGET_DIR</code> rule. This ensures the directory is created</p>
-  <pre><code># Create target directory
-  $(TARGET_DIR):
-      mkdir -p $@</code></pre>
+  <div class="sourceCode"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span class="co"># Create target directory</span>
+  <span class="dv">$(TARGET_DIR):</span>
+      mkdir -p <span class="ch">$@</span></code></pre></div>
   <p>Additionally, I added some helpful rules to <code>run</code>, <code>deploy</code>, <code>info</code>, and <code>clean</code>.</p>
-  <pre><code>deploy: 
-      @# Remove 
-      @rm -fr $(DEPLOY_DIR)
-      @mkdir -p $(DEPLOY_DIR)
-      @cp -r $(TARGET_DIR)/* $(DEPLOY_DIR)
-  .PHONY: deploy
+  <div class="sourceCode"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span class="dv">deploy:</span><span class="dt"> </span>
+      <span class="ch">@</span><span class="co"># Remove </span>
+      <span class="ch">@</span><span class="fu">rm -fr </span><span class="ch">$(</span><span class="dt">DEPLOY_DIR</span><span class="ch">)</span>
+      <span class="ch">@</span><span class="fu">mkdir -p </span><span class="ch">$(</span><span class="dt">DEPLOY_DIR</span><span class="ch">)</span>
+      <span class="ch">@</span><span class="fu">cp -r </span><span class="ch">$(</span><span class="dt">TARGET_DIR</span><span class="ch">)</span><span class="fu">/* </span><span class="ch">$(</span><span class="dt">DEPLOY_DIR</span><span class="ch">)</span>
+  <span class="ot">.PHONY:</span><span class="dt"> deploy</span>
       
   
   
-  # Help command
-  help:
-      @echo &quot;Available commands:&quot;
-      @echo &quot;  make all    - Build the entire project (default)&quot;
-      @echo &quot;  make clean  - Remove the target directory&quot;
-      @echo &quot;  make help   - Display this help message&quot;
-  .PHONY: help
+  <span class="co"># Help command</span>
+  <span class="dv">help:</span>
+      <span class="ch">@</span><span class="fu">echo </span><span class="st">&quot;Available commands:&quot;</span>
+      <span class="ch">@</span><span class="fu">echo </span><span class="st">&quot;  make all    - Build the entire project (default)&quot;</span>
+      <span class="ch">@</span><span class="fu">echo </span><span class="st">&quot;  make clean  - Remove the target directory&quot;</span>
+      <span class="ch">@</span><span class="fu">echo </span><span class="st">&quot;  make help   - Display this help message&quot;</span>
+  <span class="ot">.PHONY:</span><span class="dt"> help</span>
   
-  info: 
-      @echo $(SOURCE_DIR)
-      @echo MARKDOWN_FILES=$(MARKDOWN_FILES)
-      @echo TARGET_HTML_FILES=$(TARGET_HTML_FILES)
-      @echo TEMPLATE_FILES=$(TEMPLATE_FILES)
-      @echo ASSETS_FILES=$(ASSETS_FILES)
-      @echo TARGET_ASSETS_FILES=$(TARGET_ASSETS_FILES)
-  .PHONY: info
+  <span class="dv">info:</span><span class="dt"> </span>
+      <span class="ch">@</span><span class="fu">echo </span><span class="ch">$(</span><span class="dt">SOURCE_DIR</span><span class="ch">)</span>
+      <span class="ch">@</span><span class="fu">echo MARKDOWN_FILES=</span><span class="ch">$(</span><span class="dt">MARKDOWN_FILES</span><span class="ch">)</span>
+      <span class="ch">@</span><span class="fu">echo TARGET_HTML_FILES=</span><span class="ch">$(</span><span class="dt">TARGET_HTML_FILES</span><span class="ch">)</span>
+      <span class="ch">@</span><span class="fu">echo TEMPLATE_FILES=</span><span class="ch">$(</span><span class="dt">TEMPLATE_FILES</span><span class="ch">)</span>
+      <span class="ch">@</span><span class="fu">echo ASSETS_FILES=</span><span class="ch">$(</span><span class="dt">ASSETS_FILES</span><span class="ch">)</span>
+      <span class="ch">@</span><span class="fu">echo TARGET_ASSETS_FILES=</span><span class="ch">$(</span><span class="dt">TARGET_ASSETS_FILES</span><span class="ch">)</span>
+  <span class="ot">.PHONY:</span><span class="dt"> info</span>
   
-  clean:
-      @echo &quot;cleaning project&quot;
-      @rm -rf $(TARGET_DIR)
-  .PHONY: clean</code></pre>
+  <span class="dv">clean:</span>
+      <span class="ch">@</span><span class="fu">echo </span><span class="st">&quot;cleaning project&quot;</span>
+      <span class="ch">@</span><span class="fu">rm -rf </span><span class="ch">$(</span><span class="dt">TARGET_DIR</span><span class="ch">)</span>
+  <span class="ot">.PHONY:</span><span class="dt"> clean</span></code></pre></div>
   <p><em>2024-Aug-25</em></p>
 </main>
 <footer>

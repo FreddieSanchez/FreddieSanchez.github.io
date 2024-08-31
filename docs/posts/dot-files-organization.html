@@ -7,7 +7,80 @@
   <meta name="generator" content="pandoc" />
   <title>Dot File Management with GNU Stow</title>
   <link rel="stylesheet" href="/assets/style/style.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/style/syntax.css" type="text/css" />
+  <link rel="stylesheet" href="div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */" type="text/css" />
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel ="icon" type ="image/png" sizes ="32x32" href ="/assets/images/favicon-32x32.png" />
   <link rel ="icon" type ="image/png" sizes ="16x16" href ="/assets/images/favicon-16x16.png" />
@@ -46,26 +119,26 @@
   └── xmonad</code></pre>
   <p>Migrating to this setup was pretty easy. I created the package directory, mimicking the directory structure of the target file(s) I want to stow, along with empty files with the same name as the target.</p>
   <p>e.g.</p>
-  <pre><code>cd ~/dotfiles
-  mkdir -p xmonad/.xmonad/lib/Xmonad/Util/
-  touch Brightness.hs</code></pre>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> ~/dotfiles
+  <span class="fu">mkdir</span> -p xmonad/.xmonad/lib/Xmonad/Util/
+  <span class="fu">touch</span> Brightness.hs</code></pre></div>
   <p>Then, I used the <code>--adopt</code> flag to move the files from my home directory to the package directory, then create the symbolic link using <code>stow</code>. Before doing any real modifications, I always used the <code>--no</code> flag to just do a trial run of executing the command along with the <code>-v</code> flag for a more verbose output.</p>
   <p>e.g.</p>
   <p>To test the command: <code>stow --adopt --no -vSt ~ xmonad</code></p>
   <p>To finally execute the command. <code>stow --adopt -vSt ~ xmonad</code></p>
   <p>I repeated the process for all my dotfiles using different packages them into different packages.</p>
   <p>Here's the final result for the <code>xmonad</code> package.</p>
-  <pre><code>~/dotfiles$ find xmonad -type f
-  xmonad/.xmonad/lib/XMonad/Util/Brightness.hs
-  xmonad/.xmonad/xmobar.hs
-  xmonad/.xmonad/xmonad-session-rc
-  xmonad/.xmonad/xmonad.hs
-  ~/dotfiles$ cd
-  ~$ find .xmonad -type l -ls
-   26345986      4 lrwxrwxrwx   1 freddie  freddie        65 Sep  6 14:06 .xmonad/lib/XMonad/Util/Brightness.hs -&gt; ../../../../dotfiles/xmonad/.xmonad/lib/XMonad/Util/Brightness.hs
-   24117849      0 lrwxrwxrwx   1 freddie  freddie        36 Sep  6 14:06 .xmonad/xmobar.hs -&gt; ../dotfiles/xmonad/.xmonad/xmobar.hs
-   24117857      0 lrwxrwxrwx   1 freddie  freddie        44 Sep  6 14:06 .xmonad/xmonad-session-rc -&gt; ../dotfiles/xmonad/.xmonad/xmonad-session-rc
-   24117860      0 lrwxrwxrwx   1 freddie  freddie        36 Sep  6 14:06 .xmonad/xmonad.hs -&gt; ../dotfiles/xmonad/.xmonad/xmonad.hs</code></pre>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">~/dotfiles</span>$ <span class="fu">find</span> xmonad -type f
+  <span class="ex">xmonad/.xmonad/lib/XMonad/Util/Brightness.hs</span>
+  <span class="ex">xmonad/.xmonad/xmobar.hs</span>
+  <span class="ex">xmonad/.xmonad/xmonad-session-rc</span>
+  <span class="ex">xmonad/.xmonad/xmonad.hs</span>
+  <span class="ex">~/dotfiles</span>$ <span class="bu">cd</span>
+  <span class="ex">~</span>$ <span class="fu">find</span> .xmonad -type l -ls
+   <span class="ex">26345986</span>      4 lrwxrwxrwx   1 freddie  freddie        65 Sep  6 14:06 .xmonad/lib/XMonad/Util/Brightness.hs -<span class="op">&gt;</span> ../../../../dotfiles/xmonad/.xmonad/lib/XMonad/Util/Brightness.hs
+   <span class="ex">24117849</span>      0 lrwxrwxrwx   1 freddie  freddie        36 Sep  6 14:06 .xmonad/xmobar.hs -<span class="op">&gt;</span> ../dotfiles/xmonad/.xmonad/xmobar.hs
+   <span class="ex">24117857</span>      0 lrwxrwxrwx   1 freddie  freddie        44 Sep  6 14:06 .xmonad/xmonad-session-rc -<span class="op">&gt;</span> ../dotfiles/xmonad/.xmonad/xmonad-session-rc
+   <span class="ex">24117860</span>      0 lrwxrwxrwx   1 freddie  freddie        36 Sep  6 14:06 .xmonad/xmonad.hs -<span class="op">&gt;</span> ../dotfiles/xmonad/.xmonad/xmonad.hs</code></pre></div>
   <p><em>2020-Oct-04</em></p>
 </main>
 <footer>
