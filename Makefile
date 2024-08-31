@@ -2,6 +2,7 @@
 SHELL := /bin/bash
 SOURCE_DIR := src
 MARKDOWN_DIR := $(SOURCE_DIR)/markdown
+POSTS_DIR := $(SOURCE_DIR)/markdown/posts
 ASSETS_DIR := $(SOURCE_DIR)/assets
 STATIC_DIR := $(SOURCE_DIR)/static
 TEMPLATES_DIR := $(SOURCE_DIR)/templates
@@ -21,8 +22,8 @@ TARGET_ASSETS_FILES := $(patsubst $(SOURCE_DIR)/%,$(TARGET_DIR)/%,$(ASSETS_FILES
 TEMPLATE_FILES := $(shell find $(TEMPLATES_DIR) -type f)
 
 STATIC_FILES:= $(shell find $(STATIC_DIR) -type f)
-
 TARGET_STATIC_FILES := $(patsubst $(STATIC_DIR)/%,$(TARGET_DIR)/%,$(STATIC_FILES))
+POST_MARKDOWN_FILES := $(shell find $(POSTS_DIR) -type f)
 
 
 # Pandoc command
@@ -36,7 +37,7 @@ PANDOC := pandoc --from=markdown --to=html \
 	--standalone
 
 # Default target
-all: $(TARGET_STATIC_FILES) $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES) 
+all: posts $(TARGET_STATIC_FILES) $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES) 
 .PHONY: all
 
 # Deploy the changes from the `/target` directory
@@ -80,6 +81,11 @@ clean:
 	@echo "cleaning project"
 	@rm -rf $(TARGET_DIR)
 .PHONY: clean
+
+posts:
+	echo "making posts"
+	scripts/makePosts.sh
+.PHONY: posts
 
 # Rule to create HTML files, make sure the target directory is created first.
 $(TARGET_DIR)/%.html: $(MARKDOWN_DIR)/%.md $(TEMPLATE_FILES) | $(TARGET_DIR)

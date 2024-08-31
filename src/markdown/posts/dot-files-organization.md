@@ -1,4 +1,6 @@
 % Dot File Management with GNU Stow
+% Freddie Sanchez
+% 2020-Oct-04
 
 My dotfile management and versioning was mediocre at best. I had a dotfiles git repository where each branch represents a
 different machine. However, making sure that I captured all my changes in git was challenging since there wasn't a link to from
@@ -26,14 +28,14 @@ e.g. `stow xmonad` would be the same as `stow -St ~ xmonad`.
 
 I had my dotfiles directory in my home directory that is versioned using git.
 
-```
+```bash
 ~/dotfiles
 ```
 
 I originally had a flat directory structure where all dotfiles resided in this main
 directory.  To start using stow, I had to create sub directories for each stow `package`. The result is the following:
 
-```
+```bash
 ~/dotfiles$ tree -d 
 .
 ├── bash

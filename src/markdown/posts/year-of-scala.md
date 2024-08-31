@@ -1,4 +1,6 @@
 % Year of Scala
+% Freddie Sanchez
+% 2018-Jan-01
 
 In college, the default language that the computer science department used was Java. OOP was king and still is in lots of places. However, recently there has been a new trend emerging; functional programming. Java introduced aspects of functional programming in Java 8. 
 
