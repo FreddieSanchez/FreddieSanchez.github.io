@@ -1,4 +1,6 @@
 % Year of Scala - Project structure
+% Freddie Sanchez
+% 2018-Jan-05
 
 sbt uses the same directory structure as Maven for source files by default (all paths are relative to the base directory):
 

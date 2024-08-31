@@ -1,4 +1,6 @@
 % Year of Scala - REPL
+% Freddie Sanchez
+% 2018-Jan-04
 
 ###REPL - Read-Eval-Print-Loop 
 

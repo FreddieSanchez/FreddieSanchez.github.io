@@ -1,4 +1,6 @@
 % GitHub Pages Static Site using Markdown, Pandoc, and Makefile
+% Freddie Sanchez
+% 2024-Aug-25
 
 I wanted to create a lean, flexible, and efficient workflow using mostly text based tools to generating a static website hosted on GitHub Pages. When I began looking how other people handled their static websites, I saw many frameworks/programs out there that did basically exactly what I wanted to do -- [Hugo], [Jekyll]. Honestly, these just seemed too complex, and what is the fun in not building something yourself. 
 
@@ -189,7 +191,6 @@ clean:
 .PHONY: clean
 ```
 
-_2024-Aug-25_
 
 [project layout]: #Project Layout
 [neovim]:https://neovim.io/
@@ -198,3 +199,5 @@ _2024-Aug-25_
 [simple to learn]: https://www.markdownguide.org/basic-syntax/
 [Hugo]: https://gohugo.io/
 [Jekyll]: https://jekyllrb.com/
+
+_2024-Aug-25_

@@ -1,4 +1,6 @@
 % Headless Pi
+% Freddie Sanchez
+% 2017-Feb-09
 
 Grab the latest raspbian 
 https://downloads.raspberrypi.org/raspbian_latest.torrent

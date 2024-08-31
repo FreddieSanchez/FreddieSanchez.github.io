@@ -5,6 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
+  <meta name="author" content="Freddie Sanchez" />
   <title>Dot File Management with GNU Stow</title>
   <link rel="stylesheet" href="/assets/style/style.css" type="text/css" />
   <link rel="stylesheet" href="/assets/style/syntax.css" type="text/css" />
@@ -107,16 +108,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <p>e.g. <code>stow xmonad</code> would be the same as <code>stow -St ~ xmonad</code>.</p>
   <h3 id="migrating-to-stow">Migrating to Stow</h3>
   <p>I had my dotfiles directory in my home directory that is versioned using git.</p>
-  <pre><code>~/dotfiles</code></pre>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">~/dotfiles</span></code></pre></div>
   <p>I originally had a flat directory structure where all dotfiles resided in this main directory. To start using stow, I had to create sub directories for each stow <code>package</code>. The result is the following:</p>
-  <pre><code>~/dotfiles$ tree -d 
-  .
-  ├── bash
-  ├── git
-  ├── local
-  ├── sbt
-  ├── vim
-  └── xmonad</code></pre>
+  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">~/dotfiles</span>$ <span class="ex">tree</span> -d 
+  <span class="ex">.</span>
+  ├── <span class="fu">bash</span>
+  ├── <span class="fu">git</span>
+  ├── <span class="bu">local</span>
+  ├── <span class="ex">sbt</span>
+  ├── <span class="ex">vim</span>
+  └── <span class="ex">xmonad</span></code></pre></div>
   <p>Migrating to this setup was pretty easy. I created the package directory, mimicking the directory structure of the target file(s) I want to stow, along with empty files with the same name as the target.</p>
   <p>e.g.</p>
   <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> ~/dotfiles
