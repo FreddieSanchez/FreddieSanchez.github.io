@@ -30,24 +30,34 @@ The releases will be changing over time. Therefore, the release branch will have
 1. Create a Repository on a remote system that has access to the builds.
 ```git init --git-dir=./.git```
 2. Add files from one of the build directories
-```git --git-dir=./.git --work-tree=<base-build-dir> add '*.[ch]'```
+```bash 
+git --git-dir=./.git --work-tree=<base-build-dir> add '*.[ch]'
+```
 
 3. Commit the updates
-```git commit -am "Initial build"```
+```bash 
+git commit -am "Initial build"
+```
 
 This will take quite a while since there are so many files. However, after the first commit, releveling and pulling/merging is quite fast.
 
 ### New build increment
 When deciding to relevel, the first thing you need to do is update your remote repo. Only including files that were originally added. New files will have to be added manually. 
 
-```
+```bash
 git --git-dir=./.git --work-tree=<new-build-dir> add -u '*.[ch]'
 git commit -am "Upleveled to $1"
 ```
 ### Fetch/Pull on local system.
 1. Checkout the release. 
-```git checkout releaseX```
+
+```bash 
+git checkout releaseX 
+```
 2. Pull the changes from the remote - using theirs files to avoid having to manually merge the changes. 
-```git pull --strategy-option=theirs remote-host:remote-repo```
+
+```bash
+git pull --strategy-option=theirs remote-host:remote-repo
+```
 
 _2017-Feb-05_

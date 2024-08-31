@@ -7,7 +7,80 @@
   <meta name="generator" content="pandoc" />
   <title>Year of Scala - REPL</title>
   <link rel="stylesheet" href="/assets/style/style.css" type="text/css" />
+  <link rel="stylesheet" href="/assets/style/syntax.css" type="text/css" />
+  <link rel="stylesheet" href="div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */" type="text/css" />
   <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel ="icon" type ="image/png" sizes ="32x32" href ="/assets/images/favicon-32x32.png" />
   <link rel ="icon" type ="image/png" sizes ="16x16" href ="/assets/images/favicon-16x16.png" />
@@ -27,36 +100,35 @@
   <h3 id="repl---read-eval-print-loop">REPL - Read-Eval-Print-Loop</h3>
   <p>A REPL give the user an interactive programming environment that 1) Reads the user input, 2) evaluates the express, 3) prints the result, 4) Loops back to read the next expression.</p>
   <p>sbt/Scala provides a Repl, and this is where we'll be beginning.</p>
-  <pre><code>$ sbt console
-  OpenJDK 64-Bit Server VM warning: ignoring option MaxPermSize=384m; support was removed in 8.0
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">$ sbt console
+  OpenJDK <span class="dv">64</span>-Bit Server VM warning: ignoring option MaxPermSize=384m; support was removed in <span class="fl">8.0</span>
   [info] Set current project to... 
   [info] Starting scala interpreter...
   [info] 
-  Welcome to Scala version 2.10.3 (OpenJDK 64-Bit Server VM, Java 1.8.0_151).
+  Welcome to Scala version <span class="dv">2</span>.<span class="fl">10.3</span> (OpenJDK <span class="dv">64</span>-Bit Server VM, Java <span class="dv">1</span>.<span class="fl">8.0</span>_<span class="dv">151</span>).
   Type in expressions to have them evaluated.
-  Type :help for more information.
+  Type :help <span class="kw">for</span> more information.
   
-  scala&gt; 1 + 2
-  res0: Int = 3</code></pre>
+  scala&gt; <span class="dv">1</span> + <span class="dv">2</span>
+  res0: Int = <span class="dv">3</span></code></pre></div>
   <p>The result of the expression is automatically saved in a value named &quot;res&quot; with an auto incrementing suffix.</p>
-  <pre><code>scala&gt; res0
-  res1: Int = 3</code></pre>
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; res0
+  res1: Int = <span class="dv">3</span></code></pre></div>
   <h3 id="values-variables">Values &amp; Variables</h3>
   <p>Values and Variables bind the evaluated result of the expression to a name. The difference between them being, that values are not mutable.</p>
-  <pre><code>scala&gt; val i:Int = 0
-  i: Int = 0
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">val</span> i:Int = <span class="dv">0</span>
+  i: Int = <span class="dv">0</span>
   
-  scala&gt; i = 1
-  &lt;console&gt;:8: error: reassignment to val
-         i = 1
+  scala&gt; i = <span class="dv">1</span>
+  &lt;console&gt;:<span class="dv">8</span>: error: reassignment to <span class="kw">val</span>
+         i = <span class="dv">1</span>
            ^
   
-  scala&gt; var j:Int = 0
-  j: Int = 0
+  scala&gt; <span class="kw">var</span> j:Int = <span class="dv">0</span>
+  j: Int = <span class="dv">0</span>
   
-  scala&gt; j = 1
-  j: Int = 1
-  </code></pre>
+  scala&gt; j = <span class="dv">1</span>
+  j: Int = <span class="dv">1</span></code></pre></div>
   <p>In Scala, the compiler is your friend. Since the expressions are evaluated at compile time, the compiler infers the result type based on the result type of the expression. This is known as <a href="https://en.wikipedia.org/wiki/Type_inference">Type Inference</a> and is a feature..</p>
   <pre><code>scala&gt; val i = 0
   i: Int = 0
@@ -67,129 +139,126 @@
   <p>The expression &quot;0&quot; is evaluated and the compiler infers it's of type &quot;Int&quot; therefore, the value &quot;i&quot; will be set to that type. There is no need to explicitly declare the type. However, in some cases it may improve the readability of your code.</p>
   <h3 id="functions">Functions</h3>
   <p>A function can be declared as a definition. Definitions differ from values in that values are evaluated when defined, where as definitions are only evaluated on every call. The only exception being &quot;lazy values&quot; which are evaluated the first time they are used.</p>
-  <pre><code>scala&gt; def plusOne(x: Int) = x + 1
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">plusOne</span>(x: Int) = x + <span class="dv">1</span>
   plusOne: (x: Int)Int
   
-  scala&gt; val three = plusOne(2)
-  three: Int = 3</code></pre>
+  scala&gt; <span class="kw">val</span> three = <span class="fu">plusOne</span>(<span class="dv">2</span>)
+  three: Int = <span class="dv">3</span></code></pre></div>
   <p>Functions that have multiple expressions can be wrapped in a { }. The final expression in the block is the resultant type of the code block. There is no &quot;return&quot;, just a result of the expression.</p>
-  <pre><code>scala&gt; def plusTwo(x:Int) = { 
-       | val first = plusOne(x)
-       | val second = plusOne(first)
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">plusTwo</span>(x:Int) = { 
+       | <span class="kw">val</span> first = <span class="fu">plusOne</span>(x)
+       | <span class="kw">val</span> second = <span class="fu">plusOne</span>(first)
        | second
        | }
   plusTwo: (x: Int)Int
   
-  scala&gt; val three = plusTwo(1)
-  three: Int = 3</code></pre>
+  scala&gt; <span class="kw">val</span> three = <span class="fu">plusTwo</span>(<span class="dv">1</span>)
+  three: Int = <span class="dv">3</span></code></pre></div>
   <h3 id="nested-functions">Nested Functions</h3>
   <p>You can indeed have functions defined inside of functions. This can be beneficial when encapsulating the implementation. For example, if you want to write a tail recursive version of the parent function.</p>
-  <pre><code>scala&gt; def plusTwo(x:Int) = {
-       |   def plusOne(y:Int) = y + 1
-       |   plusOne(plusOne(x))
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">plusTwo</span>(x:Int) = {
+       |   <span class="kw">def</span> <span class="fu">plusOne</span>(y:Int) = y + <span class="dv">1</span>
+       |   <span class="fu">plusOne</span>(<span class="fu">plusOne</span>(x))
        | }
   plusTwo: (x: Int)Int
   
-  scala&gt; plusTwo(1)
-  res9: Int = 3
-  </code></pre>
+  scala&gt; <span class="fu">plusTwo</span>(<span class="dv">1</span>)
+  res9: Int = <span class="dv">3</span></code></pre></div>
   <h3 id="higher-order-functions">Higher-Order Functions</h3>
   <p>In Scala functions are a first-class values. You can define a value that is a function, define a function that takes a function, or returns a function as the result of the expression.</p>
   <p>For example:</p>
-  <pre><code>scala&gt; val plusOne = (x:Int) =&gt; x + 1
-  plusOne: Int =&gt; Int = &lt;function1&gt;</code></pre>
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">val</span> plusOne = (x:Int) =&gt; x + <span class="dv">1</span>
+  plusOne: Int =&gt; Int = &lt;function1&gt;</code></pre></div>
   <p>plusOne has the type <code>Int =&gt; Int</code>. This means, that plusOne is a function that takes an Int and returns an Int. This function can be passed to another function as a parameter since functions are types.</p>
-  <pre><code>scala&gt; def addOne(x:Int, y: Int =&gt; Int) = y(x)
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">addOne</span>(x:Int, y: Int =&gt; Int) = <span class="fu">y</span>(x)
   addOne: (x: Int, y: Int =&gt; Int)Int
   
-  scala&gt; addOne(1, plusOne)
-  res0: Int = 2
-  </code></pre>
+  scala&gt; <span class="fu">addOne</span>(<span class="dv">1</span>, plusOne)
+  res0: Int = <span class="dv">2</span></code></pre></div>
   <p>The function plusOne is being passed to the function addOne, which simply executes function. This is very powerful since this allows us to apply different behavior to an existing function.</p>
   <p>Let's see how we can use this to our advantage. Let's say we have a function that looks through a list of ints and returns all the ones.</p>
-  <pre><code>scala&gt; def findOnes(ls:List[Int]):List[Int] = {
-       |   ls match {
-       |     case Nil =&gt; Nil
-       |     case x::xs =&gt; if (x == 1) x::findOnes(xs) else findOnes(xs)
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">findOnes</span>(ls:List[Int]):List[Int] = {
+       |   ls <span class="kw">match</span> {
+       |     <span class="kw">case</span> Nil =&gt; Nil
+       |     <span class="kw">case</span> x::xs =&gt; <span class="kw">if</span> (x == <span class="dv">1</span>) x::<span class="fu">findOnes</span>(xs) <span class="kw">else</span> <span class="fu">findOnes</span>(xs)
        |   }
        | }
   findOnes: (ls: List[Int])List[Int]
   
-  scala&gt; findOnes(List(1,2,3,1))
-  res5: List[Int] = List(1, 1)
+  scala&gt; <span class="fu">findOnes</span>(List(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>))
+  res5: List[Int] = List(<span class="dv">1</span>, <span class="dv">1</span>)
   
-  scala&gt; findOnes(List())
-  res6: List[Int] = List()
-  </code></pre>
+  scala&gt; <span class="fu">findOnes</span>(List())
+  res6: List[Int] = List()</code></pre></div>
   <p>Great, now how about if we have to find all the numbers greater than 4? or all the numbers equal to 2? We can genearlize this by taking predicate as a function that takes two Ints and returns a boolean.</p>
-  <pre><code>scala&gt; def find( ls:List[Int], fn: (Int) =&gt; Boolean):List[Int]= {
-       |   ls match {
-       |     case Nil =&gt; Nil
-       |     case x::xs =&gt; if (fn(x)) x::find(xs,fn) else find(xs, fn)
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">find</span>( ls:List[Int], fn: (Int) =&gt; Boolean):List[Int]= {
+       |   ls <span class="kw">match</span> {
+       |     <span class="kw">case</span> Nil =&gt; Nil
+       |     <span class="kw">case</span> x::xs =&gt; <span class="kw">if</span> (<span class="fu">fn</span>(x)) x::<span class="fu">find</span>(xs,fn) <span class="kw">else</span> <span class="fu">find</span>(xs, fn)
        |   }
        | }
   find: (ls: List[Int], fn: Int =&gt; Boolean)List[Int]
   
-  scala&gt; find(List(1,2,3,1), { x =&gt; x == 1 })
-  res3: List[Int] = List(1, 1)
+  scala&gt; <span class="fu">find</span>(List(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>), { x =&gt; x == <span class="dv">1</span> })
+  res3: List[Int] = List(<span class="dv">1</span>, <span class="dv">1</span>)
   
-  scala&gt; find(List(1,2,3,1), { x =&gt; x &gt; 2 })
-  res4: List[Int] = List(3)</code></pre>
+  scala&gt; <span class="fu">find</span>(List(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>), { x =&gt; x &gt; <span class="dv">2</span> })
+  res4: List[Int] = List(<span class="dv">3</span>)</code></pre></div>
   <p>Higher order functions allows us to pass behavior into an already existing function. This will greatly increase code reuse.</p>
   <h3 id="recursive-functions">Recursive Functions</h3>
   <p>In the previous example, I wrote a function that calls itself. Why are they useful? They provide a great benefit by preventing mutation. It does this by utilizing the function stack to store local values and parameters.</p>
-  <p>Let's look at a recusrive function:</p>
-  <pre><code>scala&gt; def power(x:Int, n:Int): Int = {
-       |   if (n == 0) 1 // anything to the 0th power is 1
-       |   else x * power(x, n-1)
+  <p>Let's look at a recursive function:</p>
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">power</span>(x:Int, n:Int): Int = {
+       |   <span class="kw">if</span> (n == <span class="dv">0</span>) <span class="dv">1</span> <span class="co">// anything to the 0th power is 1</span>
+       |   <span class="kw">else</span> x * <span class="fu">power</span>(x, n<span class="dv">-1</span>)
        | }
   power: (x: Int, n: Int)Int
   
-  scala&gt; power(2,3)
-  res0: Int = 8
+  scala&gt; <span class="fu">power</span>(<span class="dv">2</span>,<span class="dv">3</span>)
+  res0: Int = <span class="dv">8</span>
   
-  scala&gt; power(4,0)
-  res1: Int = 1</code></pre>
-  <p>In all recursive funcitons, you need a base case, in this case, we use when n is equal to 0. The recursive case calls itself with but with a subset of the problem. In the power function, we use n as the number of times x should be multipled by.</p>
-  <pre><code>power(2, 3)
-  x = 2, n = 3
-  2 * power (2, 2)
-  2 * 2 * power(2, 1)
-  2 * 2 * 2 * power(2,0)
-  2 * 2 * 2 * 1
-  8</code></pre>
+  scala&gt; <span class="fu">power</span>(<span class="dv">4</span>,<span class="dv">0</span>)
+  res1: Int = <span class="dv">1</span></code></pre></div>
+  <p>In all recursive functions, you need a base case, in this case, we use when n is equal to 0. The recursive case calls itself with but with a subset of the problem. In the power function, we use n as the number of times x should be multiplied by.</p>
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="fu">power</span>(<span class="dv">2</span>, <span class="dv">3</span>)
+  x = <span class="dv">2</span>, n = <span class="dv">3</span>
+  <span class="dv">2</span> * <span class="fu">power</span> (<span class="dv">2</span>, <span class="dv">2</span>)
+  <span class="dv">2</span> * <span class="dv">2</span> * <span class="fu">power</span>(<span class="dv">2</span>, <span class="dv">1</span>)
+  <span class="dv">2</span> * <span class="dv">2</span> * <span class="dv">2</span> * <span class="fu">power</span>(<span class="dv">2</span>,<span class="dv">0</span>)
+  <span class="dv">2</span> * <span class="dv">2</span> * <span class="dv">2</span> * <span class="dv">1</span>
+  <span class="dv">8</span></code></pre></div>
   <p>Each time, we're not modifying n, but essentially creating a copy of it when calling the function. But what about the case where n is absurdly large? We'll essentially run out stack frames and overflow the stack. To solve this scenario, Scala has a feature called Tail Recursion.</p>
   <h3 id="tail-recursion">Tail Recursion</h3>
   <p>Tail recursion relies on storing the intermediate values as a function parameters. In the power example, we only knew the result when ALL the calls to power were complete requiring all the previous results and the accompanying function stack frame. Let's rewrite the power function to support tail recursion.</p>
-  <pre><code>scala&gt; def power(x:Int, n:Int): Int = {
-       |   @annotation.tailrec
-       |   def _power(x:Int, n:Int, accum:Int): Int = {
-       |     if (n == 0) accum
-       |     else _power(x, n-1, x * accum)
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">power</span>(x:Int, n:Int): Int = {
+       |   @annotation.<span class="fu">tailrec</span>
+       |   <span class="kw">def</span> <span class="fu">_power</span>(x:Int, n:Int, accum:Int): Int = {
+       |     <span class="kw">if</span> (n == <span class="dv">0</span>) accum
+       |     <span class="kw">else</span> <span class="fu">_power</span>(x, n<span class="dv">-1</span>, x * accum)
        |   }
-       |  _power(x,n,1)
+       |  <span class="fu">_power</span>(x,n,<span class="dv">1</span>)
        | }
-  power: (x: Int, n: Int)Int</code></pre>
+  power: (x: Int, n: Int)Int</code></pre></div>
   <p>This utilizes a Scala feature called annotations, that tells the compiler that the intermediate results are not handled already and the intermediate stack frames can be reclaimed (or not even allocated in the first place).</p>
   <p>Let's see how this example plays out. Notice, that I created a nested function to hide the fact that we're using tail recursion here.</p>
-  <pre><code>_power(2, 3, 1)
-  x = 2, n = 3, accum = 1
-  x = 2, n = 2, accum = 2
-  x = 2, n = 1, accum = 4
-  x = 2, n = 0, accum = 8
-  recusion ends, and accum is the final result</code></pre>
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="fu">_power</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>)
+  x = <span class="dv">2</span>, n = <span class="dv">3</span>, accum = <span class="dv">1</span>
+  x = <span class="dv">2</span>, n = <span class="dv">2</span>, accum = <span class="dv">2</span>
+  x = <span class="dv">2</span>, n = <span class="dv">1</span>, accum = <span class="dv">4</span>
+  x = <span class="dv">2</span>, n = <span class="dv">0</span>, accum = <span class="dv">8</span>
+  recusion ends, and accum is the <span class="kw">final</span> result</code></pre></div>
   <p>You can see, we didn't need to wait for all the other function calls to complete, we already had the result!</p>
   <p>This function can be modified by using another Scala feature: parameters with default values.</p>
-  <pre><code>scala&gt; @annotation.tailrec
-       | def power(x:Int, n:Int, accum:Int = 1): Int = {
-       |   if (n == 0) accum
-       |   else power(x, n-1, x * accum)
+  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; @annotation.<span class="fu">tailrec</span>
+       | <span class="kw">def</span> <span class="fu">power</span>(x:Int, n:Int, accum:Int = <span class="dv">1</span>): Int = {
+       |   <span class="kw">if</span> (n == <span class="dv">0</span>) accum
+       |   <span class="kw">else</span> <span class="fu">power</span>(x, n<span class="dv">-1</span>, x * accum)
        | }
     
   power: (x: Int, n: Int, accum: Int)Int
   
-  scala&gt; power(2,3)
-  res6: Int = 8</code></pre>
+  scala&gt; <span class="fu">power</span>(<span class="dv">2</span>,<span class="dv">3</span>)
+  res6: Int = <span class="dv">8</span></code></pre></div>
   <p>Notice that when we called the function, we left out the last parameter, in this case the default value is used. The downside of this, is now we are exposing that implementation detail.</p>
   <p><em>2018-Jan-04</em></p>
 </main>

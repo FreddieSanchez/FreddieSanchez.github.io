@@ -7,16 +7,18 @@ https://downloads.raspberrypi.org/raspbian_latest.torrent
 ## Flashing the image
 
 First find the 
-```
+```bash
 $ sudo fdisk -l
 ```
 note this is the device, not the partition
-```sudo dd bs=4M if=2017-01-11-raspbian-jessie.img of=/dev/mmcblk0```
+```bash
+sudo dd bs=4M if=2017-01-11-raspbian-jessie.img of=/dev/mmcblk0
+```
 
 mount the second partition, edit it with your wireless config
 https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
 
-```
+```bash
 $ sudo vim etc/wpa_supplicant/wpa_supplicant.conf
 
 network={
