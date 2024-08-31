@@ -9,10 +9,10 @@ echo "" > $POST_MARKDOWN_FILE
 for file in $POST_MARKDOWN_FILES; do 
   echo "processing $file"
   MD_FILE=$file
-  TITLE=`head -1 $MD_FILE | cut -d % -f2`
-  DATE=`head -3 $MD_FILE | tail -1 | cut -d % -f2`
+  TITLE="$(echo `head -1 $MD_FILE | cut -d % -f2`| xargs)"
+  DATE="$(echo `head -3 $MD_FILE | tail -1 | cut -d % -f2` | xargs)"
   HTML_FILE="`echo "$MD_FILE" | cut -d . -f1`.html"
-  echo "* [$TITLE]($HTML_FILE) - $DATE" >> $POST_MARKDOWN_FILE
+  echo "* [$TITLE]($HTML_FILE) - _${DATE}_" >> $POST_MARKDOWN_FILE
 done;
 
 # Take the last field put it to the first field, sort it, then remove it, and it to the file.
