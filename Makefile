@@ -41,7 +41,7 @@ all: posts $(TARGET_STATIC_FILES) $(TARGET_ASSETS_FILES) $(TARGET_HTML_FILES)
 .PHONY: all
 
 # Deploy the changes from the `/target` directory
-deploy: 
+deploy: all
 	@# Remove 
 	@rm -fr $(DEPLOY_DIR)
 	@mkdir -p $(DEPLOY_DIR)

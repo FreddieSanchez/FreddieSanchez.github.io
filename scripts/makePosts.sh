@@ -11,7 +11,8 @@ for file in $POST_MARKDOWN_FILES; do
   MD_FILE=$file
   TITLE="$(echo `head -1 $MD_FILE | cut -d % -f2`| xargs)"
   DATE="$(echo `head -3 $MD_FILE | tail -1 | cut -d % -f2` | xargs)"
-  HTML_FILE="`echo "$MD_FILE" | cut -d . -f1`.html"
+  HTML_DIR=${MD_FILE/$SOURCE_DIR/""}
+  HTML_FILE=${HTML_DIR/md/html}
   echo "* [$TITLE]($HTML_FILE) - _${DATE}_" >> $POST_MARKDOWN_FILE
 done;
 
