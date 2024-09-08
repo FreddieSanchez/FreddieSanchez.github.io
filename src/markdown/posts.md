@@ -1,6 +1,6 @@
 % Posts
 % Freddie Sanchez
-% 2024-Aug-30
+% 2024-Sep-07
 * [GitHub Pages Static Site using Markdown, Pandoc, and Makefile](/posts/static-site-using-makefile.html) - _2024-Aug-25_
 * [Dot File Management with GNU Stow](/posts/dot-files-organization.html) - _2020-Oct-04_
 * [Year of Scala - Project structure](/posts/year-of-scala/2_sbt_project.html) - _2018-Jan-05_
