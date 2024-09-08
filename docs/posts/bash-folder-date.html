@@ -26,25 +26,32 @@
 </ul>
 </nav>
 <main>
-  <p>One problem that I face often is I have to create a directory with new version of files based on a previous directory. The convesion is to use the current date 20141125 followed by an letter 'a'. I wanted to script this out instead of doing it manually.</p>
+  <p>One problem that I face often is I have to create a directory with
+  new version of files based on a previous directory. The convesion is
+  to use the current date 20141125 followed by an letter ‘a’. I wanted
+  to script this out instead of doing it manually.</p>
   <p>Obtaining the current date is easy:</p>
-  <p><code>date &quot;+%Y%m%d&quot;</code></p>
+  <p><code>date "+%Y%m%d"</code></p>
   <p>This should yield the date of the form YYYYMMDD.</p>
-  <p>The next part is obtaining incrementing a letter. Here are two ways of doing it. The first uses the 'tr' command. The second uses bash's <a href="http://www.gnu.org/software/bash/manual/bashref.html#Brace-Expansion">Brace Expansion</a>.</p>
+  <p>The next part is obtaining incrementing a letter. Here are two ways
+  of doing it. The first uses the ‘tr’ command. The second uses bash’s
+  <a
+  href="http://www.gnu.org/software/bash/manual/bashref.html#Brace-Expansion">Brace
+  Expansion</a>.</p>
   <pre><code>version=a
-  dir=SomeDir
-  while [[ -d $dir/$version ]]; do 
-    version=`echo $version` | tr &#39;a-z&#39; &#39;b-za&#39;
-  done
-  mkdir $dir/$version</code></pre>
+dir=SomeDir
+while [[ -d $dir/$version ]]; do 
+  version=`echo $version` | tr &#39;a-z&#39; &#39;b-za&#39;
+done
+mkdir $dir/$version</code></pre>
   <p>or</p>
   <pre><code>dir=SomeDir
-   for x in $dir{a..zA..Z}; do 
-      if [[ ! -d $x ]]; then 
-        mkdir $x; 
-        break; 
-      fi;
-    done</code></pre>
+ for x in $dir{a..zA..Z}; do 
+    if [[ ! -d $x ]]; then 
+      mkdir $x; 
+      break; 
+    fi;
+  done</code></pre>
   <p><em>2017-Feb-22</em></p>
 </main>
 <footer>

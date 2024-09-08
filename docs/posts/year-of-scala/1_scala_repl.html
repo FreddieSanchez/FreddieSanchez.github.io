@@ -9,78 +9,71 @@
   <title>Year of Scala - REPL</title>
   <link rel="stylesheet" href="/assets/style/style.css" type="text/css" />
   <link rel="stylesheet" href="/assets/style/syntax.css" type="text/css" />
-  <link rel="stylesheet" href="div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */" type="text/css" />
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel ="icon" type ="image/png" sizes ="32x32" href ="/assets/images/favicon-32x32.png" />
@@ -99,168 +92,239 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </nav>
 <main>
   <h3 id="repl---read-eval-print-loop">REPL - Read-Eval-Print-Loop</h3>
-  <p>A REPL give the user an interactive programming environment that 1) Reads the user input, 2) evaluates the express, 3) prints the result, 4) Loops back to read the next expression.</p>
-  <p>sbt/Scala provides a Repl, and this is where we'll be beginning.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">$ sbt console
-  OpenJDK <span class="dv">64</span>-Bit Server VM warning: ignoring option MaxPermSize=384m; support was removed in <span class="fl">8.0</span>
-  [info] Set current project to... 
-  [info] Starting scala interpreter...
-  [info] 
-  Welcome to Scala version <span class="dv">2</span>.<span class="fl">10.3</span> (OpenJDK <span class="dv">64</span>-Bit Server VM, Java <span class="dv">1</span>.<span class="fl">8.0</span>_<span class="dv">151</span>).
-  Type in expressions to have them evaluated.
-  Type :help <span class="kw">for</span> more information.
-  
-  scala&gt; <span class="dv">1</span> + <span class="dv">2</span>
-  res0: Int = <span class="dv">3</span></code></pre></div>
-  <p>The result of the expression is automatically saved in a value named &quot;res&quot; with an auto incrementing suffix.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; res0
-  res1: Int = <span class="dv">3</span></code></pre></div>
+  <p>A REPL give the user an interactive programming environment that 1)
+  Reads the user input, 2) evaluates the express, 3) prints the result,
+  4) Loops back to read the next expression.</p>
+  <p>sbt/Scala provides a Repl, and this is where we’ll be
+  beginning.</p>
+  <div class="sourceCode" id="cb1"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>$ sbt console</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>OpenJDK <span class="dv">64</span><span class="op">-</span>Bit Server VM warning<span class="op">:</span> ignoring option MaxPermSize<span class="op">=</span><span class="dv">384</span>m<span class="op">;</span> support was removed in <span class="fl">8.0</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>info<span class="op">]</span> <span class="ex">Set</span> current project to<span class="op">...</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>info<span class="op">]</span> Starting scala interpreter<span class="op">...</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>info<span class="op">]</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>Welcome to Scala version <span class="dv">2</span><span class="op">.</span><span class="fl">10.3</span> <span class="op">(</span>OpenJDK <span class="dv">64</span><span class="op">-</span>Bit Server VM<span class="op">,</span> Java <span class="dv">1</span><span class="op">.</span><span class="fl">8.0</span>_151<span class="op">).</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Type</span> in expressions to have them evaluated<span class="op">.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Type</span> <span class="op">:</span>help <span class="cf">for</span> more information<span class="op">.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>res0<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">3</span></span></code></pre></div>
+  <p>The result of the expression is automatically saved in a value
+  named “res” with an auto incrementing suffix.</p>
+  <div class="sourceCode" id="cb2"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> res0</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>res1<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">3</span></span></code></pre></div>
   <h3 id="values-variables">Values &amp; Variables</h3>
-  <p>Values and Variables bind the evaluated result of the expression to a name. The difference between them being, that values are not mutable.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">val</span> i:Int = <span class="dv">0</span>
-  i: Int = <span class="dv">0</span>
-  
-  scala&gt; i = <span class="dv">1</span>
-  &lt;console&gt;:<span class="dv">8</span>: error: reassignment to <span class="kw">val</span>
-         i = <span class="dv">1</span>
-           ^
-  
-  scala&gt; <span class="kw">var</span> j:Int = <span class="dv">0</span>
-  j: Int = <span class="dv">0</span>
-  
-  scala&gt; j = <span class="dv">1</span>
-  j: Int = <span class="dv">1</span></code></pre></div>
-  <p>In Scala, the compiler is your friend. Since the expressions are evaluated at compile time, the compiler infers the result type based on the result type of the expression. This is known as <a href="https://en.wikipedia.org/wiki/Type_inference">Type Inference</a> and is a feature..</p>
+  <p>Values and Variables bind the evaluated result of the expression to
+  a name. The difference between them being, that values are not
+  mutable.</p>
+  <div class="sourceCode" id="cb3"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">val</span> i<span class="op">:</span><span class="bu">Int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>i<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> i <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>console<span class="op">&gt;:</span><span class="dv">8</span><span class="op">:</span> error<span class="op">:</span> reassignment to <span class="kw">val</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>       i <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>         <span class="op">^</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">var</span> j<span class="op">:</span><span class="bu">Int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>j<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> j <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>j<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">1</span></span></code></pre></div>
+  <p>In Scala, the compiler is your friend. Since the expressions are
+  evaluated at compile time, the compiler infers the result type based
+  on the result type of the expression. This is known as <a
+  href="https://en.wikipedia.org/wiki/Type_inference">Type Inference</a>
+  and is a feature..</p>
   <pre><code>scala&gt; val i = 0
-  i: Int = 0
-  
-  scala&gt; val i = 0.0
-  i: Double = 0.0
-  </code></pre>
-  <p>The expression &quot;0&quot; is evaluated and the compiler infers it's of type &quot;Int&quot; therefore, the value &quot;i&quot; will be set to that type. There is no need to explicitly declare the type. However, in some cases it may improve the readability of your code.</p>
+i: Int = 0
+
+scala&gt; val i = 0.0
+i: Double = 0.0
+</code></pre>
+  <p>The expression “0” is evaluated and the compiler infers it’s of
+  type “Int” therefore, the value “i” will be set to that type. There is
+  no need to explicitly declare the type. However, in some cases it may
+  improve the readability of your code.</p>
   <h3 id="functions">Functions</h3>
-  <p>A function can be declared as a definition. Definitions differ from values in that values are evaluated when defined, where as definitions are only evaluated on every call. The only exception being &quot;lazy values&quot; which are evaluated the first time they are used.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">plusOne</span>(x: Int) = x + <span class="dv">1</span>
-  plusOne: (x: Int)Int
-  
-  scala&gt; <span class="kw">val</span> three = <span class="fu">plusOne</span>(<span class="dv">2</span>)
-  three: Int = <span class="dv">3</span></code></pre></div>
-  <p>Functions that have multiple expressions can be wrapped in a { }. The final expression in the block is the resultant type of the code block. There is no &quot;return&quot;, just a result of the expression.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">plusTwo</span>(x:Int) = { 
-       | <span class="kw">val</span> first = <span class="fu">plusOne</span>(x)
-       | <span class="kw">val</span> second = <span class="fu">plusOne</span>(first)
-       | second
-       | }
-  plusTwo: (x: Int)Int
-  
-  scala&gt; <span class="kw">val</span> three = <span class="fu">plusTwo</span>(<span class="dv">1</span>)
-  three: Int = <span class="dv">3</span></code></pre></div>
+  <p>A function can be declared as a definition. Definitions differ from
+  values in that values are evaluated when defined, where as definitions
+  are only evaluated on every call. The only exception being “lazy
+  values” which are evaluated the first time they are used.</p>
+  <div class="sourceCode" id="cb5"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">def</span> <span class="fu">plusOne</span><span class="op">(</span>x<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span> <span class="op">=</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plusOne<span class="op">:</span> <span class="op">(</span>x<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span><span class="bu">Int</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">val</span> three <span class="op">=</span> <span class="fu">plusOne</span><span class="op">(</span><span class="dv">2</span><span class="op">)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>three<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">3</span></span></code></pre></div>
+  <p>Functions that have multiple expressions can be wrapped in a { }.
+  The final expression in the block is the resultant type of the code
+  block. There is no “return”, just a result of the expression.</p>
+  <div class="sourceCode" id="cb6"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">def</span> <span class="fu">plusTwo</span><span class="op">(</span>x<span class="op">:</span><span class="bu">Int</span><span class="op">)</span> <span class="op">=</span> <span class="op">{</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="kw">val</span> first <span class="op">=</span> <span class="fu">plusOne</span><span class="op">(</span>x<span class="op">)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="kw">val</span> second <span class="op">=</span> <span class="fu">plusOne</span><span class="op">(</span>first<span class="op">)</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> second</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="op">}</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plusTwo<span class="op">:</span> <span class="op">(</span>x<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span><span class="bu">Int</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">val</span> three <span class="op">=</span> <span class="fu">plusTwo</span><span class="op">(</span><span class="dv">1</span><span class="op">)</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>three<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">3</span></span></code></pre></div>
   <h3 id="nested-functions">Nested Functions</h3>
-  <p>You can indeed have functions defined inside of functions. This can be beneficial when encapsulating the implementation. For example, if you want to write a tail recursive version of the parent function.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">plusTwo</span>(x:Int) = {
-       |   <span class="kw">def</span> <span class="fu">plusOne</span>(y:Int) = y + <span class="dv">1</span>
-       |   <span class="fu">plusOne</span>(<span class="fu">plusOne</span>(x))
-       | }
-  plusTwo: (x: Int)Int
-  
-  scala&gt; <span class="fu">plusTwo</span>(<span class="dv">1</span>)
-  res9: Int = <span class="dv">3</span></code></pre></div>
+  <p>You can indeed have functions defined inside of functions. This can
+  be beneficial when encapsulating the implementation. For example, if
+  you want to write a tail recursive version of the parent function.</p>
+  <div class="sourceCode" id="cb7"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">def</span> <span class="fu">plusTwo</span><span class="op">(</span>x<span class="op">:</span><span class="bu">Int</span><span class="op">)</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   <span class="kw">def</span> <span class="fu">plusOne</span><span class="op">(</span>y<span class="op">:</span><span class="bu">Int</span><span class="op">)</span> <span class="op">=</span> y <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   <span class="fu">plusOne</span><span class="op">(</span><span class="fu">plusOne</span><span class="op">(</span>x<span class="op">))</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="op">}</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plusTwo<span class="op">:</span> <span class="op">(</span>x<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span><span class="bu">Int</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="fu">plusTwo</span><span class="op">(</span><span class="dv">1</span><span class="op">)</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>res9<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">3</span></span></code></pre></div>
   <h3 id="higher-order-functions">Higher-Order Functions</h3>
-  <p>In Scala functions are a first-class values. You can define a value that is a function, define a function that takes a function, or returns a function as the result of the expression.</p>
+  <p>In Scala functions are a first-class values. You can define a value
+  that is a function, define a function that takes a function, or
+  returns a function as the result of the expression.</p>
   <p>For example:</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">val</span> plusOne = (x:Int) =&gt; x + <span class="dv">1</span>
-  plusOne: Int =&gt; Int = &lt;function1&gt;</code></pre></div>
-  <p>plusOne has the type <code>Int =&gt; Int</code>. This means, that plusOne is a function that takes an Int and returns an Int. This function can be passed to another function as a parameter since functions are types.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">addOne</span>(x:Int, y: Int =&gt; Int) = <span class="fu">y</span>(x)
-  addOne: (x: Int, y: Int =&gt; Int)Int
-  
-  scala&gt; <span class="fu">addOne</span>(<span class="dv">1</span>, plusOne)
-  res0: Int = <span class="dv">2</span></code></pre></div>
-  <p>The function plusOne is being passed to the function addOne, which simply executes function. This is very powerful since this allows us to apply different behavior to an existing function.</p>
-  <p>Let's see how we can use this to our advantage. Let's say we have a function that looks through a list of ints and returns all the ones.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">findOnes</span>(ls:List[Int]):List[Int] = {
-       |   ls <span class="kw">match</span> {
-       |     <span class="kw">case</span> Nil =&gt; Nil
-       |     <span class="kw">case</span> x::xs =&gt; <span class="kw">if</span> (x == <span class="dv">1</span>) x::<span class="fu">findOnes</span>(xs) <span class="kw">else</span> <span class="fu">findOnes</span>(xs)
-       |   }
-       | }
-  findOnes: (ls: List[Int])List[Int]
-  
-  scala&gt; <span class="fu">findOnes</span>(List(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>))
-  res5: List[Int] = List(<span class="dv">1</span>, <span class="dv">1</span>)
-  
-  scala&gt; <span class="fu">findOnes</span>(List())
-  res6: List[Int] = List()</code></pre></div>
-  <p>Great, now how about if we have to find all the numbers greater than 4? or all the numbers equal to 2? We can genearlize this by taking predicate as a function that takes two Ints and returns a boolean.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">find</span>( ls:List[Int], fn: (Int) =&gt; Boolean):List[Int]= {
-       |   ls <span class="kw">match</span> {
-       |     <span class="kw">case</span> Nil =&gt; Nil
-       |     <span class="kw">case</span> x::xs =&gt; <span class="kw">if</span> (<span class="fu">fn</span>(x)) x::<span class="fu">find</span>(xs,fn) <span class="kw">else</span> <span class="fu">find</span>(xs, fn)
-       |   }
-       | }
-  find: (ls: List[Int], fn: Int =&gt; Boolean)List[Int]
-  
-  scala&gt; <span class="fu">find</span>(List(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>), { x =&gt; x == <span class="dv">1</span> })
-  res3: List[Int] = List(<span class="dv">1</span>, <span class="dv">1</span>)
-  
-  scala&gt; <span class="fu">find</span>(List(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>), { x =&gt; x &gt; <span class="dv">2</span> })
-  res4: List[Int] = List(<span class="dv">3</span>)</code></pre></div>
-  <p>Higher order functions allows us to pass behavior into an already existing function. This will greatly increase code reuse.</p>
+  <div class="sourceCode" id="cb8"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">val</span> plusOne <span class="op">=</span> <span class="op">(</span>x<span class="op">:</span><span class="bu">Int</span><span class="op">)</span> <span class="op">=&gt;</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plusOne<span class="op">:</span> <span class="bu">Int</span> <span class="op">=&gt;</span> <span class="bu">Int</span> <span class="op">=</span> <span class="op">&lt;</span>function1<span class="op">&gt;</span></span></code></pre></div>
+  <p>plusOne has the type <code>Int =&gt; Int</code>. This means, that
+  plusOne is a function that takes an Int and returns an Int. This
+  function can be passed to another function as a parameter since
+  functions are types.</p>
+  <div class="sourceCode" id="cb9"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">def</span> <span class="fu">addOne</span><span class="op">(</span>x<span class="op">:</span><span class="bu">Int</span><span class="op">,</span> y<span class="op">:</span> <span class="bu">Int</span> <span class="op">=&gt;</span> <span class="bu">Int</span><span class="op">)</span> <span class="op">=</span> <span class="fu">y</span><span class="op">(</span>x<span class="op">)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>addOne<span class="op">:</span> <span class="op">(</span>x<span class="op">:</span> <span class="bu">Int</span><span class="op">,</span> y<span class="op">:</span> <span class="bu">Int</span> <span class="op">=&gt;</span> <span class="bu">Int</span><span class="op">)</span><span class="bu">Int</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="fu">addOne</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> plusOne<span class="op">)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>res0<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">2</span></span></code></pre></div>
+  <p>The function plusOne is being passed to the function addOne, which
+  simply executes function. This is very powerful since this allows us
+  to apply different behavior to an existing function.</p>
+  <p>Let’s see how we can use this to our advantage. Let’s say we have a
+  function that looks through a list of ints and returns all the
+  ones.</p>
+  <div class="sourceCode" id="cb10"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">def</span> <span class="fu">findOnes</span><span class="op">(</span>ls<span class="op">:</span><span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">]):</span><span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">]</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   ls <span class="cf">match</span> <span class="op">{</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>     <span class="cf">case</span> Nil <span class="op">=&gt;</span> Nil</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>     <span class="cf">case</span> x<span class="op">::</span>xs <span class="op">=&gt;</span> <span class="cf">if</span> <span class="op">(</span>x <span class="op">==</span> <span class="dv">1</span><span class="op">)</span> x<span class="op">::</span><span class="fu">findOnes</span><span class="op">(</span>xs<span class="op">)</span> <span class="cf">else</span> <span class="fu">findOnes</span><span class="op">(</span>xs<span class="op">)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   <span class="op">}</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="op">}</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>findOnes<span class="op">:</span> <span class="op">(</span>ls<span class="op">:</span> <span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">])</span><span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">]</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="fu">findOnes</span><span class="op">(</span><span class="ex">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">1</span><span class="op">))</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>res5<span class="op">:</span> <span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">]</span> <span class="op">=</span> <span class="ex">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="fu">findOnes</span><span class="op">(</span><span class="ex">List</span><span class="op">())</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>res6<span class="op">:</span> <span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">]</span> <span class="op">=</span> <span class="ex">List</span><span class="op">()</span></span></code></pre></div>
+  <p>Great, now how about if we have to find all the numbers greater
+  than 4? or all the numbers equal to 2? We can genearlize this by
+  taking predicate as a function that takes two Ints and returns a
+  boolean.</p>
+  <div class="sourceCode" id="cb11"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">def</span> <span class="fu">find</span><span class="op">(</span> ls<span class="op">:</span><span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">],</span> fn<span class="op">:</span> <span class="op">(</span><span class="bu">Int</span><span class="op">)</span> <span class="op">=&gt;</span> <span class="ex">Boolean</span><span class="op">):</span><span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">]=</span> <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   ls <span class="cf">match</span> <span class="op">{</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>     <span class="cf">case</span> Nil <span class="op">=&gt;</span> Nil</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>     <span class="cf">case</span> x<span class="op">::</span>xs <span class="op">=&gt;</span> <span class="cf">if</span> <span class="op">(</span><span class="fu">fn</span><span class="op">(</span>x<span class="op">))</span> x<span class="op">::</span><span class="fu">find</span><span class="op">(</span>xs<span class="op">,</span>fn<span class="op">)</span> <span class="cf">else</span> <span class="fu">find</span><span class="op">(</span>xs<span class="op">,</span> fn<span class="op">)</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   <span class="op">}</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="op">}</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>find<span class="op">:</span> <span class="op">(</span>ls<span class="op">:</span> <span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">],</span> fn<span class="op">:</span> <span class="bu">Int</span> <span class="op">=&gt;</span> <span class="ex">Boolean</span><span class="op">)</span><span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">]</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="fu">find</span><span class="op">(</span><span class="ex">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">1</span><span class="op">),</span> <span class="op">{</span> x <span class="op">=&gt;</span> x <span class="op">==</span> <span class="dv">1</span> <span class="op">})</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>res3<span class="op">:</span> <span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">]</span> <span class="op">=</span> <span class="ex">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="fu">find</span><span class="op">(</span><span class="ex">List</span><span class="op">(</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">1</span><span class="op">),</span> <span class="op">{</span> x <span class="op">=&gt;</span> x <span class="op">&gt;</span> <span class="dv">2</span> <span class="op">})</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>res4<span class="op">:</span> <span class="ex">List</span><span class="op">[</span><span class="bu">Int</span><span class="op">]</span> <span class="op">=</span> <span class="ex">List</span><span class="op">(</span><span class="dv">3</span><span class="op">)</span></span></code></pre></div>
+  <p>Higher order functions allows us to pass behavior into an already
+  existing function. This will greatly increase code reuse.</p>
   <h3 id="recursive-functions">Recursive Functions</h3>
-  <p>In the previous example, I wrote a function that calls itself. Why are they useful? They provide a great benefit by preventing mutation. It does this by utilizing the function stack to store local values and parameters.</p>
-  <p>Let's look at a recursive function:</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">power</span>(x:Int, n:Int): Int = {
-       |   <span class="kw">if</span> (n == <span class="dv">0</span>) <span class="dv">1</span> <span class="co">// anything to the 0th power is 1</span>
-       |   <span class="kw">else</span> x * <span class="fu">power</span>(x, n<span class="dv">-1</span>)
-       | }
-  power: (x: Int, n: Int)Int
-  
-  scala&gt; <span class="fu">power</span>(<span class="dv">2</span>,<span class="dv">3</span>)
-  res0: Int = <span class="dv">8</span>
-  
-  scala&gt; <span class="fu">power</span>(<span class="dv">4</span>,<span class="dv">0</span>)
-  res1: Int = <span class="dv">1</span></code></pre></div>
-  <p>In all recursive functions, you need a base case, in this case, we use when n is equal to 0. The recursive case calls itself with but with a subset of the problem. In the power function, we use n as the number of times x should be multiplied by.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="fu">power</span>(<span class="dv">2</span>, <span class="dv">3</span>)
-  x = <span class="dv">2</span>, n = <span class="dv">3</span>
-  <span class="dv">2</span> * <span class="fu">power</span> (<span class="dv">2</span>, <span class="dv">2</span>)
-  <span class="dv">2</span> * <span class="dv">2</span> * <span class="fu">power</span>(<span class="dv">2</span>, <span class="dv">1</span>)
-  <span class="dv">2</span> * <span class="dv">2</span> * <span class="dv">2</span> * <span class="fu">power</span>(<span class="dv">2</span>,<span class="dv">0</span>)
-  <span class="dv">2</span> * <span class="dv">2</span> * <span class="dv">2</span> * <span class="dv">1</span>
-  <span class="dv">8</span></code></pre></div>
-  <p>Each time, we're not modifying n, but essentially creating a copy of it when calling the function. But what about the case where n is absurdly large? We'll essentially run out stack frames and overflow the stack. To solve this scenario, Scala has a feature called Tail Recursion.</p>
+  <p>In the previous example, I wrote a function that calls itself. Why
+  are they useful? They provide a great benefit by preventing mutation.
+  It does this by utilizing the function stack to store local values and
+  parameters.</p>
+  <p>Let’s look at a recursive function:</p>
+  <div class="sourceCode" id="cb12"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">def</span> <span class="fu">power</span><span class="op">(</span>x<span class="op">:</span><span class="bu">Int</span><span class="op">,</span> n<span class="op">:</span><span class="bu">Int</span><span class="op">):</span> <span class="bu">Int</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   <span class="cf">if</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="dv">1</span> <span class="co">// anything to the 0th power is 1</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   <span class="cf">else</span> x <span class="op">*</span> <span class="fu">power</span><span class="op">(</span>x<span class="op">,</span> n<span class="op">-</span><span class="dv">1</span><span class="op">)</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="op">}</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>power<span class="op">:</span> <span class="op">(</span>x<span class="op">:</span> <span class="bu">Int</span><span class="op">,</span> n<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span><span class="bu">Int</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="fu">power</span><span class="op">(</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">)</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>res0<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="fu">power</span><span class="op">(</span><span class="dv">4</span><span class="op">,</span><span class="dv">0</span><span class="op">)</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>res1<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">1</span></span></code></pre></div>
+  <p>In all recursive functions, you need a base case, in this case, we
+  use when n is equal to 0. The recursive case calls itself with but
+  with a subset of the problem. In the power function, we use n as the
+  number of times x should be multiplied by.</p>
+  <div class="sourceCode" id="cb13"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power</span><span class="op">(</span><span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span><span class="op">,</span> n <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">*</span> <span class="fu">power</span> <span class="op">(</span><span class="dv">2</span><span class="op">,</span> <span class="dv">2</span><span class="op">)</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> <span class="fu">power</span><span class="op">(</span><span class="dv">2</span><span class="op">,</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> <span class="fu">power</span><span class="op">(</span><span class="dv">2</span><span class="op">,</span><span class="dv">0</span><span class="op">)</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">2</span> <span class="op">*</span> <span class="dv">1</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="dv">8</span></span></code></pre></div>
+  <p>Each time, we’re not modifying n, but essentially creating a copy
+  of it when calling the function. But what about the case where n is
+  absurdly large? We’ll essentially run out stack frames and overflow
+  the stack. To solve this scenario, Scala has a feature called Tail
+  Recursion.</p>
   <h3 id="tail-recursion">Tail Recursion</h3>
-  <p>Tail recursion relies on storing the intermediate values as a function parameters. In the power example, we only knew the result when ALL the calls to power were complete requiring all the previous results and the accompanying function stack frame. Let's rewrite the power function to support tail recursion.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; <span class="kw">def</span> <span class="fu">power</span>(x:Int, n:Int): Int = {
-       |   @annotation.<span class="fu">tailrec</span>
-       |   <span class="kw">def</span> <span class="fu">_power</span>(x:Int, n:Int, accum:Int): Int = {
-       |     <span class="kw">if</span> (n == <span class="dv">0</span>) accum
-       |     <span class="kw">else</span> <span class="fu">_power</span>(x, n<span class="dv">-1</span>, x * accum)
-       |   }
-       |  <span class="fu">_power</span>(x,n,<span class="dv">1</span>)
-       | }
-  power: (x: Int, n: Int)Int</code></pre></div>
-  <p>This utilizes a Scala feature called annotations, that tells the compiler that the intermediate results are not handled already and the intermediate stack frames can be reclaimed (or not even allocated in the first place).</p>
-  <p>Let's see how this example plays out. Notice, that I created a nested function to hide the fact that we're using tail recursion here.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala"><span class="fu">_power</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>)
-  x = <span class="dv">2</span>, n = <span class="dv">3</span>, accum = <span class="dv">1</span>
-  x = <span class="dv">2</span>, n = <span class="dv">2</span>, accum = <span class="dv">2</span>
-  x = <span class="dv">2</span>, n = <span class="dv">1</span>, accum = <span class="dv">4</span>
-  x = <span class="dv">2</span>, n = <span class="dv">0</span>, accum = <span class="dv">8</span>
-  recusion ends, and accum is the <span class="kw">final</span> result</code></pre></div>
-  <p>You can see, we didn't need to wait for all the other function calls to complete, we already had the result!</p>
-  <p>This function can be modified by using another Scala feature: parameters with default values.</p>
-  <div class="sourceCode"><pre class="sourceCode scala"><code class="sourceCode scala">scala&gt; @annotation.<span class="fu">tailrec</span>
-       | <span class="kw">def</span> <span class="fu">power</span>(x:Int, n:Int, accum:Int = <span class="dv">1</span>): Int = {
-       |   <span class="kw">if</span> (n == <span class="dv">0</span>) accum
-       |   <span class="kw">else</span> <span class="fu">power</span>(x, n<span class="dv">-1</span>, x * accum)
-       | }
-    
-  power: (x: Int, n: Int, accum: Int)Int
-  
-  scala&gt; <span class="fu">power</span>(<span class="dv">2</span>,<span class="dv">3</span>)
-  res6: Int = <span class="dv">8</span></code></pre></div>
-  <p>Notice that when we called the function, we left out the last parameter, in this case the default value is used. The downside of this, is now we are exposing that implementation detail.</p>
+  <p>Tail recursion relies on storing the intermediate values as a
+  function parameters. In the power example, we only knew the result
+  when ALL the calls to power were complete requiring all the previous
+  results and the accompanying function stack frame. Let’s rewrite the
+  power function to support tail recursion.</p>
+  <div class="sourceCode" id="cb14"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="kw">def</span> <span class="fu">power</span><span class="op">(</span>x<span class="op">:</span><span class="bu">Int</span><span class="op">,</span> n<span class="op">:</span><span class="bu">Int</span><span class="op">):</span> <span class="bu">Int</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   @annotation<span class="op">.</span>tailrec</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   <span class="kw">def</span> <span class="fu">_power</span><span class="op">(</span>x<span class="op">:</span><span class="bu">Int</span><span class="op">,</span> n<span class="op">:</span><span class="bu">Int</span><span class="op">,</span> accum<span class="op">:</span><span class="bu">Int</span><span class="op">):</span> <span class="bu">Int</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>     <span class="cf">if</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> accum</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>     <span class="cf">else</span> <span class="fu">_power</span><span class="op">(</span>x<span class="op">,</span> n<span class="op">-</span><span class="dv">1</span><span class="op">,</span> x <span class="op">*</span> accum<span class="op">)</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   <span class="op">}</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>  <span class="fu">_power</span><span class="op">(</span>x<span class="op">,</span>n<span class="op">,</span><span class="dv">1</span><span class="op">)</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="op">}</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>power<span class="op">:</span> <span class="op">(</span>x<span class="op">:</span> <span class="bu">Int</span><span class="op">,</span> n<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span><span class="bu">Int</span></span></code></pre></div>
+  <p>This utilizes a Scala feature called annotations, that tells the
+  compiler that the intermediate results are not handled already and the
+  intermediate stack frames can be reclaimed (or not even allocated in
+  the first place).</p>
+  <p>Let’s see how this example plays out. Notice, that I created a
+  nested function to hide the fact that we’re using tail recursion
+  here.</p>
+  <div class="sourceCode" id="cb15"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">_power</span><span class="op">(</span><span class="dv">2</span><span class="op">,</span> <span class="dv">3</span><span class="op">,</span> <span class="dv">1</span><span class="op">)</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span><span class="op">,</span> n <span class="op">=</span> <span class="dv">3</span><span class="op">,</span> accum <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span><span class="op">,</span> n <span class="op">=</span> <span class="dv">2</span><span class="op">,</span> accum <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span><span class="op">,</span> n <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> accum <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span><span class="op">,</span> n <span class="op">=</span> <span class="dv">0</span><span class="op">,</span> accum <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>recusion ends<span class="op">,</span> and accum is the <span class="kw">final</span> result</span></code></pre></div>
+  <p>You can see, we didn’t need to wait for all the other function
+  calls to complete, we already had the result!</p>
+  <p>This function can be modified by using another Scala feature:
+  parameters with default values.</p>
+  <div class="sourceCode" id="cb16"><pre
+  class="sourceCode scala"><code class="sourceCode scala"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> @annotation<span class="op">.</span>tailrec</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="kw">def</span> <span class="fu">power</span><span class="op">(</span>x<span class="op">:</span><span class="bu">Int</span><span class="op">,</span> n<span class="op">:</span><span class="bu">Int</span><span class="op">,</span> accum<span class="op">:</span><span class="bu">Int</span> <span class="op">=</span> <span class="dv">1</span><span class="op">):</span> <span class="bu">Int</span> <span class="op">=</span> <span class="op">{</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   <span class="cf">if</span> <span class="op">(</span>n <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> accum</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span>   <span class="cf">else</span> <span class="fu">power</span><span class="op">(</span>x<span class="op">,</span> n<span class="op">-</span><span class="dv">1</span><span class="op">,</span> x <span class="op">*</span> accum<span class="op">)</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>     <span class="op">|</span> <span class="op">}</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>power<span class="op">:</span> <span class="op">(</span>x<span class="op">:</span> <span class="bu">Int</span><span class="op">,</span> n<span class="op">:</span> <span class="bu">Int</span><span class="op">,</span> accum<span class="op">:</span> <span class="bu">Int</span><span class="op">)</span><span class="bu">Int</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>scala<span class="op">&gt;</span> <span class="fu">power</span><span class="op">(</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">)</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>res6<span class="op">:</span> <span class="bu">Int</span> <span class="op">=</span> <span class="dv">8</span></span></code></pre></div>
+  <p>Notice that when we called the function, we left out the last
+  parameter, in this case the default value is used. The downside of
+  this, is now we are exposing that implementation detail.</p>
   <p><em>2018-Jan-04</em></p>
 </main>
 <footer>

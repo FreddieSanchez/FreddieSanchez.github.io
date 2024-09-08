@@ -51,8 +51,7 @@ deploy: all
 
 # Deploy the changes from the `/target` directory
 run: all
-	@xdg-open http://127.0.0.1:8000/index.html
-	cd $(TARGET_DIR); python3 -m http.server;
+	browser-sync target --server --watch
 .PHONY: run
 
 

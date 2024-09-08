@@ -2,7 +2,7 @@
 % Freddie Sanchez
 % 2018-Jan-04
 
-###REPL - Read-Eval-Print-Loop 
+### REPL - Read-Eval-Print-Loop 
 
 A REPL give the user an interactive programming environment that 1) Reads the user input, 2) evaluates the express, 3) prints the result, 4) Loops back to read the next expression.
 
@@ -64,7 +64,7 @@ i: Double = 0.0
 
 The expression "0" is evaluated and the compiler infers it's of type "Int" therefore, the value "i" will be set to that type. There is no need to explicitly declare the type. However, in some cases it may improve the readability of your code.
 
-###Functions
+### Functions
 A function can be declared as a definition. Definitions differ from values in that values are evaluated when defined, where as definitions are only evaluated on every call. The only exception being "lazy values" which are evaluated the first time they are used.
 
 ```scala

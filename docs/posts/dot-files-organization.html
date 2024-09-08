@@ -9,78 +9,71 @@
   <title>Dot File Management with GNU Stow</title>
   <link rel="stylesheet" href="/assets/style/style.css" type="text/css" />
   <link rel="stylesheet" href="/assets/style/syntax.css" type="text/css" />
-  <link rel="stylesheet" href="div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */" type="text/css" />
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel ="icon" type ="image/png" sizes ="32x32" href ="/assets/images/favicon-32x32.png" />
@@ -98,48 +91,84 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 </nav>
 <main>
-  <p>My dotfile management and versioning was mediocre at best. I had a dotfiles git repository where each branch represents a different machine. However, making sure that I captured all my changes in git was challenging since there wasn't a link to from the dot file to my dotfile repo. <a href="https://www.gnu.org/software/stow/">GNU Stow</a> to the rescue!</p>
+  <p>My dotfile management and versioning was mediocre at best. I had a
+  dotfiles git repository where each branch represents a different
+  machine. However, making sure that I captured all my changes in git
+  was challenging since there wasn’t a link to from the dot file to my
+  dotfile repo. <a href="https://www.gnu.org/software/stow/">GNU
+  Stow</a> to the rescue!</p>
   <h3 id="what-is-gnu-stow">What is GNU Stow?</h3>
-  <p><a href="https://www.gnu.org/software/stow/">GNU Stow</a> manages sym links. That's all it does. It consolidates all the original files in a singe location, but separated by packages. Each package, or directory, contains the same directory structure as the location the original file is located.</p>
-  <p>e.g.</p>
-  <p>The following file: <code>xmonad/.xmonad/lib/Xmonad/Util/Brightness.hs</code> will be stowed in the target directory at <code>.xmonad/lib/Xmonad/Util/Brightness.hs</code>.</p>
-  <p>Typically the target directory is the parent of the package directory, but his can be changed via the <code>-t</code> option.</p>
-  <p>You can &quot;stow&quot; the config to the target directory by executing <code>stow xmonad</code>, and delete it by <code>stow -D xmonad</code>. However, I like being explicit in my commands. There are some default options that I explicitly use.</p>
-  <p>e.g. <code>stow xmonad</code> would be the same as <code>stow -St ~ xmonad</code>.</p>
+  <p><a href="https://www.gnu.org/software/stow/">GNU Stow</a> manages
+  sym links. That’s all it does. It consolidates all the original files
+  in a singe location, but separated by packages. Each package, or
+  directory, contains the same directory structure as the location the
+  original file is located.</p>
+  <p>e.g. </p>
+  <p>The following file:
+  <code>xmonad/.xmonad/lib/Xmonad/Util/Brightness.hs</code> will be
+  stowed in the target directory at
+  <code>.xmonad/lib/Xmonad/Util/Brightness.hs</code>.</p>
+  <p>Typically the target directory is the parent of the package
+  directory, but his can be changed via the <code>-t</code> option.</p>
+  <p>You can “stow” the config to the target directory by executing
+  <code>stow xmonad</code>, and delete it by
+  <code>stow -D xmonad</code>. However, I like being explicit in my
+  commands. There are some default options that I explicitly use.</p>
+  <p>e.g. <code>stow xmonad</code> would be the same as
+  <code>stow -St ~ xmonad</code>.</p>
   <h3 id="migrating-to-stow">Migrating to Stow</h3>
-  <p>I had my dotfiles directory in my home directory that is versioned using git.</p>
-  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">~/dotfiles</span></code></pre></div>
-  <p>I originally had a flat directory structure where all dotfiles resided in this main directory. To start using stow, I had to create sub directories for each stow <code>package</code>. The result is the following:</p>
-  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">~/dotfiles</span>$ <span class="ex">tree</span> -d 
-  <span class="ex">.</span>
-  ├── <span class="fu">bash</span>
-  ├── <span class="fu">git</span>
-  ├── <span class="bu">local</span>
-  ├── <span class="ex">sbt</span>
-  ├── <span class="ex">vim</span>
-  └── <span class="ex">xmonad</span></code></pre></div>
-  <p>Migrating to this setup was pretty easy. I created the package directory, mimicking the directory structure of the target file(s) I want to stow, along with empty files with the same name as the target.</p>
+  <p>I had my dotfiles directory in my home directory that is versioned
+  using git.</p>
+  <div class="sourceCode" id="cb1"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/dotfiles</span></span></code></pre></div>
+  <p>I originally had a flat directory structure where all dotfiles
+  resided in this main directory. To start using stow, I had to create
+  sub directories for each stow <code>package</code>. The result is the
+  following:</p>
+  <div class="sourceCode" id="cb2"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/dotfiles$</span> tree <span class="at">-d</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> bash</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> git</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> local</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> sbt</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> vim</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> xmonad</span></code></pre></div>
+  <p>Migrating to this setup was pretty easy. I created the package
+  directory, mimicking the directory structure of the target file(s) I
+  want to stow, along with empty files with the same name as the
+  target.</p>
   <p>e.g.</p>
-  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="bu">cd</span> ~/dotfiles
-  <span class="fu">mkdir</span> -p xmonad/.xmonad/lib/Xmonad/Util/
-  <span class="fu">touch</span> Brightness.hs</code></pre></div>
-  <p>Then, I used the <code>--adopt</code> flag to move the files from my home directory to the package directory, then create the symbolic link using <code>stow</code>. Before doing any real modifications, I always used the <code>--no</code> flag to just do a trial run of executing the command along with the <code>-v</code> flag for a more verbose output.</p>
+  <div class="sourceCode" id="cb3"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/dotfiles</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> xmonad/.xmonad/lib/Xmonad/Util/</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> Brightness.hs</span></code></pre></div>
+  <p>Then, I used the <code>--adopt</code> flag to move the files from
+  my home directory to the package directory, then create the symbolic
+  link using <code>stow</code>. Before doing any real modifications, I
+  always used the <code>--no</code> flag to just do a trial run of
+  executing the command along with the <code>-v</code> flag for a more
+  verbose output.</p>
   <p>e.g.</p>
-  <p>To test the command: <code>stow --adopt --no -vSt ~ xmonad</code></p>
-  <p>To finally execute the command. <code>stow --adopt -vSt ~ xmonad</code></p>
-  <p>I repeated the process for all my dotfiles using different packages them into different packages.</p>
-  <p>Here's the final result for the <code>xmonad</code> package.</p>
-  <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">~/dotfiles</span>$ <span class="fu">find</span> xmonad -type f
-  <span class="ex">xmonad/.xmonad/lib/XMonad/Util/Brightness.hs</span>
-  <span class="ex">xmonad/.xmonad/xmobar.hs</span>
-  <span class="ex">xmonad/.xmonad/xmonad-session-rc</span>
-  <span class="ex">xmonad/.xmonad/xmonad.hs</span>
-  <span class="ex">~/dotfiles</span>$ <span class="bu">cd</span>
-  <span class="ex">~</span>$ <span class="fu">find</span> .xmonad -type l -ls
-   <span class="ex">26345986</span>      4 lrwxrwxrwx   1 freddie  freddie        65 Sep  6 14:06 .xmonad/lib/XMonad/Util/Brightness.hs -<span class="op">&gt;</span> ../../../../dotfiles/xmonad/.xmonad/lib/XMonad/Util/Brightness.hs
-   <span class="ex">24117849</span>      0 lrwxrwxrwx   1 freddie  freddie        36 Sep  6 14:06 .xmonad/xmobar.hs -<span class="op">&gt;</span> ../dotfiles/xmonad/.xmonad/xmobar.hs
-   <span class="ex">24117857</span>      0 lrwxrwxrwx   1 freddie  freddie        44 Sep  6 14:06 .xmonad/xmonad-session-rc -<span class="op">&gt;</span> ../dotfiles/xmonad/.xmonad/xmonad-session-rc
-   <span class="ex">24117860</span>      0 lrwxrwxrwx   1 freddie  freddie        36 Sep  6 14:06 .xmonad/xmonad.hs -<span class="op">&gt;</span> ../dotfiles/xmonad/.xmonad/xmonad.hs</code></pre></div>
+  <p>To test the command:
+  <code>stow --adopt --no -vSt ~ xmonad</code></p>
+  <p>To finally execute the command.
+  <code>stow --adopt -vSt ~ xmonad</code></p>
+  <p>I repeated the process for all my dotfiles using different packages
+  them into different packages.</p>
+  <p>Here’s the final result for the <code>xmonad</code> package.</p>
+  <div class="sourceCode" id="cb4"><pre
+  class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">~/dotfiles$</span> find xmonad <span class="at">-type</span> f</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">xmonad/.xmonad/lib/XMonad/Util/Brightness.hs</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">xmonad/.xmonad/xmobar.hs</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">xmonad/.xmonad/xmonad-session-rc</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">xmonad/.xmonad/xmonad.hs</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">~/dotfiles$</span> cd</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">~$</span> find .xmonad <span class="at">-type</span> l <span class="at">-ls</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a> <span class="ex">26345986</span>      4 lrwxrwxrwx   1 freddie  freddie        65 Sep  6 14:06 .xmonad/lib/XMonad/Util/Brightness.hs <span class="at">-</span><span class="op">&gt;</span> ../../../../dotfiles/xmonad/.xmonad/lib/XMonad/Util/Brightness.hs</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">24117849</span>      0 lrwxrwxrwx   1 freddie  freddie        36 Sep  6 14:06 .xmonad/xmobar.hs <span class="at">-</span><span class="op">&gt;</span> ../dotfiles/xmonad/.xmonad/xmobar.hs</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a> <span class="ex">24117857</span>      0 lrwxrwxrwx   1 freddie  freddie        44 Sep  6 14:06 .xmonad/xmonad-session-rc <span class="at">-</span><span class="op">&gt;</span> ../dotfiles/xmonad/.xmonad/xmonad-session-rc</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a> <span class="ex">24117860</span>      0 lrwxrwxrwx   1 freddie  freddie        36 Sep  6 14:06 .xmonad/xmonad.hs <span class="at">-</span><span class="op">&gt;</span> ../dotfiles/xmonad/.xmonad/xmonad.hs</span></code></pre></div>
   <p><em>2020-Oct-04</em></p>
 </main>
 <footer>

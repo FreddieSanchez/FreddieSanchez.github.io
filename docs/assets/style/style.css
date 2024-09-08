@@ -99,6 +99,7 @@ pre {
 
 pre code{
     border: 0;
+    line-height: 1.1;
 }
 
 code {
