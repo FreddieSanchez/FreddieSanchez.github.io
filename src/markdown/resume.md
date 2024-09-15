@@ -4,7 +4,8 @@
 
 ## Objective 
 
-Highly skilled Scala developer with 20 years experience in software engineering, functional programming, distributed systems, and data processing. Committed to furthering my contributions in current role by leveraging my skills to build scalable, high-performance applications that meet evolving industry demands.
+Highly skilled Scala developer with 20 years experience in software engineering, functional programming, distributed systems, and data processing. 
+Committed to furthering my contributions in current role by leveraging my skills to build scalable, high-performance applications that meet evolving industry demands.
 
 ---
 
@@ -22,8 +23,11 @@ sbt, metals, RabbitMQ, Sqs, RDS, EC2, k8s, mysql
 towards the same goal of incremental product improvement with the customer experience
 at the forefront. Cultivated a plain-text documentation standard practice to facilitate 
 remote-first asynchronous work. Created convention based releases, deployment, and branching
-strategies that are flexible to accommodate changing business importance.
+strategies that are flexible to accommodate changing business priorities.
 
+**Product Development:** Worked closely with product, front-end, and data teams to find
+customer focused solutions to new features and issues. Used scala and typelevel libraries to craft services
+to run in a kubernetes environment.
 
 ### Ventana Medical Systems
 _Tucson, Arizona (February  2015 - October 2018)_  
@@ -33,12 +37,12 @@ _Software Engineer_
 fix key issues for a Windows GUI application written in Delphi.
 
 **Innovation:** Lead the architecture and development of an automated
-extensible testing application bringing predictability and consistency
+extensible testing application that brought predictability and consistency
 to an error prone process.
 
-**Leadership:** Mentor junior software engineers and software test
+**Leadership:** Mentored junior software engineers and software test
 engineers. Scrum master for the staining procedure development team.
-Identify, track and remove impediments keeping the team on target to
+Identified, tracked, and removed impediments that kept the team on target to
 meet sprint goals.
 
 ### IBM  
