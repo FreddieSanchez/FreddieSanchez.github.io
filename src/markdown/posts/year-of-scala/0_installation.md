@@ -2,6 +2,8 @@
 % Freddie Sanchez
 % 2018-Jan-03
 
+#scala #sbt
+
 I prefer to work in the console using Ubuntu 16.04 - xmonad as my window manager. This will all be focused around my own workflow and preferences. I am going to start my Year of Scala by installing SBT - sbt is a build tool for Scala and Java. It provides a great way to manage your project, build and test straight from the console. 
 
 sbt requires Java 1.8 or later.  Check to make sure you have Java 1.8 installed:

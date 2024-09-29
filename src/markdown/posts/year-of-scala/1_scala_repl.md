@@ -2,6 +2,8 @@
 % Freddie Sanchez
 % 2018-Jan-04
 
+#scala #sbt #repl 
+
 ### REPL - Read-Eval-Print-Loop 
 
 A REPL give the user an interactive programming environment that 1) Reads the user input, 2) evaluates the express, 3) prints the result, 4) Loops back to read the next expression.

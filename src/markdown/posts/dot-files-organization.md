@@ -2,6 +2,8 @@
 % Freddie Sanchez
 % 2020-Oct-04
 
+#stow #dotfiles #bash
+
 My dotfile management and versioning was mediocre at best. I had a dotfiles git repository where each branch represents a
 different machine. However, making sure that I captured all my changes in git was challenging since there wasn't a link to from
 the dot file to my dotfile repo. [GNU Stow] to the rescue! 

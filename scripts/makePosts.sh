@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "making posts"
 SOURCE_DIR=src/markdown
 POST_MARKDOWN_FILE=$SOURCE_DIR/posts.md
 TEMP_POST_MARKDOWN_FILE=$SOURCE_DIR/posts.tmp
@@ -7,7 +6,6 @@ POST_MARKDOWN_FILES=$(find $SOURCE_DIR/posts -type f)
 echo "" > $POST_MARKDOWN_FILE
 
 for file in $POST_MARKDOWN_FILES; do 
-  echo "processing $file"
   MD_FILE=$file
   TITLE="$(echo `head -1 $MD_FILE | cut -d % -f2`| xargs)"
   DATE="$(echo `head -3 $MD_FILE | tail -1 | cut -d % -f2` | xargs)"

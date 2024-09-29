@@ -1,13 +1,12 @@
 #!/bin/bash
 
 
-echo "making tags"
 SOURCE_DIR=src/markdown
 MARKDOWN_FILE=$SOURCE_DIR/tags.md
 TEMP_MARKDOWN_FILE=$SOURCE_DIR/tags.tmp
 POSTS_DIR=$SOURCE_DIR/posts
 TAGS_DIR=$SOURCE_DIR/tags
-TAGS=$(grep -r -h -E "(#[a-z]+)" $POSTS_DIR | xargs | sort -u)
+TAGS=$(grep -r -h -E "(#[a-z]+)" $POSTS_DIR | xargs -n1 | sort -u | xargs)
 echo "" > $MARKDOWN_FILE
 echo "" > $TEMP_MARKDOWN_FILE
 
@@ -33,14 +32,14 @@ make_tag_file() {
 }
 
 process_tags() {
-	for tag in $TAGS; do
+	local tags=$1
+	for tag in $tags; do
 	  local tag_files=$(grep -r "$tag" $POSTS_DIR | cut -d ":" -f1)
 	  local count=$(grep -c --max-count 1 -r "$tag" $POSTS_DIR | grep -vE ":0$" | cut -d ":" -f2 | awk '{sum += $1} END {print sum}' )
 	  local tag_file_name=$(echo "$tag" | cut -d "#" -f2)
 	  local src_tag_file="$TAGS_DIR/$tag_file_name.md"
 	  local html_dir=${src_tag_file/$SOURCE_DIR/""}
 	  local html_file=${html_dir/md/html}
-	  echo "$tag_files $count"
 	  echo "* [$tag]($html_file) ($count)" >> $TEMP_MARKDOWN_FILE
 	  make_tag_file "$tag" "$tag_files" "$src_tag_file" "$tag_file_name" "$count"
 	done;
@@ -49,7 +48,7 @@ process_tags() {
 # Take the last field put it to the first field, sort it, then remove it, and it to the file.
 #awk '{print $NF,$0}' $MARKDOWN_FILE  | sort -r | cut -d ' ' -f2-  > $TEMP_MARKDOWN_FILE
 
-process_tags
+process_tags "$TAGS"
 
 HEADER_LINE1="% Tags"
 HEADER_LINE2="% Freddie Sanchez"

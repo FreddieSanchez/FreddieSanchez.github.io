@@ -84,13 +84,14 @@ clean:
 .PHONY: clean
 
 posts:
-	echo "making posts"
-	scripts/makePosts.sh
+	@echo "making posts"
+	@scripts/makePosts.sh
 .PHONY: posts
 
 tags:
-	echo "making tags"
-	scripts/makeTags.sh
+	@echo "making tags"
+	@scripts/makeTags.sh
+	@echo "done"
 .PHONY: tags
 
 # Rule to create HTML files, make sure the target directory is created first.
