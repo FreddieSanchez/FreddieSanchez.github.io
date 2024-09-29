@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Freddie Sanchez" />
-  <title>Directory Versioning in Bash</title>
+  <title>#dotfiles</title>
   <link rel="stylesheet" href="/assets/style/style.css" type="text/css" />
   <link rel="stylesheet" href="/assets/style/syntax.css" type="text/css" />
   <style type="text/css">code{white-space: pre;}</style>
@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div id="header"> 
-		<h1>Directory Versioning in Bash</h1>
+		<h1>#dotfiles</h1>
 	</div>
 <nav>
 <ul>
@@ -27,34 +27,11 @@
 </ul>
 </nav>
 <main>
-  <p>#bash #sh</p>
-  <p>One problem that I face often is I have to create a directory with
-  new version of files based on a previous directory. The convesion is
-  to use the current date 20141125 followed by an letter ‘a’. I wanted
-  to script this out instead of doing it manually.</p>
-  <p>Obtaining the current date is easy:</p>
-  <p><code>date "+%Y%m%d"</code></p>
-  <p>This should yield the date of the form YYYYMMDD.</p>
-  <p>The next part is obtaining incrementing a letter. Here are two ways
-  of doing it. The first uses the ‘tr’ command. The second uses bash’s
-  <a
-  href="http://www.gnu.org/software/bash/manual/bashref.html#Brace-Expansion">Brace
-  Expansion</a>.</p>
-  <pre><code>version=a
-dir=SomeDir
-while [[ -d $dir/$version ]]; do 
-  version=`echo $version` | tr &#39;a-z&#39; &#39;b-za&#39;
-done
-mkdir $dir/$version</code></pre>
-  <p>or</p>
-  <pre><code>dir=SomeDir
- for x in $dir{a..zA..Z}; do 
-    if [[ ! -d $x ]]; then 
-      mkdir $x; 
-      break; 
-    fi;
-  done</code></pre>
-  <p><em>2017-Feb-22</em></p>
+  <h1 id="dotfiles-1">dotfiles (1)</h1>
+  <ul>
+  <li><a href="/posts/dot-files-organization.html">Dot File Management
+  with GNU Stow</a> - <em>2020-Oct-04</em></li>
+  </ul>
 </main>
 <footer>
 <ul>

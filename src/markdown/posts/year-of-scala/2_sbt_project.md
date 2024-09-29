@@ -2,6 +2,8 @@
 % Freddie Sanchez
 % 2018-Jan-05
 
+#scala #sbt 
+
 sbt uses the same directory structure as Maven for source files by default (all paths are relative to the base directory):
 
 ```

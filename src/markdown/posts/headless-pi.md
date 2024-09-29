@@ -2,6 +2,8 @@
 % Freddie Sanchez
 % 2017-Feb-09
 
+#sh #pi
+
 Grab the latest raspbian 
 https://downloads.raspberrypi.org/raspbian_latest.torrent
 
