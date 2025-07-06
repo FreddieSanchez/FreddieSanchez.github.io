@@ -1,6 +1,6 @@
 % Tags
 % Freddie Sanchez
-% 2024-Sep-29
+% 2025-Jul-06
 
 * [#bash](/tags/bash.html) (2)
 * [#dotfiles](/tags/dotfiles.html) (1)
