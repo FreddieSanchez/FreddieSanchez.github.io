@@ -36,11 +36,16 @@ The hike was a continuous uphill trek that wasn't too strenuous. There was still
 
 After we got back down the mountain, we headed back to the lodge and went to the dining room for dinner. The food wasn't the best, and quite expensive for what it was, but we were hungry and tired. We headed back to our rooms and got ready for bed. We were all exhausted from the long day of travel and hiking, but excited for the adventures that lay ahead in Yellowstone National Park.
 
-![1](assests/images/yellowstone/1.jpg)
-![2](assests/images/yellowstone/2.jpg)
-![3](assests/images/yellowstone/3.jpg)
-![4](assests/images/yellowstone/4.jpg)
-![5](assests/images/yellowstone/5.jpg)
+
+![Cunningham Cabin](../assets/images/yellowstone/01.jpg)
+
+![Grand Teton](../assets/images/yellowstone/02.jpg)
+
+![Wild Bison](../assets/images/yellowstone/03.jpg)
+
+![Yellowstone River - Yellowstone Grand Canyon](../assets/images/yellowstone/04.jpg)
+
+![Yellowstone Grand Canyon](../assets/images/yellowstone/05.jpg)
 
 ## Day 2 - June 24, 2025: Grand Canyon of the Yellowstone and Mud Volcanoes
 
@@ -58,6 +63,16 @@ We finished the day with dinner at the Canyon Lodge Dining Room. The food was be
 
 Later that night we went to a ranger lead program to learn about the night sky and do some star gazing. It didn't get dark until well after 10:30 PM. The ranger told us some stories about the different constellations and pointed to ones that were visible in the night sky. I wished it got darker sooner, but it is what it is. 
 
+![Mt Washburn](../assets/images/yellowstone/06.jpg)
+
+![Grizzly Bear](../assets/images/yellowstone/07.jpg)
+
+![Jenny Lake Overview](../assets/images/yellowstone/08.jpg)
+
+![Hot Spring](../assets/images/yellowstone/09.jpg)
+
+![Wild Bison](../assets/images/yellowstone/10.jpg)
+
 ## Day 3 - June 25, 2025: Avalanche Peak and Old Faithful
 
 We had a leisurely breakfast in our room and packed up our things. We checked out of the lodge and headed out of the Canyon Village. The plan was for my son and I to to hike [Avalanche Peak](https://www.nps.gov/thingstodo/yell-trail-avalanche-peak.htm) while the girls explore the surrounding lakes, then drive to Old Faithful.
@@ -67,6 +82,16 @@ Avalanche Peak was a great hike. Both my son and I were used to the vertical gai
 We drove back toward the Grand Loop Rd and made a stop at the Fishing Bridge to observe the USGS Stream Gauging station. We finally made it over to the Lake General Store to pick up some lunch items and snacks for the drive to Old Faithful. I walked with my son to find a benchmark off a trail up the road and one near the Lake Lodge Cabins. We saw a lone Bison near the Lake General Store just off the road snacking on the grass.
 
 We made our way to Old Faithful and checked into the Old Faithful Snow Lodge. We were still split up into a girls room and a boys room, but this time our room had two beds and a fridge. We dropped off our things and headed out to see Old Faithful erupt. We had dinner at the Old Faithful Lodge Cafeteria, which about as good as Canyon Lodge Dining Room. 
+
+![Avalanche Peak](../assets/images/yellowstone/11.jpg)
+
+![Hot Spring at West Thumb Basin ](../assets/images/yellowstone/12.jpg)
+
+![Bison with Castle Geyser in the Background](../assets/images/yellowstone/13.jpg)
+
+![Yellowstone River in Grand Canyon of the Yellowstone](../assets/images/yellowstone/14.jpg)
+
+![Pool at Blacksand Basin](../assets/images/yellowstone/15.jpg)
 
 ## Day 4 - June 26, 2025: Upper Geyser Basin, Black Sand Basin, Grand Prismatic Spring
 
@@ -83,3 +108,13 @@ We had a leisurely breakfast at the Old Faithful Inn Dining Room. The service wa
 We drove back down toward the South Entrance. We got out of Yellowstone and made our way to our planned stop at Jenny Lake Overlook in the Grand Teton National Park for lunch. My son and wife headed into a scrub field to find a final set of benchmark. We stopped at the Grand Teton Visitors Center to use the restrooms and to get up and stretch. 
 
 We filled up the rental with gas and made our way back to Jackson Hole Airport. We returned the rental, made our way through security, returned our bear spray, and all we had left was to wait for our flight. We had a short layover in Salt Lake City but that was extended when our connection was delayed. We got back about an hour later than expected.
+
+![Avalanche Peak Summit](../assets/images/yellowstone/16.jpg)
+
+![Danger Bison](../assets/images/yellowstone/17.jpg)
+
+![Mount Washburn](../assets/images/yellowstone/18.jpg)
+
+![Wild Bison](../assets/images/yellowstone/19.jpg)
+
+![Hill near Mount Washburn](../assets/images/yellowstone/20.jpg)
